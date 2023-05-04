@@ -122,7 +122,7 @@
                                         <span class="text-body text-decoration-line-through">
                                             <?php echo number_format($set["price"], 0, ',', '.') ?>đ
                                         </span>
-                                        <span class="text-secondary me-1 d-block h5 mb-2" href="">
+                                        <span class="me-1 d-block mb-2" href="">
                                             lượt mua:
                                             <?php echo $set["number_sell"] ?>
                                         </span>
@@ -176,7 +176,7 @@
                                             <span class="text-body text-decoration-line-through">
                                                 <?php echo number_format($set["price"], 0, ',', '.') ?>đ
                                             </span>
-                                            <span class="text-secondary me-1 d-block h5 mb-2" href="">
+                                            <span class="me-1 d-block mb-2" href="">
                                             lượt mua:
                                             <?php echo $set["number_sell"] ?>
                                         </span>
@@ -262,7 +262,7 @@
                                         <span class="text-body text-decoration-line-through">
                                             <?php echo number_format($set["price"], 0, ',', '.') ?>đ
                                         </span>
-                                        <span class="text-secondary me-1 d-block h5 mb-2" href="">
+                                        <span class="me-1 d-block mb-2" href="">
                                             lượt mua:
                                             <?php echo $set["number_sell"] ?>
                                         </span>
@@ -314,7 +314,7 @@
                                             <span class="text-body text-decoration-line-through">
                                                 <?php echo number_format($set["price"], 0, ',', '.') ?>đ
                                             </span>
-                                            <span class="text-secondary me-1 d-block h5 mb-2" href="">
+                                            <span class="me-1 d-block mb-2" href="">
                                             lượt mua:
                                             <?php echo $set["number_sell"] ?>
                                         </span>

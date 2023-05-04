@@ -3,7 +3,7 @@
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
-                <h1 class="fw-bold text-primary mb-4"><a href="/"><img src="./img/logo.png" alt=""></a></h1>
+                <h1 class="fw-bold text-primary mb-4"><a href="/"><img src="<?php echo _WEB_ROOT ?>/public/assets/img/logo.png" alt=""></a></h1>
                 <p>Chúng tôi là shop thú cưng chuyên cung cấp các sản phẩm chất lượng cao và dịch vụ tốt nhất cho các bé
                     cưng của bạn. Hãy đến với chúng tôi để mang đến cho thú cưng của bạn một cuộc sống tốt đẹp nhất!</p>
                 <div class="d-flex pt-2">
