@@ -6,6 +6,7 @@ class Home extends Controller
     public function index()
     {
         $home = $this->model("ProductModel");
+        $home2 = $this->model("NewsModel");
         // new ProductModel(), require....
 
         $this->data['content'] = $this->linkIndex;
@@ -14,6 +15,7 @@ class Home extends Controller
         $this->data['sub_content']['product_new_cat'] = $home->getListProductNew_Cat();
         $this->data['sub_content']['product_trend_dog'] = $home->getListProductTrend_Dog();
         $this->data['sub_content']['product_trend_cat'] = $home->getListProductTrend_Cat();
+        $this->data['sub_content']['news_lastest'] = $home2->getListNewsLastest();
    
         
         $this->render('layouts/client_layout', $this->data);

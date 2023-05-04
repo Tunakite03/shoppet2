@@ -113,7 +113,7 @@
                                             New</div>
                                     </div>
                                     <div class="text-center p-4">
-                                        <a class="d-block h5 mb-2" href="">
+                                        <a class="d-block h5 mb-2" href="/shopdog/detail/<?php echo $set["id"] ?>">
                                             <?php echo $set["name"] ?>
                                         </a>
                                         <span class="text-secondary me-1">
@@ -177,9 +177,9 @@
                                                 <?php echo number_format($set["price"], 0, ',', '.') ?>đ
                                             </span>
                                             <span class="me-1 d-block mb-2" href="">
-                                            lượt mua:
-                                            <?php echo $set["number_sell"] ?>
-                                        </span>
+                                                lượt mua:
+                                                <?php echo $set["number_sell"] ?>
+                                            </span>
                                         </div>
                                         <div class="d-flex border-top">
                                             <small class="w-50 text-center border-end py-2">
@@ -315,9 +315,9 @@
                                                 <?php echo number_format($set["price"], 0, ',', '.') ?>đ
                                             </span>
                                             <span class="me-1 d-block mb-2" href="">
-                                            lượt mua:
-                                            <?php echo $set["number_sell"] ?>
-                                        </span>
+                                                lượt mua:
+                                                <?php echo $set["number_sell"] ?>
+                                            </span>
                                         </div>
                                         <div class="d-flex border-top">
                                             <small class="w-50 text-center border-end py-2">
@@ -424,50 +424,26 @@
         <div class="container">
             <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
                 style="max-width: 500px;">
-                <h1 class="display-5 mb-3">Latest Blog</h1>
-                <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.
-                </p>
+                <h1 class="display-5 mb-3">Bài Viết Gần Nhất</h1>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="<?php echo _WEB_ROOT ?>/public/assets/img/blog-1.jpg" alt="">
-                    <div class="bg-light p-4">
-                        <a class="d-block h5 lh-base mb-4" href="">How to cultivate organic fruits and vegetables in
-                            own
-                            firm</a>
-                        <div class="text-muted border-top pt-4">
-                            <small class="me-3"><i class="fa fa-user text-secondary me-2"></i>Admin</small>
-                            <small class="me-3"><i class="fa fa-calendar text-secondary me-2"></i>01 Jan,
-                                2045</small>
+                <?php
+                while ($set = $news_lastest->fetch()):
+                    ?>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <img class="img-fluid" src="<?php echo _WEB_ROOT ?>/public/assets/img/img_news/<?php echo $set["img_news"] ?>" alt="">
+                        <div class="bg-light p-4">
+                            <a class="d-block h5 lh-base mb-4" href=""><?php echo $set["name"] ?></a>
+                            <div class="text-muted border-top pt-4">
+                                <small class="me-3"><i class="fa fa-user text-secondary me-2"></i>Admin</small>
+                                <small class="me-3"><i class="fa fa-calendar text-secondary me-2"></i>01 Jan,
+                                    2045</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <img class="img-fluid" src="<?php echo _WEB_ROOT ?>/public/assets/img/blog-2.jpg" alt="">
-                    <div class="bg-light p-4">
-                        <a class="d-block h5 lh-base mb-4" href="">How to cultivate organic fruits and vegetables in
-                            own
-                            firm</a>
-                        <div class="text-muted border-top pt-4">
-                            <small class="me-3"><i class="fa fa-user text-secondary me-2"></i>Admin</small>
-                            <small class="me-3"><i class="fa fa-calendar text-secondary me-2"></i>01 Jan,
-                                2045</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <img class="img-fluid" src="<?php echo _WEB_ROOT ?>/public/assets/img/blog-3.jpg" alt="">
-                    <div class="bg-light p-4">
-                        <a class="d-block h5 lh-base mb-4" href="">How to cultivate organic fruits and vegetables in
-                            own
-                            firm</a>
-                        <div class="text-muted border-top pt-4">
-                            <small class="me-3"><i class="fa fa-user text-secondary me-2"></i>Admin</small>
-                            <small class="me-3"><i class="fa fa-calendar text-secondary me-2"></i>01 Jan,
-                                2045</small>
-                        </div>
-                    </div>
-                </div>
+                    <?php
+                endwhile;
+                ?>
             </div>
         </div>
     </div>
