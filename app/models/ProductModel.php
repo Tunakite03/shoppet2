@@ -7,10 +7,10 @@ class ProductModel
     {
         $this->db = new ConnectDB();
     }
-    public function list_products()
+    public function getListProducts()
     {
         try {
-            $query = "SELECT * FROM `book` ORDER BY 'book_id' Desc limit 8";
+            $query = "SELECT * FROM `products` ORDER BY 'id' Desc limit 8";
             $stmt =  $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {

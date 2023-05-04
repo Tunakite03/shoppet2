@@ -8,7 +8,7 @@ class HomeModel
     {
         $this->db = new ConnectDB();
     }
-    public function getListHome()
+    public function getList()
     {
         // try {
         //     $query = "SELECT * FROM `book` ORDER BY 'book_id' Desc limit 8";

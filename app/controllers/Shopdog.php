@@ -1,8 +1,8 @@
 <?php
-class Shopcat extends Controller
+class ShopDog extends Controller
 {
-    public $data = [];
-    public $linkIndex = "shopcat/index";
+    public $data = [], $linkIndex = "shopdog/index";
+
     public function index()
     {
         $products = $this->model("ProductModel");
@@ -10,9 +10,10 @@ class Shopcat extends Controller
         // $products = new ProductModel();
 
         // $this->data['sub_content']['title'] = "Danh sach san pham";
+
         $this->data['sub_content']['product'] = $products;
 
-        $this->data['content'] = $this->linkIndex; // đường dẫn tới file view
+        $this->data['content'] =  $this->linkIndex;; // đường dẫn tới file view
 
         // Render Views
         $this->render('layouts/client_layout', $this->data);

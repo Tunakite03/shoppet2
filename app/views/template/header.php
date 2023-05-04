@@ -24,40 +24,40 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/" class="nav-item nav-link active">Trang Chủ</a>
                 <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="?action=shopdog" role="button" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="/shopdog" role="button" aria-expanded="false">
                         Shop Chó
                     </a>
                     <div class="dropdown-menu m-0">
-                        <a href="?action=shopdog" class="dropdown-item">Thức Ăn Cho Chó</a>
-                        <a href="?action=shopdog" class="dropdown-item">Đồ Dùng Cho Chó</a>
-                        <a href="?action=shopdog" class="dropdown-item">Đồ Chơi Cho Chó</a>
-                        <a href="?action=shopdog" class="dropdown-item">Phụ Kiện Cho Chó</a>
-                        <a href="?action=shopdog" class="dropdown-item">Chuồng Lồng Cho Chó</a>
+                        <a href="/shopdog" class="dropdown-item">Thức Ăn Cho Chó</a>
+                        <a href="/shopdog" class="dropdown-item">Đồ Dùng Cho Chó</a>
+                        <a href="/shopdog" class="dropdown-item">Đồ Chơi Cho Chó</a>
+                        <a href="/shopdog" class="dropdown-item">Phụ Kiện Cho Chó</a>
+                        <a href="/shopdog" class="dropdown-item">Chuồng Lồng Cho Chó</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="?action=shopcat" class="nav-link dropdown-toggle" role="button" aria-expanded="false">Shop
+                    <a href="/shopcat" class="nav-link dropdown-toggle" role="button" aria-expanded="false">Shop
                         Mèo</a>
                     <div class="dropdown-menu m-0">
-                        <a href="?action=shopcat" class="dropdown-item">Thức Ăn Cho Mèo</a>
-                        <a href="?action=shopcat" class="dropdown-item">Đồ Dùng Cho Mèo</a>
-                        <a href="?action=shopcat" class="dropdown-item">Đồ Chơi Cho Mèo</a>
-                        <a href="?action=shopcat" class="dropdown-item">Phụ Kiện Cho Mèo</a>
-                        <a href="?action=shopcat" class="dropdown-item">Chuồng Lồng Cho Mèo</a>
+                        <a href="/shopcat" class="dropdown-item">Thức Ăn Cho Mèo</a>
+                        <a href="/shopcat" class="dropdown-item">Đồ Dùng Cho Mèo</a>
+                        <a href="/shopcat" class="dropdown-item">Đồ Chơi Cho Mèo</a>
+                        <a href="/shopcat" class="dropdown-item">Phụ Kiện Cho Mèo</a>
+                        <a href="/shopcat" class="dropdown-item">Chuồng Lồng Cho Mèo</a>
                     </div>
                 </div>
-                <a href="?action=news" class="nav-item nav-link">Tin Tức</a>
-                <a href="?action=contact" class="nav-item nav-link">Liên Hệ</a>
+                <a href="/news" class="nav-item nav-link">Tin Tức</a>
+                <a href="/contact" class="nav-item nav-link">Liên Hệ</a>
 
             </div>
             <div class="d-none d-lg-flex ms-2">
                 <!-- <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
                     <small class="fa fa-search text-body"></small>
                 </a> -->
-                <a class="btn-sm-square bg-white rounded-circle ms-3" href="?action=cart">
+                <a class="btn-sm-square bg-white rounded-circle ms-3" href="/cart">
                     <small>0 <i class="fa fa-shopping-bag text-body"></i></small>
                 </a>
-                <a class="btn-sm-square bg-white rounded-circle ms-3" href="?action=account">
+                <a class="btn-sm-square bg-white rounded-circle ms-3" href="/account">
                     <small class="fa fa-user text-body"></small>
                 </a>
             </div>

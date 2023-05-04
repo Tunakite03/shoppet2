@@ -61,7 +61,7 @@
 
 <body>
     <?php
-    // $this->render('template/header')
+    $this->render('template/header')
     ?>
     <!-- Content here -->
     <div>
@@ -70,7 +70,7 @@
         ?>
     </div>
     <?php
-    // $this->render('template/footer')
+    $this->render('template/footer')
     ?>
 
     <!-- JavaScript Libraries -->
