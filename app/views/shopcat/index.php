@@ -33,13 +33,7 @@
                         </form>
                     </div>
                     <div class="hero-search-phone d-flex flex-wrap ">
-                        <div class="hero-search-phone-icon border border-2 rounded-circle me-3" style="width: 3rem; height: 3rem; display: flex; justify-content: center; align-items: center;">
-                            <i class="fa fa-phone "></i>
-                        </div>
-                        <div class="hero-search-phone-text">
-                            <h5>+65 11.188.888</h5>
-                            <span>support 24/7 time</span>
-                        </div>
+                        <h2>SHOP CHO MÈO</h2>
                     </div>
                 </div>
             </div>

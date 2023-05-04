@@ -4,7 +4,8 @@
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img style="height:600px" class="w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/carousel01.jpg" alt="Image">
+                    <img style="height:600px" class="w-100"
+                        src="<?php echo _WEB_ROOT ?>/public/assets/img/carousel01.jpg" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-start">
@@ -15,7 +16,8 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img style="height:600px" class="w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/carousel02.jpg" alt="Image">
+                    <img style="height:600px" class="w-100"
+                        src="<?php echo _WEB_ROOT ?>/public/assets/img/carousel02.jpg" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-start">
@@ -72,17 +74,22 @@
         <div class="container">
             <div class="row g-0 gx-5 align-items-end">
                 <div class="col-lg-6">
-                    <div class="section-header text-start mb-5 wow fadeInUp " data-wow-delay="0.1s" style="max-width: 500px;">
+                    <div class="section-header text-start mb-5 wow fadeInUp " data-wow-delay="0.1s"
+                        style="max-width: 500px;">
                         <h1 class="display-5 mb-3">Sản phẩm bán chạy</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                     <ul class="nav nav-tabs d-flex justify-content-start mb-5" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active fw-bold" id="dogItem-tab" data-bs-toggle="tab" data-bs-target="#dogItem" type="button" role="tab" aria-controls="dogItem" aria-selected="true">Dành cho chó</button>
+                            <button class="nav-link active fw-bold" id="dogItem-tab" data-bs-toggle="tab"
+                                data-bs-target="#dogItem" type="button" role="tab" aria-controls="dogItem"
+                                aria-selected="true">Dành cho chó</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-bold" id="catItem-tab" data-bs-toggle="tab" data-bs-target="#catItem" type="button" role="tab" aria-controls="catItem" aria-selected="false">Dành cho
+                            <button class="nav-link fw-bold" id="catItem-tab" data-bs-toggle="tab"
+                                data-bs-target="#catItem" type="button" role="tab" aria-controls="catItem"
+                                aria-selected="false">Dành cho
                                 mèo</button>
                         </li>
                     </ul>
@@ -93,49 +100,58 @@
                     <div class="row g-4">
                         <?php
                         foreach ($products as $product) {
-                        ?>
+                            ?>
                             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item">
 
                                     <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-1.jpg" alt="">
-                                        <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                        <img class="img-fluid w-100"
+                                            src="<?php echo _WEB_ROOT ?>/public/assets/img/product-1.jpg" alt="">
+                                        <div
+                                            class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                             New</div>
                                     </div>
                                     <div class="text-center p-4">
-                                        <a class="d-block h5 mb-2" href=""><?= $product['name']  ?></a>
+                                        <a class="d-block h5 mb-2" href="">
+                                            <?= $product['name'] ?>
+                                        </a>
                                         <span class="text-secondary me-1">$19.00</span>
-                                        <span class="text-body text-decoration-line-through"><?= $product['price'] ?></span>
+                                        <span class="text-body text-decoration-line-through">
+                                            <?= $product['price'] ?>
+                                        </span>
                                     </div>
                                     <div class="d-flex border-top">
                                         <small class="w-50 text-center border-end py-2">
-                                            <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                                detail</a>
+                                            <a class="text-body" href=""><i
+                                                    class="fa fa-eye text-secondary me-2"></i>Xem</a>
                                         </small>
                                         <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to cart</a>
+                                            <a class="text-body" href=""><i
+                                                    class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ hàng</a>
                                         </small>
                                     </div>
                                 </div>
                             </div>
-                        <?php
+                            <?php
                         }
                         ?>
 
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat"> More
-                                Products</a>
+                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat">Xem Thêm</a>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="catItem" role="tabpanel" aria-labelledby="catItem-tab">
                     <div class="tab-pane fade show active" id="dogItem" role="tabpanel" aria-labelledby="dogItem-tab">
                         <div class="row g-4">
+
                             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item">
                                     <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-1.jpg" alt="">
-                                        <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                        <img class="img-fluid w-100"
+                                            src="<?php echo _WEB_ROOT ?>/public/assets/img/product-5.jpg" alt="">
+                                        <div
+                                            class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                             New</div>
                                     </div>
                                     <div class="text-center p-4">
@@ -145,91 +161,19 @@
                                     </div>
                                     <div class="d-flex border-top">
                                         <small class="w-50 text-center border-end py-2">
-                                            <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                                detail</a>
+                                            <a class="text-body" href=""><i
+                                                    class="fa fa-eye text-secondary me-2"></i>Xem</a>
                                         </small>
                                         <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to cart</a>
+                                            <a class="text-body" href=""><i
+                                                    class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ
+                                                hàng</a>
                                         </small>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-item">
-                                    <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-5.jpg" alt="">
-                                        <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                            New</div>
-                                    </div>
-                                    <div class="text-center p-4">
-                                        <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                        <span class="text-secondary me-1">$19.00</span>
-                                        <span class="text-body text-decoration-line-through">$29.00</span>
-                                    </div>
-                                    <div class="d-flex border-top">
-                                        <small class="w-50 text-center border-end py-2">
-                                            <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                                detail</a>
-                                        </small>
-                                        <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to cart</a>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-item">
-                                    <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-7.jpg" alt="">
-                                        <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                            New</div>
-                                    </div>
-                                    <div class="text-center p-4">
-                                        <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                        <span class="text-secondary me-1">$19.00</span>
-                                        <span class="text-body text-decoration-line-through">$29.00</span>
-                                    </div>
-                                    <div class="d-flex border-top">
-                                        <small class="w-50 text-center border-end py-2">
-                                            <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                                detail</a>
-                                        </small>
-                                        <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to cart</a>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-item">
-                                    <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-8.jpg" alt="">
-                                        <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                            New</div>
-                                    </div>
-                                    <div class="text-center p-4">
-                                        <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                        <span class="text-secondary me-1">$19.00</span>
-                                        <span class="text-body text-decoration-line-through">$29.00</span>
-                                    </div>
-                                    <div class="d-flex border-top">
-                                        <small class="w-50 text-center border-end py-2">
-                                            <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                                detail</a>
-                                        </small>
-                                        <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to cart</a>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat"> More
-                                    Products</a>
+                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat">Xem Thêm</a>
                             </div>
                         </div>
                     </div>
@@ -246,17 +190,22 @@
         <div class="container">
             <div class="row g-0 gx-5 align-items-end">
                 <div class="col-lg-6">
-                    <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                        style="max-width: 500px;">
                         <h1 class="display-5 mb-3">Sản phẩm mới cập nhật</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                     <ul class="nav nav-tabs d-flex justify-content-start mb-5" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active fw-bold" id="dogItemNew-tab" data-bs-toggle="tab" data-bs-target="#dogItemNew" type="button" role="tab" aria-controls="dogItemNew" aria-selected="true">Dành cho chó</button>
+                            <button class="nav-link active fw-bold" id="dogItemNew-tab" data-bs-toggle="tab"
+                                data-bs-target="#dogItemNew" type="button" role="tab" aria-controls="dogItemNew"
+                                aria-selected="true">Dành cho chó</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-bold" id="catItemNew-tab" data-bs-toggle="tab" data-bs-target="#catItemNew" type="button" role="tab" aria-controls="catItemNew" aria-selected="false">Dành cho mèo</button>
+                            <button class="nav-link fw-bold" id="catItemNew-tab" data-bs-toggle="tab"
+                                data-bs-target="#catItemNew" type="button" role="tab" aria-controls="catItemNew"
+                                aria-selected="false">Dành cho mèo</button>
                         </li>
                     </ul>
                 </div>
@@ -267,8 +216,10 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="product-item">
                                 <div class="position-relative bg-light overflow-hidden">
-                                    <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-1.jpg" alt="">
-                                    <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                    <img class="img-fluid w-100"
+                                        src="<?php echo _WEB_ROOT ?>/public/assets/img/product-1.jpg" alt="">
+                                    <div
+                                        class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                         New</div>
                                 </div>
                                 <div class="text-center p-4">
@@ -278,177 +229,30 @@
                                 </div>
                                 <div class="d-flex border-top">
                                     <small class="w-50 text-center border-end py-2">
-                                        <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                            detail</a>
+                                        <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>Xem</a>
                                     </small>
                                     <small class="w-50 text-center py-2">
-                                        <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to cart</a>
+                                        <a class="text-body" href=""><i
+                                                class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ hàng</a>
                                     </small>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="product-item">
-                                <div class="position-relative bg-light overflow-hidden">
-                                    <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-5.jpg" alt="">
-                                    <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                        New</div>
-                                </div>
-                                <div class="text-center p-4">
-                                    <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                    <span class="text-secondary me-1">$19.00</span>
-                                    <span class="text-body text-decoration-line-through">$29.00</span>
-                                </div>
-                                <div class="d-flex border-top">
-                                    <small class="w-50 text-center border-end py-2">
-                                        <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                            detail</a>
-                                    </small>
-                                    <small class="w-50 text-center py-2">
-                                        <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to cart</a>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="product-item">
-                                <div class="position-relative bg-light overflow-hidden">
-                                    <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-7.jpg" alt="">
-                                    <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                        New</div>
-                                </div>
-                                <div class="text-center p-4">
-                                    <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                    <span class="text-secondary me-1">$19.00</span>
-                                    <span class="text-body text-decoration-line-through">$29.00</span>
-                                </div>
-                                <div class="d-flex border-top">
-                                    <small class="w-50 text-center border-end py-2">
-                                        <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                            detail</a>
-                                    </small>
-                                    <small class="w-50 text-center py-2">
-                                        <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to cart</a>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                            <div class="product-item">
-                                <div class="position-relative bg-light overflow-hidden">
-                                    <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-8.jpg" alt="">
-                                    <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                        New</div>
-                                </div>
-                                <div class="text-center p-4">
-                                    <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                    <span class="text-secondary me-1">$19.00</span>
-                                    <span class="text-body text-decoration-line-through">$29.00</span>
-                                </div>
-                                <div class="d-flex border-top">
-                                    <small class="w-50 text-center border-end py-2">
-                                        <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                            detail</a>
-                                    </small>
-                                    <small class="w-50 text-center py-2">
-                                        <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to cart</a>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat"> More
-                                Products</a>
+                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat">Xem Thêm</a>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="catItemNew" role="tabpanel" aria-labelledby="catItemNew-tab">
                     <div class="tab-pane fade show active" id="dogItem" role="tabpanel" aria-labelledby="dogItem-tab">
                         <div class="row g-4">
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-item">
-                                    <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-1.jpg" alt="">
-                                        <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                            New</div>
-                                    </div>
-                                    <div class="text-center p-4">
-                                        <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                        <span class="text-secondary me-1">$19.00</span>
-                                        <span class="text-body text-decoration-line-through">$29.00</span>
-                                    </div>
-                                    <div class="d-flex border-top">
-                                        <small class="w-50 text-center border-end py-2">
-                                            <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                                detail</a>
-                                        </small>
-                                        <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to
-                                                cart</a>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-item">
-                                    <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-5.jpg" alt="">
-                                        <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                            New</div>
-                                    </div>
-                                    <div class="text-center p-4">
-                                        <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                        <span class="text-secondary me-1">$19.00</span>
-                                        <span class="text-body text-decoration-line-through">$29.00</span>
-                                    </div>
-                                    <div class="d-flex border-top">
-                                        <small class="w-50 text-center border-end py-2">
-                                            <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                                detail</a>
-                                        </small>
-                                        <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to
-                                                cart</a>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                                <div class="product-item">
-                                    <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-7.jpg" alt="">
-                                        <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                                            New</div>
-                                    </div>
-                                    <div class="text-center p-4">
-                                        <a class="d-block h5 mb-2" href="">Fresh Tomato</a>
-                                        <span class="text-secondary me-1">$19.00</span>
-                                        <span class="text-body text-decoration-line-through">$29.00</span>
-                                    </div>
-                                    <div class="d-flex border-top">
-                                        <small class="w-50 text-center border-end py-2">
-                                            <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                                detail</a>
-                                        </small>
-                                        <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to
-                                                cart</a>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                                 <div class="product-item">
                                     <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/product-8.jpg" alt="">
-                                        <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                        <img class="img-fluid w-100"
+                                            src="<?php echo _WEB_ROOT ?>/public/assets/img/product-8.jpg" alt="">
+                                        <div
+                                            class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                             New</div>
                                     </div>
                                     <div class="text-center p-4">
@@ -458,20 +262,18 @@
                                     </div>
                                     <div class="d-flex border-top">
                                         <small class="w-50 text-center border-end py-2">
-                                            <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>View
-                                                detail</a>
+                                            <a class="text-body" href=""><i
+                                                    class="fa fa-eye text-secondary me-2"></i>Xem</a>
                                         </small>
                                         <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Add to
-                                                cart</a>
+                                            <a class="text-body" href=""><i
+                                                    class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ hàng</a>
                                         </small>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat"> More
-                                    Products</a>
+                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat">Xem Thêm</a>
                             </div>
                         </div>
                     </div>
@@ -485,7 +287,8 @@
     <!-- Review Start -->
     <div class="container-fluid bg-light bg-icon py-6 mb-5">
         <div class="container">
-            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                style="max-width: 500px;">
                 <h1 class="display-5 mb-3">Customer Review</h1>
                 <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.
                 </p>
@@ -497,7 +300,8 @@
                         eos.
                         Clita erat ipsum et lorem et sit.</p>
                     <div class="d-flex align-items-center">
-                        <img class="flex-shrink-0 rounded-circle" src="<?php echo _WEB_ROOT ?>/public/assets/img/testimonial-1.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle"
+                            src="<?php echo _WEB_ROOT ?>/public/assets/img/testimonial-1.jpg" alt="">
                         <div class="ms-3">
                             <h5 class="mb-1">Client Name</h5>
                             <span>Profession</span>
@@ -510,7 +314,8 @@
                         eos.
                         Clita erat ipsum et lorem et sit.</p>
                     <div class="d-flex align-items-center">
-                        <img class="flex-shrink-0 rounded-circle" src="<?php echo _WEB_ROOT ?>/public/assets/img/testimonial-2.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle"
+                            src="<?php echo _WEB_ROOT ?>/public/assets/img/testimonial-2.jpg" alt="">
                         <div class="ms-3">
                             <h5 class="mb-1">Client Name</h5>
                             <span>Profession</span>
@@ -523,7 +328,8 @@
                         eos.
                         Clita erat ipsum et lorem et sit.</p>
                     <div class="d-flex align-items-center">
-                        <img class="flex-shrink-0 rounded-circle" src="<?php echo _WEB_ROOT ?>/public/assets/img/testimonial-3.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle"
+                            src="<?php echo _WEB_ROOT ?>/public/assets/img/testimonial-3.jpg" alt="">
                         <div class="ms-3">
                             <h5 class="mb-1">Client Name</h5>
                             <span>Profession</span>
@@ -536,7 +342,8 @@
                         eos.
                         Clita erat ipsum et lorem et sit.</p>
                     <div class="d-flex align-items-center">
-                        <img class="flex-shrink-0 rounded-circle" src="<?php echo _WEB_ROOT ?>/public/assets/img/testimonial-4.jpg" alt="">
+                        <img class="flex-shrink-0 rounded-circle"
+                            src="<?php echo _WEB_ROOT ?>/public/assets/img/testimonial-4.jpg" alt="">
                         <div class="ms-3">
                             <h5 class="mb-1">Client Name</h5>
                             <span>Profession</span>
@@ -552,7 +359,8 @@
     <!-- Blog Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                style="max-width: 500px;">
                 <h1 class="display-5 mb-3">Latest Blog</h1>
                 <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.
                 </p>
