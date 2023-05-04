@@ -33,7 +33,7 @@
                         </form>
                     </div>
                     <div class="hero-search-phone d-flex flex-wrap ">
-                        <h2>SHOP CHO MÈO</h2>
+                        <h2>SHOP MÈO</h2>
                     </div>
                 </div>
             </div>
