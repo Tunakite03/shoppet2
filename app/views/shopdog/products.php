@@ -1,5 +1,4 @@
 <!-- Hero Section Begin -->
-
 <section class="hero-begin" style="padding-top:10rem;">
     <div class="container">
         <div class="row align-items-center">
@@ -105,7 +104,7 @@
                             <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg">
-                                        <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
                                         <div>
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
@@ -127,7 +126,7 @@
                             <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg">
-                                        <img src="./public/img/product/discount/pd-1.jpg" alt="" width="200px">
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="200px">
                                         <div>
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
@@ -149,7 +148,7 @@
                             <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg">
-                                        <img src="./public/img/product/discount/pd-1.jpg" alt="" width="200px">
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="200px">
                                         <div>
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
@@ -171,7 +170,7 @@
                             <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg">
-                                        <img src="./public/img/product/discount/pd-1.jpg" alt="" width="200px">
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="200px">
                                         <div>
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
@@ -193,7 +192,7 @@
                             <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg">
-                                        <img src="./public/img/product/discount/pd-1.jpg" alt="" width="200px">
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="200px">
                                         <div>
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
@@ -249,7 +248,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -266,7 +265,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -283,7 +282,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -300,7 +299,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -317,7 +316,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -334,7 +333,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -351,7 +350,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -368,7 +367,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -385,7 +384,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -402,7 +401,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -419,7 +418,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -436,7 +435,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
-                                <img src="./public/img/product/discount/pd-1.jpg" alt="" width="100%">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/product/discount/pd-1.jpg" alt="" width="100%">
 
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
