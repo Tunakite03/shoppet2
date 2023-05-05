@@ -29,17 +29,11 @@
                                 <span class="arrow_carrot-down"></span>
                             </div>
                             <input type="text" placeholder="What do you need?" class="px-3 me-2">
-                            <button type="submit" class="site-btn border-0 text-white" style="background-color: #7fad39;">SEARCH</button>
+                            <button type="submit" class="btn-hero border-0 text-white">SEARCH</button>
                         </form>
                     </div>
                     <div class="hero-search-phone d-flex flex-wrap ">
-                        <div class="hero-search-phone-icon border border-2 rounded-circle me-3" style="width: 3rem; height: 3rem; display: flex; justify-content: center; align-items: center;">
-                            <i class="fa fa-phone "></i>
-                        </div>
-                        <div class="hero-search-phone-text">
-                            <h5>+65 11.188.888</h5>
-                            <span>support 24/7 time</span>
-                        </div>
+                        <h2>SHOP CHÓ</h2>
                     </div>
                 </div>
             </div>
@@ -75,15 +69,18 @@
                     <div class="sidebar-item">
                         <h4>Price</h4>
                         <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="540">
+                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                data-min="10" data-max="540">
                                 <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                             </div>
                             <div class="range-slider">
                                 <div class="price-input mt-3">
-                                    <input disabled style="background-color: transparent;" type="text" id="minamount" min="0">
-                                    <input disabled style="background-color: transparent;" type="text" id="maxamount" max="100">
+                                    <input disabled style="background-color: transparent;" type="text" id="minamount"
+                                        min="0">
+                                    <input disabled style="background-color: transparent;" type="text" id="maxamount"
+                                        max="100">
                                 </div>
                             </div>
 
