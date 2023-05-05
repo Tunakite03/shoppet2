@@ -1,13 +1,13 @@
 <section class="content-section">
     <div class="container-lg my-5">
         <?php 
-                if($set = $productsDog->fetch()):  
+                if($set = $productsCat->fetch()):  
         ?>
         <div class="row">
             <div class="col-md-6">
                 <div class="product-image-slider">
                     <div class="zoom-overlay">
-                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="Ảnh sản phẩm">
+                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/cat/<?php echo $set["image"] ?>" alt="Ảnh sản phẩm">
                     </div>
                     <!-- <div class="slider-main">
                         <img src="https://via.placeholder.com/600x400" alt="Ảnh sản phẩm">
