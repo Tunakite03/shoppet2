@@ -11,8 +11,10 @@ class ShopCat extends Controller
 
         // $this->data['sub_content']['title'] = "Danh sach san pham";
 
-        $this->data['sub_content']['productsCatNoSale'] = $products ->getProductCatAllNoSale();
+        // $this->data['sub_content']['productsCatNoSale'] = $products ->getProductCatAllNoSale();
         $this->data['sub_content']['productsSaleCat'] = $products->getProductSaleCatAll();
+        $this->data['sub_content']['productsCat'] = $products ->getProductCatAll();
+       
 
 
         $this->data['content'] =  $this->linkIndex;; // đường dẫn tới file view

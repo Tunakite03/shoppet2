@@ -22,7 +22,17 @@
             <div class="col-md-6">
                 <h1 class="mb-4"><span><?php echo $set["name"] ?></h1>
                 <p class="text-muted">Mã sản phẩm: <span><?php echo $set["id"] ?></p>
-               <h2> <p>Giá sản phẩm:<?php echo"<span  style='color: crimson;'>".number_format($set["sale"], 0, ',', '.')."đ</span>"?></p></h2>
+                <?php 
+                                    if ($set["price"]>$set["sale"] && $set["sale"]==0) {
+                                        echo '<h5 style="color:red;">
+                                        '.number_format($set['price']).'<sup><u>đ</u></sup></br></h5>';
+                                    }
+                                    else{
+                                        echo '<h5 >
+                                        <font color="red">'.number_format($set['sale']).'<sup><u>đ</u></sup></font>
+                                        <strike>'.number_format($set['price']).'</strike><sup><u>đ</u></sup></br></h5>';
+                                    }
+                                    ?>
                 <form>
                     <div class="mb-3">
                         <label for="quantity" class="form-label">Số lượng:</label>

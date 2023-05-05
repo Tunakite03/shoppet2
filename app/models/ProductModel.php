@@ -68,18 +68,7 @@ class ProductModel
             echo $ex;
         }
     }
-    public function getProductDogAllNoSale()
-    {
-        // b1:kết nối database
-        try {
-            $query = "SELECT * FROM `products` WHERE `id_pet` = 1 AND `sale` = 0;";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-
-    }
+  
     public function getProductSaleDogAll()
     {
         // b1:kết nối database
@@ -105,17 +94,7 @@ class ProductModel
         }
 
     }
-    public function getProductCatAllNoSale()
-    {
-        try {
-$query = "SELECT * FROM `products` WHERE `id_pet` = 2 AND `sale` = 0;";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-
-    }
+    
     public function getProductSaleCatAll()
     {
         // b1:kết nối database

@@ -1,4 +1,4 @@
-<!-- Hero Section Begin -->
+<!-- Hero Section Begin --> 
 <section class="hero-begin" style="padding-top:10rem;">
     <div class="container">
         <div class="row align-items-center">
@@ -102,7 +102,7 @@
                                     <div class="product__discount__item__pic set-bg">
                                         <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/cat/<?php echo $set["image"] ?>" alt="" width="100%">
                                         <div>
-                                            <div class="product__discount__percent">-20%</div>
+                                            <div class="product__discount__percent">-<?php echo round((($set['price']-$set['sale'])/$set['price'])*100,0) ?>%</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -140,7 +140,17 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter-found">
-                                <h6><span>16</span> Products found</h6>
+                                 
+                                <h6><span>
+                                    <?php 
+                                        //  $pd = new ProductModel();
+                                        //  $count=$pd->$productsCountCat;
+                                         
+                                        // echo ":".$count;
+                                    ?>
+                                    
+                               ]             
+                                </span> Products found</h6>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
@@ -149,11 +159,12 @@
                                 <span class="icon_ul"></span>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
                 <div class="row">
                     <?php 
-                     while($set = $productsCatNoSale->fetch()):
+                     while($set = $productsCat->fetch()):
                     ?>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
@@ -168,7 +179,17 @@
                             </div>
                             <div class="product-item-text">
                                 <h6><a href="shopcat/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
-                                <h5><?php echo number_format($set["price"], 0, ',', '.')?>đ</h5>
+                                    <?php 
+                                    if ($set["price"]>$set["sale"] && $set["sale"]==0) {
+                                        echo '<h5 style="color:red;">
+                                        '.number_format($set['price']).'<sup><u>đ</u></sup></br></h5>';
+                                    }
+                                    else{
+                                        echo '<h5 >
+                                        <font color="red">'.number_format($set['sale']).'<sup><u>đ</u></sup></font>
+                                        <strike>'.number_format($set['price']).'</strike><sup><u>đ</u></sup></br></h5>';
+                                    }
+                                    ?>
                             </div>
                         </div>
                     </div>

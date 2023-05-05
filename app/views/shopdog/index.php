@@ -29,7 +29,7 @@
                                 <span class="arrow_carrot-down"></span>
                             </div>
                             <input type="text" placeholder="What do you need?" class="px-3 me-2">
-                            <button type="submit" class="btn-hero border-0 text-white">SEARCH</button>
+                            <button type="submit" class="btn-hero border-0 text-white" style="background-color: #7fad39" >SEARCH</button>
                         </form>
                     </div>
                     <div class="hero-search-phone d-flex flex-wrap ">
@@ -105,7 +105,7 @@
                                     <div class="product__discount__item__pic set-bg">
                                         <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="" width="100%">
                                         <div>
-                                            <div class="product__discount__percent">-20%</div>
+                                            <div class="product__discount__percent">-<?php echo round((($set['price']-$set['sale'])/$set['price'])*100,0) ?>%</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -156,7 +156,7 @@
                 </div>
                 <div class="row">
                     <?php 
-                     while($set = $productsDogNoSale->fetch()):
+                     while($set = $productsDog->fetch()):
                     ?>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
@@ -171,7 +171,17 @@
                             </div>
                             <div class="product-item-text">
                                 <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
-                                <h5><?php echo number_format($set["price"], 0, ',', '.')?>đ</h5>
+                                <?php 
+                                    if ($set["price"]>$set["sale"] && $set["sale"]==0) {
+                                        echo '<h5 style="color:red;">
+                                        '.number_format($set['price']).'<sup><u>đ</u></sup></br></h5>';
+                                    }
+                                    else{
+                                        echo '<h5 >
+                                        <font color="red">'.number_format($set['sale']).'<sup><u>đ</u></sup></font>
+                                        <strike>'.number_format($set['price']).'</strike><sup><u>đ</u></sup></br></h5>';
+                                    }
+                                    ?>
                             </div>
                         </div>
                     </div>
