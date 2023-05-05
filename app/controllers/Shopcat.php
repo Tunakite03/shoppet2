@@ -11,7 +11,7 @@ class Shopcat extends Controller
 
         // $this->data['sub_content']['title'] = "Danh sach san pham";
         $this->data['sub_content']['product'] = $products;
-
+        
         $this->data['content'] = $this->linkIndex; // đường dẫn tới file view
 
         // Render Views
