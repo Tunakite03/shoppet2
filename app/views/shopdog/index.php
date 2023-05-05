@@ -61,7 +61,7 @@
                             <li><a href="#">Fresh Berries</a></li>
                             <li><a href="#">Ocean Foods</a></li>
                             <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
+<li><a href="#">Fastfood</a></li>
                             <li><a href="#">Fresh Onion</a></li>
 
                         </ul>
@@ -111,7 +111,7 @@
                                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
-                                        </div>
+</div>
 
                                     </div>
                                     <div class="product__discount__item__text">
