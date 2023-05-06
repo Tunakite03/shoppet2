@@ -2,7 +2,7 @@
 
 class App
 {
-    private $__controller, $__action, $__params, $__routes, $__db;
+    private $__controller, $__action, $__params, $__db;
 
 
     function __construct()
@@ -11,7 +11,7 @@ class App
         $this->__controller = "home";
         $this->__action = "index";
         $this->__params = [];
-        $url = $this->handlerUrl();
+        $this->handlerUrl();
     }
     function getUrl()
     {
