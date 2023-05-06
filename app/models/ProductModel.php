@@ -107,6 +107,27 @@ class ProductModel
         }
 
     }
+    public function getTimKiem($cate, $searchTerm)
+    {
+    try {
+        $query = "SELECT * FROM `products` WHERE $cate like '%$searchTerm%';";
+        $stmt = $this->db->getList($query);
+        return $stmt;
+    } catch (\Throwable $ex) {
+        echo $ex;
+    }
+    }
+
+    public function getNews()
+    {
+        try {
+            $query = "SELECT * FROM `news`;";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getDetail($id)
     {
 

@@ -13,11 +13,10 @@ class ShopCat extends Controller
 
         // $this->data['sub_content']['productsCatNoSale'] = $products ->getProductCatAllNoSale();
         $this->data['sub_content']['productsSaleCat'] = $products->getProductSaleCatAll();
-        $this->data['sub_content']['productsCat'] = $products ->getProductCatAll();
-       
+        $this->data['sub_content']['productsCat'] = $products->getProductCatAll();
 
 
-        $this->data['content'] =  $this->linkIndex;; // đường dẫn tới file view
+        $this->data['content'] =  $this->linkIndex; // đường dẫn tới file view
 
         // Render Views
         $this->render('layouts/client_layout', $this->data);
@@ -25,8 +24,8 @@ class ShopCat extends Controller
     public function detail($id = "")
     {
         $products = $this->model("ProductModel");
-        
-        $this->data['sub_content']['productsCat'] = $products ->getProductCatAll();
+
+        $this->data['sub_content']['productsCat'] = $products->getProductCatAll();
         $this->data['sub_content']['title'] = $id;
 
         $this->data['content'] = "shopcat/detail"; //duong dan
@@ -35,6 +34,22 @@ class ShopCat extends Controller
         $this->render('layouts/client_layout', $this->data);
     }
 
+    public function searchItem()
+    {
+        $products = $this->model("ProductModel");
+        $this->data['sub_content']['data'] = "shopcat/index"; 
+
+        if (isset($_POST['searchSubmit'])) {
+            $seacrhTerm=$_POST['searchTerm'];
+            $cate= $_POST['category'];
+            $result= $products->getTimkiem($cate, $seacrhTerm);
+            print_r($result);
+        }
+        $this->data['content'] = "shopcat/index"; //duong dan
+        // Render Views
+
+        $this->render('layouts/client_layout', $this->data);
+    }
     // public function detail($id = 0)
     // {
     //     $products = $this->model("ProductModel");
