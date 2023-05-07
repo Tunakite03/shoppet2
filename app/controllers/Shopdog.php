@@ -2,7 +2,7 @@
 class ShopDog extends Controller
 {
     public $data = [], $link = "shopdog/index";
-    
+
     public function index()
     {
         $products = $this->model("ProductModel");
@@ -12,12 +12,12 @@ class ShopDog extends Controller
         // $this->data['sub_content']['productsDogNoSale'] = $products ->getProductDogAllNoSale();
         $this->data['sub_content']['categories'] = $products->getCategories();
         $this->data['sub_content']['productsSaleDog'] = $products->getProductSaleDogAll();
-        $this->data['sub_content']['productsDog'] = $products ->getProductDogAll();
-     
+        $this->data['sub_content']['productsDog'] = $products->getProductDogAll();
 
 
-        $this->data['content'] =  $this->linkIndex;; // đường dẫn tới file view
-       
+
+        $this->data['content'] =  $this->link;; // đường dẫn tới file view
+
 
         // Render Views
         $this->render('layouts/client_layout', $this->data);
@@ -26,28 +26,28 @@ class ShopDog extends Controller
 
     public function detail($id = "")
     {
-        
+
         $products = $this->model("ProductModel");
         $id_pet = 1;
-        if(!is_numeric($id)){
-            return $this->render('../errors/404');  
+        if (!is_numeric($id)) {
+            return $this->render('../errors/404');
         }
         $this->data['sub_content']['product'] = $products->getDetail($id_pet, $id);
 
-        if(empty($this->data['sub_content']['product'])) {
-      
-           return $this->render('../errors/404');  
-        } 
+        if (empty($this->data['sub_content']['product'])) {
+
+            return $this->render('../errors/404');
+        }
         $this->link = "shopdog/detail";
         $this->data['content'] = $this->link; //duong dan
         // Render Views
         $this->render('layouts/client_layout', $this->data);
     }
-    public function categories($id='')
+    public function categories($id = '')
     {
         $products = $this->model("ProductModel");
-        
-        $this->data['sub_content']['productsDog'] = $products ->getProductDogAll();
+
+        $this->data['sub_content']['productsDog'] = $products->getProductDogAll();
         $this->data['sub_content']['productsSaleDog'] = $products->getProductSaleDogAll();
 
         $this->data['content'] =  $this->link;; // đường dẫn tới file view
@@ -76,12 +76,5 @@ class ShopDog extends Controller
         // Render Views
         $this->render('layouts/client_layout', $this->data);
     }
-    // public function detail($id = 0)
-    // {
-    //     $products = $this->model("ProductModel");
-    //     $this->data['sub_content']['info'] = $products->getDetail($id);
-    //     $this->data['sub_content']['title'] = "Chi tiet san pham";
-    //     $this->data['content'] = "products/detailProduct";
-    //     $this->render('layouts/client_layout', $this->data);
-    // }
+  
 }
