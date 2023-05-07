@@ -60,7 +60,7 @@
 
 <body>
     <?php
-    
+
     $this->render('template/header')
     ?>
     <!-- Content here -->

@@ -611,7 +611,19 @@ input[type=number]::-webkit-inner-spin-button {
     margin-bottom: 15px;
 }
 
-.bg-darkmoon {}
+.bg-li {
+    background-color: #0066CC !important;
+    color: #fff;
+    border-radius: 15px;
+    width: 70%;
+}
+
+.bg-li:hover {
+    font-weight: 700;
+    color: #fff !important;
+    width: 80%;
+    transition: all 0.2s;
+}
 
 .filter__option span {
     font-size: 24px;
