@@ -1,5 +1,5 @@
 <!-- Navbar Start -->
-<div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s" style="box-shadow: 2px 2px 2px #ccc;">
     <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
         <div class="col-lg-5 px-5 text-start">
             <small>Giao Hàng Toàn Quốc</small>
@@ -55,11 +55,40 @@
                     <small class="fa fa-search text-body"></small>
                 </a> -->
                 <a class="btn-sm-square bg-white rounded-circle ms-3" href="/cart">
-                    <small>0 <i class="fa fa-shopping-bag text-body"></i></small>
+                    <small> <?php
+                            if (isset($_SESSION['loggedID'])) {
+                                // print_r($stmt);
+                            }
+                            ?> <i class="fa fa-shopping-bag text-body"></i></small>
                 </a>
-                <a class="btn-sm-square bg-white rounded-circle ms-3" href="/account">
-                    <small class="fa fa-user text-body"></small>
-                </a>
+
+
+                <?php
+                if (!empty($_SESSION['loggedID'])) {
+                ?>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="fa fa-user"></span> <?= $_SESSION['loggedUserName'] ?>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="userMenu">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/account/logout">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                    <!-- <span class="btn-sm-square bg-white rounded-circle ms-3">
+                        <small class="fa fa-user text-body"><?= $_SESSION['loggedUserName'] ?></small>
+                    </span> -->
+                <?php
+                } else {
+                ?>
+                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="/account">
+                        <small class="fa fa-user text-body"></small>
+                    </a>
+                <?php
+                } ?>
             </div>
         </div>
     </nav>

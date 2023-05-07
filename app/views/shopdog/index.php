@@ -1,43 +1,40 @@
 <!-- Hero Section Begin -->
 <section class="hero-begin" style="padding-top:10rem;">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-3">
-                <div class="nav-item dropdown">
-                    <button class=" dropdown-toggle btn-hero" data-bs-toggle="dropdown">Tất cả danh
-                        mục</button>
-                    <ul class="dropdown-menu m-0" style="width: 100%;">
-                        <li class="dropdown-item">Blog Grid</li>
-                        <li class="dropdown-item">Our Features</li>
-                        <li class="dropdown-item">Testimonial</li>
-                        <li class="dropdown-item">404 Page</li>
-                    </ul>
+        <form action="<?= _WEB_ROOT ?>/shopdog/searchItem" method="post" onsubmit="return validateForm()">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-5">
+                    <div class="nav-item dropdown justify-content-end d-flex">
+                        <select name="category" id="" class="px-3 py-2 ">
+                            <option value="name">Ten san pham</option>
+                            <option value="id_brand">Thương hiệu</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-9">
-                <div class="hero-search d-flex justify-content-between flex-wrap">
-                    <div class="hero-search-form my-2">
-                        <form action="#" class="d-flex">
-                            <div class="hero-search-categories pe-2">
-                                <select name="Category" id="" class="px-3 py-2">
-                                    <option value="">Tất cả</option>
-                                    <option value="A">A</option>
-                                    <option value="A">B</option>
-                                    <option value="A">C</option>
-                                </select>
-                                <span class="arrow_carrot-down"></span>
+                <div class="col-lg-3 col-7">
+                    <div class="hero-search d-flex justify-content-between flex-wrap">
+                        <div class="hero-search-form my-2">
+                            <div class="form-controll">
+                                <input type="text" placeholder="Bạn cần gì...?" class="px-3 me-2 py-2" name="searchTerm" required id="searchTerm">
+                                <span id="errorInput">
+                                </span>
                             </div>
-                            <input type="text" placeholder="What do you need?" class="px-3 me-2">
-                            <button type="submit" class="btn-hero border-0 text-white" style="background-color: #7fad39" >SEARCH</button>
-                        </form>
-                    </div>
-                    <div class="hero-search-phone d-flex flex-wrap ">
-                        <h2>SHOP CHÓ</h2>
+                        </div>
                     </div>
                 </div>
+                <div class="col-lg-3 col-12">
+                    <button type="submit" class="site-btn border-0 text-white px-3 py-2" style="background-color: #dc3545;" name="searchSubmit">SEARCH</button>
+                </div>
+                <div class="col-lg-3 col-12">
+                    <h2>SHOP CHÓ</h2>
+                </div>
+
             </div>
-        </div>
+        </form>
+        <?php
+        //   endwhile;
+        ?>
+
     </div>
 </section>
 <!-- Hero Section End -->
@@ -53,34 +50,34 @@
             <div class="col-lg-3 col-md-5">
                 <div class="sidebar">
                     <div class="sidebar-item">
-                        <h3 class="" style="font-weight: 700;">Department</h3>
-                        <ul class="list-unstyled sidebar-list">
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-<li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-
-                        </ul>
+                        <h4 class="" style="font-weight: 700;">Danh mục sản phẩm</h4>
+                        <?php
+                        if (!empty($categories)) {
+                        ?>
+                            <ul class="list-unstyled sidebar-list">
+                                <?php
+                                foreach ($categories as $key => $category) {
+                                ?>
+                                    <li class='py-1 '><a href="/shopdog/danhmuc/<?= strtolower($category['name']) ?>" class="nav-link bg-li"><?= $category['name'] ?></a></li>
+                                <?php
+                                } ?>
+                            </ul>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <div class="sidebar-item">
                         <h4>Price</h4>
                         <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="10" data-max="540">
+                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="540">
                                 <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                             </div>
                             <div class="range-slider">
                                 <div class="price-input mt-3">
-                                    <input disabled style="background-color: transparent;" type="text" id="minamount"
-                                        min="0">
-                                    <input disabled style="background-color: transparent;" type="text" id="maxamount"
-                                        max="100">
+                                    <input disabled style="background-color: transparent;" type="text" id="minamount" min="0">
+                                    <input disabled style="background-color: transparent;" type="text" id="maxamount" max="100">
                                 </div>
                             </div>
 
@@ -98,29 +95,31 @@
                     <div class="row">
                         <div class="product-discount-slider owl-carousel">
                             <?php
-                                    while($set = $productsSaleDog->fetch()):
+                            while ($set = $productsSaleDog->fetch()) :
                             ?>
-                            <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
-                                <div class="product__discount__item">
-                                    <div class="product__discount__item__pic set-bg">
-                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="" width="100%">
-                                        <div>
-                                            <div class="product__discount__percent">-<?php echo round((($set['price']-$set['sale'])/$set['price'])*100,0) ?>%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-</div>
+                                <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
+                                    <div class="product__discount__item">
+                                        <div class="product__discount__item__pic set-bg">
+                                            <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="" width="100%">
+                                            <div>
+                                                <div class="product__discount__percent">-<?php echo round((($set['price'] - $set['sale']) / $set['price']) * 100, 0) ?>%</div>
+                                                <ul class="product__item__pic__hover">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                                </ul>
+                                            </div>
 
-                                    </div>
-                                    <div class="product__discount__item__text">
-                                        <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
-                                        <!-- <h5><a href="#">Raisin’n’nuts</a></h5> -->
-                                        <div class="product__item__price"><p style="color: crimson;"><?php echo number_format($set["sale"], 0, ',', '.')?>đ</p><span><?php echo number_format($set["price"], 0, ',', '.')?>đ</span></div>
+                                        </div>
+                                        <div class="product__discount__item__text">
+                                            <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
+                                            <!-- <h5><a href="#">Raisin’n’nuts</a></h5> -->
+                                            <div class="product__item__price">
+                                                <p style="color: crimson;"><?php echo number_format($set["sale"], 0, ',', '.') ?>đ</p><span><?php echo number_format($set["price"], 0, ',', '.') ?>đ</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             <?php endwhile; ?>
                         </div>
                         <div class="owl-buttons"></div>
@@ -169,26 +168,23 @@
                                     <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
-
                             <div class="product-item-text">
                                 <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
                                 <?php 
                                     if ($set["price"]>$set["sale"] && $set["sale"]==0) {
                                         echo '<h5 style="color:red;">
-                                        '.number_format($set['price']).'<sup><u>đ</u></sup></br></h5>';
-                                    }
-                                    else{
+                                        ' . number_format($set['price']) . '<sup><u>đ</u></sup></br></h5>';
+                                    } else {
                                         echo '<h5 >
-                                        <font color="red">'.number_format($set['sale']).'<sup><u>đ</u></sup></font>
-                                        <strike>'.number_format($set['price']).'</strike><sup><u>đ</u></sup></br></h5>';
+                                        <font color="red">' . number_format($set['sale']) . '<sup><u>đ</u></sup></font>
+                                        <strike>' . number_format($set['price']) . '</strike><sup><u>đ</u></sup></br></h5>';
                                     }
                                     ?>
                             </div>
                         </div>
                     </div>
                     <?php endwhile;?>
-                </div>
-
+                    </div>
                 </div>
                 <div class="product-pagination">
                     <a href="#">1</a>
@@ -201,3 +197,20 @@
     </div>
 </section>
 <!-- Product Section End -->
+<script>
+    function validateForm() {
+        let name = document.getElementById("searchTerm").value.trim();
+        let errors = [];
+        if (name === "") {
+            errors.push("Vui nhập nhập thứ bạn muốn tìm");
+            document.getElementById("errorInput").textContent = "Vui nhập nhập thứ bạn muốn tìm";
+        } else {
+            document.getElementById("errorInput").textContent = "";
+        }
+        if (errors.length > 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>

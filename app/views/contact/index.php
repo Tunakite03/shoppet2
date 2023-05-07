@@ -2,14 +2,11 @@
     <!-- Contact Start -->
     <div class="container-xxl py-6">
         <div class="container">
-            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s"
-                style="max-width: 500px;">
+            <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <h1 class="display-5 mb-3">Liên Hệ</h1>
                 <div class="breadcrumbs">
                     <!-- Breadcrumb NavXT 6.3.0 -->
-                    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage"
-                            title="Go to PET SHOP - PET STORE TP.HCM bán Thức Ăn Phụ Kiện cho Chó và Mèo Uy Tín - Chính Hãng."
-                            href="" class="home"><span property="name">PET SHOP Sài Gòn - PET STORE TP.HCM bán Thức Ăn
+                    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to PET SHOP - PET STORE TP.HCM bán Thức Ăn Phụ Kiện cho Chó và Mèo Uy Tín - Chính Hãng." href="" class="home"><span property="name">PET SHOP Sài Gòn - PET STORE TP.HCM bán Thức Ăn
                                 Phụ Kiện cho Chó và Mèo Uy Tín - Chính Hãng</span></a>
                         <meta property="position" content="1">
                     </span> &gt; <span class="post post-page current-item">Thông tin liên hệ</span>
@@ -27,14 +24,10 @@
                             Thành phố Hồ Chí Minh 760000, Việt Nam</p>
                         <h5 class="text-white">Theo Dõi</h5>
                         <div class="d-flex pt-2">
-                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i
-                                    class="fab fa-youtube"></i></a>
-                            <a class="btn btn-square btn-outline-light rounded-circle me-0" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-square btn-outline-light rounded-circle me-0" href=""><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
@@ -62,8 +55,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message"
-                                        style="height: 420px"></textarea>
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 420px"></textarea>
                                     <label for="message">Tin nhắn...</label>
                                 </div>
                             </div>
@@ -82,14 +74,11 @@
 
     <!-- Google Map Start -->
     <div class="container-xxl px-0 wow fadeIn" data-wow-delay="0.1s" style="margin-bottom: -6px;">
-        <iframe class="w-100" style="height: 450px;"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.000811978277!2d106.69389969999999!3d10.811249000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529f46a40e90d%3A0x5c0f75c20edc5dd9!2zQ8O0bmcgVHkgQ-G7lSBQaOG6p24gQ8O0bmcgTmdo4buHIFZp4buHdCBOYW0gLSBWaW5hdGVrcw!5e0!3m2!1svi!2s!4v1682388940245!5m2!1svi!2s"
-            frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <iframe class="w-100" style="height: 450px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.000811978277!2d106.69389969999999!3d10.811249000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529f46a40e90d%3A0x5c0f75c20edc5dd9!2zQ8O0bmcgVHkgQ-G7lSBQaOG6p24gQ8O0bmcgTmdo4buHIFZp4buHdCBOYW0gLSBWaW5hdGVrcw!5e0!3m2!1svi!2s!4v1682388940245!5m2!1svi!2s" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
     </div>
     <!-- Google Map End -->
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-secondary btn-lg-square rounded-circle back-to-top"><i
-            class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-secondary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 </section>

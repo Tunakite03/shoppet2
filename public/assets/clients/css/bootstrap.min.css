@@ -22,7 +22,7 @@
     --bs-primary: #3CB815;
     --bs-secondary: #F65005;
     --bs-success: #198754;
-    --bs-info: #0dcaf0;
+    --bs-info: #0066CC;
     --bs-warning: #ffc107;
     --bs-danger: #dc3545;
     --bs-light: #F7F8FC;
@@ -701,7 +701,7 @@ progress {
     --bs-gutter-y: 0;
     display: flex;
     flex-wrap: wrap;
-    margin: 0 !important; 
+    margin: 0 !important;
 }
 
 .row>* {

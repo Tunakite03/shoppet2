@@ -4,7 +4,7 @@
     --secondary: #F65005;
     --light: #F7F8FC;
     --dark: #111111;
-    --info: #009CFF;
+    --info: #0066CC;
 }
 
 * {
@@ -26,6 +26,8 @@ body {
     z-index: 99;
 }
 
+
+
 .my-6 {
     margin-top: 6rem;
     margin-bottom: 6rem;
@@ -39,6 +41,20 @@ body {
 .bg-icon {
     background: url(../img/bg-icon.png) center center repeat;
     background-size: contain;
+}
+
+.cart-total-right {
+    text-align: right !important;
+}
+
+.cart-total-left {
+    text-align: left;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 
@@ -56,8 +72,11 @@ body {
     opacity: 1;
 }
 
+
+
 .content-section {
-    padding-top: 8rem;
+    padding-top: 7.9rem;
+    padding-bottom: 4rem;
 }
 
 /*** Button ***/
@@ -482,6 +501,17 @@ body {
     font-weight: 700;
 }
 
+.btn-login {
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: #0066CC;
+    padding: 10px 0;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+}
+
 
 .btn-teal {
     width: 100%;
@@ -581,7 +611,19 @@ body {
     margin-bottom: 15px;
 }
 
-.bg-darkmoon {}
+.bg-li {
+    background-color: #0066CC !important;
+    color: #fff;
+    border-radius: 15px;
+    width: 70%;
+}
+
+.bg-li:hover {
+    font-weight: 700;
+    color: #fff !important;
+    width: 80%;
+    transition: all 0.2s;
+}
 
 .filter__option span {
     font-size: 24px;

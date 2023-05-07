@@ -11,7 +11,7 @@ class ConnectDB
                 "host" => "localhost",
                 "user" => 'root',
                 "pass" => '',
-                "db" => "shoppet"
+                "db" => "shoppet2"
             ];
 
             //Cấu hình dsn
@@ -28,6 +28,8 @@ class ConnectDB
             ];
             //Câu lệnh kết nối
             $this->db = new PDO($dsn, $config['user'], $config['pass'], $options);
+
+           
         } catch (Exception $e) {
             $mess = $e->getMessage();
             echo $mess;
@@ -60,7 +62,7 @@ class ConnectDB
     // Lấy ra 1 sản phẩm
     public function getInstance($select)
     {
-        $result = $this->db->query($select);
+        $result = $this->query($select);
         $result = $result->fetch();
         return $result;
     }
