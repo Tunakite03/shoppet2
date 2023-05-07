@@ -1,13 +1,11 @@
 <section class="content-section">
     <div class="container-lg my-5">
-        <?php 
-                if($set = $productsDog->fetch()):  
-        ?>
+      
         <div class="row">
             <div class="col-md-6">
                 <div class="product-image-slider">
                     <div class="zoom-overlay">
-                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="Ảnh sản phẩm">
+                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $product["image"] ?>" alt="Ảnh sản phẩm">
                     </div>
                     <!-- <div class="slider-main">
                         <img src="https://via.placeholder.com/600x400" alt="Ảnh sản phẩm">
@@ -20,17 +18,17 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h1 class="mb-4"><span><?php echo $set["name"] ?></h1>
-                <p class="text-muted">Mã sản phẩm: <span><?php echo $set["id"] ?></p>
+                <h1 class="mb-4"><span><?php echo $product["name"] ?></h1>
+                <p class="text-muted">Mã sản phẩm: <span><?php echo $product["id"] ?></p>
                 <?php 
-                                    if ($set["price"]>$set["sale"] && $set["sale"]==0) {
+                                    if ($product["price"]>$product["sale"] && $product["sale"]==0) {
                                         echo '<h5 style="color:red;">
-                                        '.number_format($set['price']).'<sup><u>đ</u></sup></br></h5>';
+                                        '.number_format($product['price']).'<sup><u>đ</u></sup></br></h5>';
                                     }
                                     else{
                                         echo '<h5 >
-                                        <font color="red">'.number_format($set['sale']).'<sup><u>đ</u></sup></font>
-                                        <strike>'.number_format($set['price']).'</strike><sup><u>đ</u></sup></br></h5>';
+                                        <font color="red">'.number_format($product['sale']).'<sup><u>đ</u></sup></font>
+                                        <strike>'.number_format($product['price']).'</strike><sup><u>đ</u></sup></br></h5>';
                                     }
                                     ?>
                 <form>
@@ -50,10 +48,10 @@
             <div class="col-md-12">
                 <div class="product-description">
                     <h3 class="my-4">Mô tả sản phẩm</h3>
-                    <p><?php echo $set["des"] ?></p>
+                    <p><?php echo $product["des"] ?></p>
                 </div>
             </div>
         </div>
-        <?php endif;?>
+    
     </div>
 </section>

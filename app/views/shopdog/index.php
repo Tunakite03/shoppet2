@@ -155,23 +155,23 @@
                 </div>
                 <div class="row">
                     <?php
-                    while ($set = $productsDog->fetch()) :
-                    ?>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product-item">
-                                <div class="product-item-pic set-bg">
-                                    <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="" width="100%">
+                            while ($set = $productsDog->fetch()) :
+                     ?>          
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="product-item">
+                            <div class="product-item-pic set-bg">
+                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="" width="100%">
 
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product-item-text">
-                                    <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
-                                    <?php
-                                    if ($set["price"] > $set["sale"] && $set["sale"] == 0) {
+                                <ul class="product__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-item-text">
+                                <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
+                                <?php 
+                                    if ($set["price"]>$set["sale"] && $set["sale"]==0) {
                                         echo '<h5 style="color:red;">
                                         ' . number_format($set['price']) . '<sup><u>đ</u></sup></br></h5>';
                                     } else {
@@ -180,20 +180,20 @@
                                         <strike>' . number_format($set['price']) . '</strike><sup><u>đ</u></sup></br></h5>';
                                     }
                                     ?>
-                                </div>
                             </div>
                         </div>
-                    <?php endwhile; ?>
+                    </div>
+                    <?php endwhile;?>
+                    </div>
+                </div>
+                <div class="product-pagination">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="product-pagination">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-            </div>
         </div>
-    </div>
     </div>
 </section>
 <!-- Product Section End -->

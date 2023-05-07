@@ -79,7 +79,9 @@ class ProductModel
         } catch (\Throwable $ex) {
             echo $ex;
         }
+
     }
+
 
     public function getProductCatAll()
     {
@@ -103,37 +105,17 @@ class ProductModel
         } catch (\Throwable $ex) {
             echo $ex;
         }
-    }
-    public function getSearchItemName($searchTerm, $id_pet)
-    {
-        try {
-            $query = "SELECT * FROM `products` WHERE `name` like '%$searchTerm%' and id_pet=$id_pet";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-    }
-    public function getSearchItemBrand($searchTerm, $id_pet)
-    {
-        try {
-            $query = "SELECT * FROM brands br, products pr WHERE br.id = pr.id_brand  and br.name like '%$searchTerm%'and id_pet=$id_pet";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-    }
 
-    public function getCategories()
+    }
+    public function getTimKiem($cate, $searchTerm)
     {
-        try {
-            $query = "SELECT * FROM `categories` WHERE 1";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
+    try {
+        $query = "SELECT * FROM `products` WHERE $cate like '%$searchTerm%';";
+        $stmt = $this->db->getList($query);
+        return $stmt;
+    } catch (\Throwable $ex) {
+        echo $ex;
+    }
     }
 
     public function getNews()
@@ -148,5 +130,6 @@ class ProductModel
     }
     public function getDetail($id)
     {
+
     }
 }

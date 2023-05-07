@@ -1,7 +1,7 @@
 <?php
 class ShopCat extends Controller
 {
-    public $data = [], $linkIndex = "shopcat/index";
+    public $data = [], $link = "shopcat/index";
 
     public function index()
     {
@@ -13,21 +13,30 @@ class ShopCat extends Controller
         $this->data['sub_content']['productsSaleCat'] = $products->getProductSaleCatAll();
         $this->data['sub_content']['productsCat'] = $products->getProductCatAll();
 
-        $this->data['content'] =  $this->linkIndex; // đường dẫn tới file view
+
+        $this->data['content'] =  $this->link; // đường dẫn tới file view
+
         // Render Views
         $this->render('layouts/client_layout', $this->data);
     }
 
     public function detail($id = "")
     {
+        
         $products = $this->model("ProductModel");
+        $id_pet = 2;
+        if(!is_numeric($id)){
+            return $this->render('../errors/404');  
+        }
+        $this->data['sub_content']['product'] = $products->getDetail($id_pet, $id);
 
-        $this->data['sub_content']['productsCat'] = $products->getProductCatAll();
-        $this->data['sub_content']['title'] = $id;
-
-        $this->data['content'] = "shopcat/detail"; //duong dan
+        if(empty($this->data['sub_content']['product'])) {
+      
+           return $this->render('../errors/404');  
+        } 
+        $this->link = "shopcat/detail";
+        $this->data['content'] = $this->link; //duong dan
         // Render Views
-
         $this->render('layouts/client_layout', $this->data);
     }
 
