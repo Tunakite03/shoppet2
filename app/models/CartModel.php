@@ -14,8 +14,22 @@ class CartModel
             FROM cart ca
             INNER JOIN customers cu ON ca.id_customer = cu.id
             INNER JOIN products p ON ca.id_product = p.id
-            WHERE ca.id_customer = $id_user;";
+            WHERE ca.id_customer = $id_user ";
             $stmt =  $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+
+
+    public function addtoCart($id_product, $id_User, $quantity)
+    {
+        try {
+
+            $query = "INSERT INTO `cart`(`id`, `id_customer`, `id_product`, `quantity`, `total`) 
+            VALUES (NULL, '$id_User', '$id_product', $quantity, $quantity*(SELECT `price` FROM `products` WHERE `id` = '$id_product'))";
+            $stmt =  $this->db->exec($query);
             return $stmt;
         } catch (\Throwable $ex) {
             echo $ex;

@@ -600,10 +600,18 @@ input[type=number]::-webkit-inner-spin-button {
     color: #b2b2b2;
 }
 
+.admin {
+    font-size: 12px;
+}
+
 .filter__found h6 span {
     color: #1c1c1c;
     font-weight: 700;
     margin-right: 5px;
+}
+
+.admin {
+    background-color: #000;
 }
 
 .filter__option {
