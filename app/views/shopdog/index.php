@@ -155,9 +155,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <?php 
-                     while($set = $productsDog->fetch()):
-                    ?>
+                    <?php
+                            while ($set = $productsDog->fetch()) :
+                     ?>          
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product-item">
                             <div class="product-item-pic set-bg">
@@ -169,6 +169,7 @@
                                     <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
+
                             <div class="product-item-text">
                                 <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
                                 <?php 
@@ -186,7 +187,8 @@
                         </div>
                     </div>
                     <?php endwhile;?>
-                    </div>
+                </div>
+
                 </div>
                 <div class="product-pagination">
                     <a href="#">1</a>
