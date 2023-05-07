@@ -605,7 +605,9 @@ input[type=number]::-webkit-inner-spin-button {
     font-weight: 700;
     margin-right: 5px;
 }
-
+.admin {
+    background-color: #000;
+}
 .filter__option {
     text-align: right;
     margin-bottom: 15px;
