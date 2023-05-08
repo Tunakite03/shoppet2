@@ -5,13 +5,15 @@ class ShopCat extends Controller
 
     public function index()
     {
+        $id_pet=2;
         $products = $this->model("ProductModel");
         // // require_once.....
         // $this->data['sub_content']['productsCatNoSale'] = $products ->getProductCatAllNoSale();
 
         $this->data['sub_content']['categories'] = $products->getCategories();
         $this->data['sub_content']['productsSaleCat'] = $products->getProductSaleCatAll();
-        $this->data['sub_content']['productsCat'] = $products->getProductCatAll();
+        $this->data['sub_content']['productsCat'] = $products->getProductAll($id_pet);
+        $this->data['sub_content']['CountCat'] = $products->getCountProduct($id_pet);
 
 
         $this->data['content'] =  $this->link; // đường dẫn tới file view

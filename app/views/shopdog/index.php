@@ -15,7 +15,8 @@
                     <div class="hero-search d-flex justify-content-between flex-wrap">
                         <div class="hero-search-form my-2">
                             <div class="form-controll">
-                                <input type="text" placeholder="Bạn cần gì...?" class="px-3 me-2 py-2" name="searchTerm" required id="searchTerm">
+                                <input type="text" placeholder="Bạn cần gì...?" class="px-3 me-2 py-2" name="searchTerm"
+                                    required id="searchTerm">
                                 <span id="errorInput">
                                 </span>
                             </div>
@@ -23,7 +24,8 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
-                    <button type="submit" class="site-btn border-0 text-white px-3 py-2" style="background-color: #dc3545;" name="searchSubmit">SEARCH</button>
+                    <button type="submit" class="site-btn border-0 text-white px-3 py-2"
+                        style="background-color: #dc3545;" name="searchSubmit">SEARCH</button>
                 </div>
                 <div class="col-lg-3 col-12">
                     <h2>SHOP CHÓ</h2>
@@ -53,31 +55,35 @@
                         <h4 class="" style="font-weight: 700;">Danh mục sản phẩm</h4>
                         <?php
                         if (!empty($categories)) {
-                        ?>
+                            ?>
                             <ul class="list-unstyled sidebar-list">
                                 <?php
                                 foreach ($categories as $key => $category) {
-                                ?>
-                                    <li class='py-1 '><a href="/shopdog/danhmuc/<?= strtolower($category['name']) ?>" class="nav-link bg-li"><?= $category['name'] ?></a></li>
-                                <?php
+                                    ?>
+                                    <li class='py-1 '><a href="/shopdog/danhmuc/<?= strtolower($category['name']) ?>"
+                                            class="nav-link bg-li"><?= $category['name'] ?></a></li>
+                                    <?php
                                 } ?>
                             </ul>
-                        <?php
+                            <?php
                         }
                         ?>
                     </div>
                     <div class="sidebar-item">
                         <h4>Price</h4>
                         <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="540">
+                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                data-min="10" data-max="540">
                                 <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                             </div>
                             <div class="range-slider">
                                 <div class="price-input mt-3">
-                                    <input disabled style="background-color: transparent;" type="text" id="minamount" min="0">
-                                    <input disabled style="background-color: transparent;" type="text" id="maxamount" max="100">
+                                    <input disabled style="background-color: transparent;" type="text" id="minamount"
+                                        min="0">
+                                    <input disabled style="background-color: transparent;" type="text" id="maxamount"
+                                        max="100">
                                 </div>
                             </div>
 
@@ -95,14 +101,17 @@
                     <div class="row">
                         <div class="product-discount-slider owl-carousel">
                             <?php
-                            while ($set = $productsSaleDog->fetch()) :
-                            ?>
+                            while ($set = $productsSaleDog->fetch()):
+                                ?>
                                 <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
                                     <div class="product__discount__item">
                                         <div class="product__discount__item__pic set-bg">
-                                            <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="" width="100%">
+                                            <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>"
+                                                alt="" width="100%">
                                             <div>
-                                                <div class="product__discount__percent">-<?php echo round((($set['price'] - $set['sale']) / $set['price']) * 100, 0) ?>%</div>
+                                                <div class="product__discount__percent">-
+                                                    <?php echo round((($set['price'] - $set['sale']) / $set['price']) * 100, 0) ?>%
+                                                </div>
                                                 <ul class="product__item__pic__hover">
                                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -112,10 +121,16 @@
 
                                         </div>
                                         <div class="product__discount__item__text">
-                                            <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
+                                            <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span>
+                                                        <?php echo $set["name"] ?>
+                                                    </span></a></h6>
                                             <!-- <h5><a href="#">Raisin’n’nuts</a></h5> -->
                                             <div class="product__item__price">
-                                                <p style="color: crimson;"><?php echo number_format($set["sale"], 0, ',', '.') ?>đ</p><span><?php echo number_format($set["price"], 0, ',', '.') ?>đ</span>
+                                                <p style="color: crimson;">
+                                                    <?php echo number_format($set["sale"], 0, ',', '.') ?>đ
+                                                </p><span>
+                                                    <?php echo number_format($set["price"], 0, ',', '.') ?>đ
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +157,14 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter-found">
-                                <h6><span>16</span> Products found</h6>
+                                <h6><span>
+                                        <?php
+
+                                        $total_pd = $CountDog->fetch();
+                                        $total_pd = intval($total_pd['count(*)']);
+                                        echo $total_pd;
+                                        ?>
+                                    </span> Products found</h6>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
@@ -155,23 +177,26 @@
                 </div>
                 <div class="row">
                     <?php
-                            while ($set = $productsDog->fetch()) :
-                     ?>          
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product-item">
-                            <div class="product-item-pic set-bg">
-                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="" width="100%">
+                    while ($set = $productsDog->fetch()):
+                        ?>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product-item">
+                                <div class="product-item-pic set-bg">
+                                    <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>"
+                                        alt="" width="100%">
 
-                                <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product-item-text">
-                                <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
-                                <?php 
-                                    if ($set["price"]>$set["sale"] && $set["sale"]==0) {
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product-item-text">
+                                    <h6><a href="shopdog/detail/<?php echo $set["id"] ?>"><span>
+                                                <?php echo $set["name"] ?>
+                                            </span></a></h6>
+                                    <?php
+                                    if ($set["price"] > $set["sale"] && $set["sale"] == 0) {
                                         echo '<h5 style="color:red;">
                                         ' . number_format($set['price']) . '<sup><u>đ</u></sup></br></h5>';
                                     } else {
@@ -180,20 +205,24 @@
                                         <strike>' . number_format($set['price']) . '</strike><sup><u>đ</u></sup></br></h5>';
                                     }
                                     ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <?php endwhile;?>
-                    </div>
-                </div>
-                <div class="product-pagination">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    <?php endwhile; ?>
                 </div>
             </div>
+            <div class="product-pagination d-flex justify-content-center">
+                Trang:
+                <?php
+                    $num_page=$total_pd/8;
+                    $num_page =ceil($num_page);
+                    for ($i=1; $i <= $num_page ; $i++) { 
+                        echo '<a href="?page='.$i.'">'.$i.'</a>';
+                    }
+                ?>
+            </div>
         </div>
+    </div>
     </div>
 </section>
 <!-- Product Section End -->

@@ -57,11 +57,19 @@ class ProductModel
             echo $ex;
         }
     }
-    public function getProductDogAll()
+    public function getProductAll($id_pet)
     {
+        $num_pd_onepage=8;
+        if (!isset($_GET['page'])) {
+            $page=1;
+        }
+        else{
+            $page=$_GET['page'];
+        }
+        $start= ($page-1)*$num_pd_onepage;
         // b1:kết nối database
         try {
-            $query = "SELECT * FROM `products` WHERE `id_pet` =1";
+            $query = "SELECT * FROM `products` WHERE `id_pet` = $id_pet limit $start,$num_pd_onepage ;";
             $stmt = $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {
@@ -80,19 +88,6 @@ class ProductModel
             echo $ex;
         }
     }
-
-    public function getProductCatAll()
-    {
-        // b1:kết nối database
-        try {
-            $query = "SELECT * FROM `products` WHERE `id_pet` = 2;";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-    }
-
     public function getProductSaleCatAll()
     {
         // b1:kết nối database
@@ -135,6 +130,18 @@ class ProductModel
             echo $ex;
         }
     }
+    
+    public function getCountProduct($id_pet)
+    {
+        try {
+            $query = "SELECT count(*) FROM `products` WHERE id_pet=$id_pet";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+
 
     public function getNews()
     {

@@ -4,7 +4,8 @@ class ShopDog extends Controller
     public $data = [], $link = "shopdog/index";
 
     public function index()
-    {
+    { 
+        $id_pet=1;
         $products = $this->model("ProductModel");
         // // require_once.....
         // $products = new ProductModel();
@@ -12,7 +13,8 @@ class ShopDog extends Controller
         // $this->data['sub_content']['productsDogNoSale'] = $products ->getProductDogAllNoSale();
         $this->data['sub_content']['categories'] = $products->getCategories();
         $this->data['sub_content']['productsSaleDog'] = $products->getProductSaleDogAll();
-        $this->data['sub_content']['productsDog'] = $products->getProductDogAll();
+        $this->data['sub_content']['productsDog'] = $products->getProductAll($id_pet);
+        $this->data['sub_content']['CountDog'] = $products->getCountProduct($id_pet);
 
 
 
