@@ -59,7 +59,7 @@ class ProductModel
     }
     public function getProductAll($id_pet)
     {
-        $num_pd_onepage=8;
+        $num_pd_onepage=9;
         if (!isset($_GET['page'])) {
             $page=1;
         }

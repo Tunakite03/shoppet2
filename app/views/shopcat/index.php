@@ -235,7 +235,7 @@
             <div class="product-pagination d-flex justify-content-center">
                 Trang:
                 <?php
-                $num_page = $total_pd / 8;
+                $num_page = $total_pd / 9;
                 $num_page = ceil($num_page);
                 for ($i = 1; $i <= $num_page; $i++) {
                     echo '<a href="?page=' . $i . '">' . $i . '</a>';

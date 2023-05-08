@@ -49,7 +49,7 @@ class ShopDog extends Controller
     {
         $products = $this->model("ProductModel");
 
-        $this->data['sub_content']['productsDog'] = $products->getProductDogAll();
+        $this->data['sub_content']['productsDog'] = $products->getProductAll();
         $this->data['sub_content']['productsSaleDog'] = $products->getProductSaleDogAll();
 
         $this->data['content'] =  $this->link;; // đường dẫn tới file view
