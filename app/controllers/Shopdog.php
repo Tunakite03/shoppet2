@@ -3,6 +3,19 @@ class ShopDog extends Controller
 {
     public $data = [], $link = "shopdog/index";
 
+
+    public function __construct()
+    {
+        $this->data['sub_content']['productsPerPage'] = 9;
+
+        if (isset($_GET['page']) && $_GET['page'] > 0) {
+            $this->data['sub_content']['currentPage'] = (int)$_GET['page'];
+            $this->data['sub_content']['from'] = ($this->data['sub_content']['currentPage'] - 1) * $this->data['sub_content']['productsPerPage'];
+        } else {
+            $this->data['sub_content']['currentPage'] = 1;
+            $this->data['sub_content']['from'] = 0;
+        }
+    }
     public function index()
     {
         $products = $this->model("ProductModel");
@@ -13,8 +26,6 @@ class ShopDog extends Controller
         $this->data['sub_content']['categories'] = $products->getCategories();
         $this->data['sub_content']['productsSaleDog'] = $products->getProductSaleDogAll();
         $this->data['sub_content']['productsDog'] = $products->getProductDogAll();
-
-
 
         $this->data['content'] =  $this->link;; // đường dẫn tới file view
 
@@ -68,13 +79,27 @@ class ShopDog extends Controller
             } else {
                 $result = $products->getSearchItemBrand($seacrhTerm, $idPet);
             }
-            $this->data['sub_content']['productsCat'] = $result;
+            $this->data['sub_content']['productsDog'] = $result;
         } else {
-            echo header("Location: /shopcat");
+            echo header("Location: /shopdog");
         }
-        $this->data['content'] = "shopcat/index"; //duong dan
+        $this->data['content'] = "shopdog/index"; //duong dan
         // Render Views
         $this->render('layouts/client_layout', $this->data);
     }
-  
+    public function category($name_cate = '')
+    {
+        $products = $this->model("ProductModel");
+        $id_pet = 1;
+        $this->data['sub_content']['categories'] = $products->getCategories();
+
+        $result = $products->getProductCate($id_pet, $name_cate);
+
+        $this->data['sub_content']['productsDog'] = $result;
+
+
+        $this->data['content'] = "shopdog/index"; //duong dan
+        // Render Views
+        $this->render('layouts/client_layout', $this->data);
+    }
 }

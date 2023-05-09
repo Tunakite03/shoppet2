@@ -47,6 +47,7 @@
 <section class="product spad">
     <div class="container">
         <div class="row">
+            <!-- Search -->
             <div class="col-lg-3 col-md-5">
                 <div class="sidebar">
                     <div class="sidebar-item">
@@ -58,7 +59,7 @@
                                 <?php
                                 foreach ($categories as $key => $category) {
                                 ?>
-                                    <li class='py-1 '><a href="/shopcat/danhmuc/<?= strtolower($category['name']) ?>" class="nav-link bg-li"><?= $category['name'] ?></a></li>
+                                    <li class='py-1 '><a href="/shopcat/category/<?= strtolower($category['name']) ?>" class="nav-link bg-li"><?= $category['name'] ?></a></li>
                                 <?php
                                 } ?>
                             </ul>
@@ -85,8 +86,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9 col-md-7">
 
+            <!-- Sale off -->
+            <div class="col-lg-9 col-md-7">
                 <?php
                 if (!empty($productsSaleCat)) {
                 ?>
@@ -132,8 +134,8 @@
                     </div>
                     <hr>
                 <?php } ?>
-                <!-- products -->
 
+                <!-- products -->
                 <?php
                 if ($productsCat->rowCount() > 0) {
                 ?>
@@ -171,12 +173,16 @@
                     </div>
                     <div class="row">
                         <?php
-                        while ($set = $productsCat->fetch()) :
-                        ?>
+                        $productsToShow = array_slice($productsCat->fetchAll(), $from, $productsPerPage);
+                        $totalProducts = $productsCat->rowCount();
+                        $totalPages = ceil($totalProducts / $productsPerPage);
+
+                        foreach ($productsToShow as $product) { ?>
+
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product-item">
                                     <div class="product-item-pic set-bg">
-                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/cat/<?php echo $set["image"] ?>" alt="" width="100%">
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/cat/<?php echo $product["image"] ?>" alt="" width="100%">
 
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -185,21 +191,33 @@
                                         </ul>
                                     </div>
                                     <div class="product-item-text">
-                                        <h6><a href="shopcat/detail/<?php echo $set["id"] ?>"><span><?php echo $set["name"] ?></span></a></h6>
+                                        <h6><a href="shopcat/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
                                         <?php
-                                        if ($set["price"] > $set["sale"] && $set["sale"] == 0) {
+                                        if ($product["price"] > $product["sale"] && $product["sale"] == 0) {
                                             echo '<h5 style="color:red;">
-                                        ' . number_format($set['price']) . '<sup><u>đ</u></sup></br></h5>';
+                                        ' . number_format($product['price']) . '<sup><u>đ</u></sup></br></h5>';
                                         } else {
                                             echo '<h5 >
-                                        <font color="red">' . number_format($set['sale']) . '<sup><u>đ</u></sup></font>
-                                        <strike>' . number_format($set['price']) . '</strike><sup><u>đ</u></sup></br></h5>';
+                                        <font color="red">' . number_format($product['sale']) . '<sup><u>đ</u></sup></font>
+                                        <strike>' . number_format($product['price']) . '</strike><sup><u>đ</u></sup></br></h5>';
                                         }
                                         ?>
                                     </div>
                                 </div>
                             </div>
-                        <?php endwhile; ?>
+                        <?php } ?>
+                    </div>
+                    <!-- display the pagination links -->
+                    <div class="product-pagination text-center">
+                        <?php if ($currentPage > 1) : ?>
+                            <a href="/shopcat/?page=<?php echo $currentPage - 1; ?>"><i class="fa fa-long-arrow-left"></i></a>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                            <a href="/shopcat/?page=<?php echo $i; ?>" <?php if ($i === $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                            <a href="/shopcat/?page=<?php echo $currentPage + 1; ?>"><i class="fa fa-long-arrow-right"></i></a>
+                        <?php endif; ?>
                     </div>
                 <?php
                 } else {
@@ -213,12 +231,9 @@
                 }
                 ?>
             </div>
-            <div class="product-pagination">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-            </div>
+
+
+
         </div>
     </div>
     </div>

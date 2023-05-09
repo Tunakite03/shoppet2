@@ -600,9 +600,15 @@ input[type=number]::-webkit-inner-spin-button {
     color: #b2b2b2;
 }
 
-.admin {
-    font-size: 12px;
+.product-pagination a {
+    padding: 3px;
 }
+
+.product-pagination .active {
+    border: 1px solid #ccc;
+
+}
+
 
 .filter__found h6 span {
     color: #1c1c1c;

@@ -136,6 +136,26 @@ class ProductModel
         }
     }
 
+
+    public function getProductCate($id_pet, $name_cate)
+    {
+        try {
+            $query = "SELECT
+            *
+        FROM
+            products pr,
+            categories ca,
+            category_type cat
+        WHERE
+            pr.id_type = cat.id AND cat.id_category = ca.id AND ca.name LIKE '%$name_cate%' AND pr.id_pet = $id_pet";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+
+
     public function getNews()
     {
         try {

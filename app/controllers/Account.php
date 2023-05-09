@@ -32,7 +32,6 @@ class Account extends Controller
                 if ($user->getUser($email) != false) {
                     $errors['user'] = "Tài khoản đã tồn tại";
                 }
-
                 $this->data['sub_content']['errorsRegister'] = $errors;
                 if (empty($errors)) {
                     $result = $user->insertUser($name, $email, $password);
@@ -50,13 +49,11 @@ class Account extends Controller
     }
 
 
-
     public function login()
     {
         if (isset($_SESSION['loggedID'])) {
             header("Location: /");
         } else {
-
             $user = $this->model("UserModel");
             $formErrors = [];
             $result = false;

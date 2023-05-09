@@ -67,4 +67,7 @@ class Cart extends Controller
             echo header("Location: /account");
         }
     }
+    public function addCart()
+    {
+    }
 }
