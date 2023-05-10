@@ -53,18 +53,34 @@
                     <div class="sidebar-item">
                         <h4 class="" style="font-weight: 700;">Danh mục sản phẩm</h4>
                         <?php
-                        if (!empty($categories)) {
-                        ?>
-                            <ul class="list-unstyled sidebar-list">
-                                <?php
-                                foreach ($categories as $key => $category) {
-                                ?>
-                                    <li class='py-1 '><a href="/shopcat/category/<?= strtolower($category['name']) ?>" class="nav-link bg-li"><?= $category['name'] ?></a></li>
-                                <?php
-                                } ?>
-                            </ul>
-                        <?php
+                        // print_r($categories->fetchAll());
+                        // print_r($type->fetchAll());
+                        $listType = $type->fetchAll();
+                        $listCate = $categories->fetchAll();
+
+                        if (!empty($listCate)) {
+                            foreach ($listCate as $category) {
+                                echo '<div class="dropdown">';
+                                echo '<a href="' . _WEB_ROOT . '/shopcat/category/' . strtolower($category['name']) . '" class="nav-link" role="button" aria-expanded="false">' . $category['name'] . '</a>';
+                                echo '<div class="dropdown-content">';
+                                $products = array();
+                                foreach ($listType as $type_item) {
+                                    if ($type_item['id_category'] == $category['id']) {
+                                        $products[] = $type_item['name'];
+                                    }
+                                }
+                                if (!empty($products)) {
+                                    echo '<ul>';
+                                    foreach ($products as $product) {
+                                        echo '<li><a href="' . _WEB_ROOT . '/shopcat/category/' . strtolower($category['name']) . '/' . strtolower($product) . '">' . $product . '</a></li>';
+                                    }
+                                    echo '</ul>';
+                                }
+                                echo '</div>';
+                                echo '</div>';
+                            }
                         }
+
                         ?>
                     </div>
                     <div class="sidebar-item">

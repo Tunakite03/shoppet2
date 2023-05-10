@@ -28,22 +28,22 @@
                         Shop Chó
                     </a>
                     <div class="dropdown-menu m-0">
-                        <a href="/shopdog" class="dropdown-item">Thức Ăn Cho Chó</a>
-                        <a href="/shopdog" class="dropdown-item">Đồ Dùng Cho Chó</a>
-                        <a href="/shopdog" class="dropdown-item">Đồ Chơi Cho Chó</a>
-                        <a href="/shopdog" class="dropdown-item">Phụ Kiện Cho Chó</a>
-                        <a href="/shopdog" class="dropdown-item">Chuồng Lồng Cho Chó</a>
+                        <a href="/shopdog/category/food" class="dropdown-item">Thức Ăn Cho Chó</a>
+                        <a href="/shopdog/category/toy" class="dropdown-item">Đồ Dùng Cho Chó</a>
+                        <a href="/shopdog/category/item" class="dropdown-item">Đồ Chơi Cho Chó</a>
+                        <a href="/shopdog/category/accessory" class="dropdown-item">Phụ Kiện Cho Chó</a>
+                        <a href="/shopdog/category/bed" class="dropdown-item">Chuồng Lồng Cho Chó</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
                     <a href="/shopcat" class="nav-link dropdown-toggle" role="button" aria-expanded="false">Shop
                         Mèo</a>
                     <div class="dropdown-menu m-0">
-                        <a href="/shopcat" class="dropdown-item">Thức Ăn Cho Mèo</a>
-                        <a href="/shopcat" class="dropdown-item">Đồ Dùng Cho Mèo</a>
-                        <a href="/shopcat" class="dropdown-item">Đồ Chơi Cho Mèo</a>
-                        <a href="/shopcat" class="dropdown-item">Phụ Kiện Cho Mèo</a>
-                        <a href="/shopcat" class="dropdown-item">Chuồng Lồng Cho Mèo</a>
+                        <a href="/shopcat/category/food" class="dropdown-item">Thức Ăn Cho Mèo</a>
+                        <a href="/shopcat/category/toy" class="dropdown-item">Đồ Dùng Cho Mèo</a>
+                        <a href="/shopcat/category/item" class="dropdown-item">Đồ Chơi Cho Mèo</a>
+                        <a href="/shopcat/category/accessory" class="dropdown-item">Phụ Kiện Cho Mèo</a>
+                        <a href="/shopcat/category/bed" class="dropdown-item">Chuồng Lồng Cho Mèo</a>
                     </div>
                 </div>
                 <a href="/news" class="nav-item nav-link">Tin Tức</a>
