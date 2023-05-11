@@ -91,7 +91,8 @@ class UserModel
     public function getAllUsers()
     {
         try {
-            $query = "SELECT * FROM customers Where 1";
+            $query = "SELECT cu.*, info.phone as phone , info.province, info.district, info.ward, info.street FROM customers cu
+           LEFT JOIN info_customers info ON cu.id = info.id_customer";
             $stmt = $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {

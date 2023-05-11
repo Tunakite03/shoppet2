@@ -8,22 +8,19 @@
                             <th>STT</th>
                             <th>Tên danh mục</th>
                             <th>Danh mục con</th>
-                            <th>phone</th>
-                            <th>Địa chỉ</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $data =  $data_customers->fetchAll();
+                        $data =  $data_categories->fetchAll();
                         foreach ($data as $key => $value) {
                         ?>
                             <tr>
                                 <td><?= $key ?></td>
-                                <td class="fw-bold"><?= $value['name'] ?></td>
-                                <td><?= $value['email'] ?></td>
-                                <td><?= $value['phone'] ?></td>
-                                <td><?= $value['province'] . '-' . $value['district'] . '-' . $value['ward'] . '-' . $value['street']  ?></td>
+                                <td class="fw-bold"><?= $value['category_name'] ?></td>
+                                <td><?= $value['subcategory_names'] ?></td>
+
                                 <td>
                                     <a name="" id="" class="btn btn-primary my-2 mx-2" href="#" role="button">Sửa</a>
                                     <a name="" id="" class="btn btn-warning my-2 mx-2" href="#" role="button">Xóa</a>

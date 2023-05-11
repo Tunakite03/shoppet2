@@ -6,7 +6,7 @@
              <a href="./index.html" class="text-nowrap logo-img">
                  <img src="<?php echo _WEB_ROOT ?>/public/assets/img/logos/dark-logo.svg" width="180" alt="" />
              </a>
-             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+             <div class="close-btn  d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                  <i class="ti ti-x fs-8"></i>
              </div>
          </div>
@@ -52,7 +52,7 @@
                      </a>
                  </li>
                  <li class="sidebar-item">
-                     <a class="sidebar-link" href="/admin/editcategory" aria-expanded="false">
+                     <a class="sidebar-link" href="/admin/editcategories" aria-expanded="false">
                          <span>
                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

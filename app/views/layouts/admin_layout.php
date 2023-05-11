@@ -88,6 +88,7 @@
         $(document).ready(function() {
             $('#table_products').DataTable();
         });
+     
     </script>
     <script>
         // 

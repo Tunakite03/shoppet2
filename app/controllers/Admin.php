@@ -32,6 +32,16 @@ class Admin extends Controller
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
     }
+    public function editcategories()
+    {
+        $this->data['sub_content']['product'] = "";
+        $categories = $this->model("ProductModel");
+        $this->data['sub_content']['data_categories'] = $categories->getCategoriesInfo();
+        $this->link = "admin/categories/editcategories";
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
     public function login()
     {
         $this->data['sub_content']['product'] = "";

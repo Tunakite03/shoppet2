@@ -27,10 +27,8 @@
                                 <td><?= $value['quantity'] ?></td>
                                 <td><?= number_format($value['price'], 0, ".", ".") ?> VND</td>
                                 <td>
-                                    <a name="" id="" class="btn btn-primary" href="#" role="button">Sửa</a>
-                                    <a name="" id="" class="btn btn-warning" href="#" role="button">Xóa</a>
-
-
+                                    <a name="" id="" class="btn btn-primary my-2" href="#" role="button">Sửa</a>
+                                    <a name="" id="" class="btn btn-warning  my-2" href="#" role="button">Xóa</a>
                                 </td>
                             </tr>
                         <?php } ?>
