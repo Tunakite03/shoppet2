@@ -53,28 +53,7 @@ class ShopCat extends Controller
     }
 
 
-    public function searchItem()
-    {
-        $products = $this->model("ProductModel");
-        $this->data['sub_content']['categories'] = $products->getCategories();
-
-        if (isset($_POST['searchSubmit'])) {
-            $seacrhTerm = $_POST['searchTerm'];
-            $cate = $_POST['category'];
-            $idPet = 2;
-            if ($cate == "name") {
-                $result = $products->getSearchItemName($seacrhTerm, $idPet);
-            } else {
-                $result = $products->getSearchItemBrand($seacrhTerm, $idPet);
-            }
-            $this->data['sub_content']['productsCat'] = $result;
-        } else {
-            echo header("Location: /shopcat");
-        }
-        $this->data['content'] = "shopcat/index"; //duong dan
-        // Render Views
-        $this->render('layouts/client_layout', $this->data);
-    }
+    
     public function category($name_cate = '', $name_type = '')
     {
         $products = $this->model("ProductModel");
@@ -87,7 +66,7 @@ class ShopCat extends Controller
         } else {
             $result = $products->getProductType($id_pet, $name_cate, $name_type);
         }
-        
+
         $this->data['sub_content']['productsCat'] = $result;
 
 

@@ -2,41 +2,7 @@
 
 <section class="hero-begin" style="padding-top:10rem;">
     <div class="container">
-        <form action="<?= _WEB_ROOT ?>/shopdog/searchItem" method="get" onsubmit="return validateForm()">
-            <div class="row align-items-center">
-                <div class="col-lg-3 col-5">
-                    <div class="nav-item dropdown justify-content-end d-flex">
-                        <select name="category" id="" class="px-3 py-2 ">
-                            <option value="name">Ten san pham</option>
-                            <option value="id_brand">Thương hiệu</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-7">
-                    <div class="hero-search d-flex justify-content-between flex-wrap">
-                        <div class="hero-search-form my-2">
-                            <div class="form-controll">
-                                <input type="text" placeholder="Bạn cần gì...?" class="px-3 me-2 py-2" name="searchTerm"
-                                    required id="searchTerm">
-                                <span id="errorInput">
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-12">
-                    <button type="submit" class="site-btn border-0 text-white px-3 py-2"
-                        style="background-color: #dc3545;" name="searchSubmit">SEARCH</button>
-                </div>
-                <div class="col-lg-3 col-12">
-                    <h2>SHOP CHÓ</h2>
-                </div>
-
-            </div>
-        </form>
-        <?php
-        //   endwhile;
-        ?>
+        
 
     </div>
 </section>
@@ -86,26 +52,6 @@
 
                         ?>
 
-                    </div>
-                    <div class="sidebar-item">
-                        <h4>Price</h4>
-                        <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="10" data-max="540">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                            <div class="range-slider">
-                                <div class="price-input mt-3">
-                                    <input disabled style="background-color: transparent;" type="text" id="minamount"
-                                        min="0">
-                                    <input disabled style="background-color: transparent;" type="text" id="maxamount"
-                                        max="100">
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -177,21 +123,22 @@
                     <div class="filter-item">
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
-                                <div class="filter-sort">
-                                    <span>Sort By</span>
-                                    <select>
-                                        <option value="0">Default</option>
-                                    </select>
-                                </div>
+                            <div class="filter-sort">
+                                <span>Xem Theo:</span>
+                                <select>
+                                    <option value="0">Tăng Dần</option>
+                                    <option value="0">Giảm Dần</option>
+                                </select>
+                            </div>
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter-found">
 
+
                                     <h6><span>
                                             <?php
-                                            //  $pd = new ProductModel();
-                                            //  $count=$pd->$productsCountCat;
-                                            // echo ":".$count;
+                                                $totalProducts = $productsDog->rowCount();
+                                                echo $totalProducts;
                                             ?>
                                         </span> Products found</h6>
                                 </div>
@@ -208,7 +155,6 @@
                     <div class="row">
                         <?php
                         $productsToShow = array_slice($productsDog->fetchAll(), $from, $productsPerPage);
-                        $totalProducts = $productsDog->rowCount();
                         $totalPages = ceil($totalProducts / $productsPerPage);
                         foreach ($productsToShow as $product) { ?>
                             <div class="col-lg-4 col-md-6 col-sm-6">
@@ -249,7 +195,7 @@
                             <a href="/shopdog/?page=<?php echo $currentPage - 1; ?>"><i class="fa fa-long-arrow-left"></i></a>
                         <?php endif; ?>
                         <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                            <a href="/shopdog>/?page=<?php echo $i; ?><?php isset($_GET['keysearch']) ? '&&keysearch=' . $_GET['keysearch'] : '' ?>"
+                            <a href="/shopdog/?page=<?php echo $i; ?><?php isset($_GET['keysearch']) ? '&&keysearch=' . $_GET['keysearch'] : '' ?>"
                                 <?php if ($i === $currentPage)
                                     echo 'class="active"'; ?>><?php echo $i; ?></a>
                         <?php endfor; ?>
@@ -277,19 +223,5 @@
 </section>
 <!-- Product Section End -->
 <script>
-    function validateForm() {
-        let name = document.getElementById("searchTerm").value.trim();
-        let errors = [];
-        if (name === "") {
-            errors.push("Vui nhập nhập thứ bạn muốn tìm");
-            document.getElementById("errorInput").textContent = "Vui nhập nhập thứ bạn muốn tìm";
-        } else {
-            document.getElementById("errorInput").textContent = "";
-        }
-        if (errors.length > 0) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+    
 </script>

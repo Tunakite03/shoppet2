@@ -15,10 +15,24 @@
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-        <a href="/" class="navbar-brand ms-4 ms-lg-0"><img src="<?php echo _WEB_ROOT ?>/public/assets/img/logo.png" alt=""></a>
+        <a href="/" class="navbar-brand ms-4 ms-lg-0"><img src="<?php echo _WEB_ROOT ?>/public/assets/img/logo.png"
+                alt=""></a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="" style="margin-top: 20px;">
+            <form action="<?= _WEB_ROOT?>/search" method="GET">
+                <div class="input-group mb-3">
+                    <select name="table" id="table">
+                        <option value="products">Sản phẩm</option>
+                        <option value="news">Tin Tức</option>
+                    </select>
+                    <input type="text" class="form-control" placeholder="Bạn cần tìm gì?" aria-label="tìm kiếm sản phẩm"
+                        name="key">
+                    <button class="btn btn-danger" type="submit">Tìm kiếm</button>
+                </div>
+            </form>
+        </div>
         <div class="collapse navbar-collapse" id="navbarCollapse">
 
             <div class="navbar-nav ms-auto p-4 p-lg-0">
@@ -55,20 +69,24 @@
                     <small class="fa fa-search text-body"></small>
                 </a> -->
                 <a class="btn-sm-square bg-white rounded-circle ms-3" href="/cart">
-                    <small> <?php
-                            if (isset($_SESSION['loggedID'])) {
-                                // print_r($stmt);
-                            }
-                            ?> <i class="fa fa-shopping-bag text-body"></i></small>
+                    <small>
+                        <?php
+                        if (isset($_SESSION['loggedID'])) {
+                            // print_r($stmt);
+                        }
+                        ?> <i class="fa fa-shopping-bag text-body"></i>
+                    </small>
                 </a>
 
 
                 <?php
                 if (!empty($_SESSION['loggedID'])) {
-                ?>
+                    ?>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="fa fa-user"></span> <?= $_SESSION['loggedUserName'] ?>
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="userMenu"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="fa fa-user"></span>
+                            <?= $_SESSION['loggedUserName'] ?>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="userMenu">
                             <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -81,13 +99,13 @@
                     <!-- <span class="btn-sm-square bg-white rounded-circle ms-3">
                         <small class="fa fa-user text-body"><?= $_SESSION['loggedUserName'] ?></small>
                     </span> -->
-                <?php
+                    <?php
                 } else {
-                ?>
+                    ?>
                     <a class="btn-sm-square bg-white rounded-circle ms-3" href="/account">
                         <small class="fa fa-user text-body"></small>
                     </a>
-                <?php
+                    <?php
                 } ?>
             </div>
         </div>

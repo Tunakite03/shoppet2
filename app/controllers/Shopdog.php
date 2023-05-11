@@ -30,7 +30,7 @@ class ShopDog extends Controller
 
         $this->data['content'] = $this->link;
         ; // đường dẫn tới file view
-
+        
 
         // Render Views
         $this->render('layouts/client_layout', $this->data);
@@ -56,28 +56,7 @@ class ShopDog extends Controller
         // Render Views
         $this->render('layouts/client_layout', $this->data);
     }
-    public function searchItem()
-    {
-        $products = $this->model("ProductModel");
-        $this->data['sub_content']['categories'] = $products->getCategories();
-
-        if (isset($_POST['searchSubmit'])) {
-            $seacrhTerm = $_POST['searchTerm'];
-            $cate = $_POST['category'];
-            $idPet = 1;
-            if ($cate == "name") {
-                $result = $products->getSearchItemName($seacrhTerm, $idPet);
-            } else {
-                $result = $products->getSearchItemBrand($seacrhTerm, $idPet);
-            }
-            $this->data['sub_content']['productsDog'] = $result;
-        } else {
-            echo header("Location: /shopdog");
-        }
-        $this->data['content'] = "shopdog/index"; //duong dan
-        // Render Views
-        $this->render('layouts/client_layout', $this->data);
-    }
+    
     public function category($name_cate = '', $name_type = '')
     {
         $products = $this->model("ProductModel");

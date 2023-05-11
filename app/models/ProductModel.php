@@ -104,26 +104,7 @@ class ProductModel
             echo $ex;
         }
     }
-    public function getSearchItemName($searchTerm, $id_pet)
-    {
-        try {
-            $query = "SELECT * FROM `products` WHERE `name` like '%$searchTerm%' and id_pet=$id_pet";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-    }
-    public function getSearchItemBrand($searchTerm, $id_pet)
-    {
-        try {
-            $query = "SELECT * FROM brands br, products pr WHERE br.id = pr.id_brand  and br.name like '%$searchTerm%'and id_pet=$id_pet";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-    }
+   
 
     public function getCategories()
     {
