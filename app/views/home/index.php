@@ -152,7 +152,7 @@
                                                 New</div>
                                         </div>
                                         <div class="text-center p-4">
-                                            <a class="d-block h5 mb-2" href="">
+                                            <a class="d-block h5 mb-2" href="/shopcat/detail/<?php echo $set["id"] ?>">
                                                 <?php echo $set["name"] ?>
                                             </a>
                                             <span class="text-secondary me-1">
@@ -228,7 +228,7 @@
                                             New</div>
                                     </div>
                                     <div class="text-center p-4">
-                                        <a class="d-block h5 mb-2" href="">
+                                        <a class="d-block h5 mb-2" href="/shopdog/detail/<?php echo $set["id"] ?>">
                                             <?php echo $set["name"] ?>
                                         </a>
                                         <span class="text-secondary me-1">
@@ -275,7 +275,7 @@
                                                 New</div>
                                         </div>
                                         <div class="text-center p-4">
-                                            <a class="d-block h5 mb-2" href="">
+                                            <a class="d-block h5 mb-2" href="/shopcat/detail/<?php echo $set["id"] ?>">
                                                 <?php echo $set["name"] ?>
                                             </a>
                                             <span class="text-secondary me-1">
