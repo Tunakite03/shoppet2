@@ -28,8 +28,6 @@ class ConnectDB
             ];
             //Câu lệnh kết nối
             $this->db = new PDO($dsn, $config['user'], $config['pass'], $options);
-
-           
         } catch (Exception $e) {
             $mess = $e->getMessage();
             echo $mess;

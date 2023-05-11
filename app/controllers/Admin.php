@@ -10,18 +10,50 @@ class Admin extends Controller
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
     }
-    public function editproducts()
+
+    public function products()
     {
         $this->data['sub_content']['product'] = "";
         $products = $this->model("ProductModel");
         $this->data['sub_content']['data_products'] = $products->getAllProducts();
 
-        $this->link = "admin/products/editProducts";
+        $this->link = "admin/products/listProducts";
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
     }
-    public function editcustomers()
+    public function deleteproduct($id = '')
+    {
+        if (is_numeric($id)) {
+            $this->data['sub_content']['product'] = "";
+            $admin = $this->model("AdminModel");
+            $result = $admin->deleteProduct($id);
+            header("Location: /admin/products");
+        } else {
+            header("Location: /admin/products");
+        }
+    }
+    public function editproduct($id = '')
+    {
+        if (is_numeric($id)) {
+            $admin = $this->model("AdminModel");
+            $products = $this->model("ProductModel");
+
+            $this->data['sub_content']['data_product'] = $admin->getProductById($id);
+            $this->data['sub_content']['data_pets'] = $admin->getPets();
+            $this->data['sub_content']['data_brands'] = $admin->getBrands();
+            $this->data['sub_content']['data_categories'] = $products->getCategories();
+
+
+            $this->link = "admin/products/editProduct";
+            $this->data['content'] = $this->link; // đường dẫn tới file view
+            // Render Views
+            $this->render('layouts/admin_layout', $this->data);
+        } else {
+            header("Location: /admin/products");
+        }
+    }
+    public function customers()
     {
         $this->data['sub_content']['product'] = "";
         $customers = $this->model("UserModel");
@@ -32,7 +64,7 @@ class Admin extends Controller
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
     }
-    public function editcategories()
+    public function categories()
     {
         $this->data['sub_content']['product'] = "";
         $categories = $this->model("ProductModel");

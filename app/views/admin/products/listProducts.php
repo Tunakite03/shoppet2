@@ -1,7 +1,10 @@
 <section class="section-content">
     <div class="container-fluid">
         <div class="row mt-5">
-            <div class="col-md-12">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-success my-3">Thêm sản phẩm mới</button>
+            </div>
+            <div class=" col-md-12">
                 <table id="table_products" class="table table-bordered table-" style="width:100%">
                     <thead>
                         <tr>
@@ -27,8 +30,8 @@
                                 <td><?= $value['quantity'] ?></td>
                                 <td><?= number_format($value['price'], 0, ".", ".") ?> VND</td>
                                 <td>
-                                    <a name="" id="" class="btn btn-primary my-2" href="#" role="button">Sửa</a>
-                                    <a name="" id="" class="btn btn-warning  my-2" href="#" role="button">Xóa</a>
+                                    <a name="" id="" class="btn btn-primary my-2" href="/admin/editproduct/<?= $value['id'] ?>" role="button">Sửa</a>
+                                    <a name="" id="" class="btn btn-warning  my-2" href="/admin/deleteproduct/<?= $value['id'] ?>" role="button">Xóa</a>
                                 </td>
                             </tr>
                         <?php } ?>

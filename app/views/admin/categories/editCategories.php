@@ -1,6 +1,9 @@
 <section class="section-content">
     <div class="container-fluid">
         <div class="row mt-5">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-success my-3">Thêm danh mục mới</button>
+            </div>
             <div class="col-md-12">
                 <table id="table_products" class="table table-bordered table-" style="width:100%">
                     <thead>
