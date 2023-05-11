@@ -57,7 +57,7 @@
                 <a class="btn-sm-square bg-white rounded-circle ms-3" href="/cart">
                     <small> <?php
                             if (isset($_SESSION['loggedID'])) {
-                                // print_r($stmt);
+                                echo ($_SESSION['countCart']['count']);
                             }
                             ?> <i class="fa fa-shopping-bag text-body"></i></small>
                 </a>

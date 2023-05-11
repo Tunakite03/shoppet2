@@ -190,7 +190,7 @@
                                         </ul>
                                     </div>
                                     <div class="product-item-text">
-                                        <h6><a href="shopcat/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
+                                        <h6><a href="<?= _WEB_ROOT ?>/shopdog/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
                                         <?php
                                         if ($product["price"] > $product["sale"] && $product["sale"] == 0) {
                                             echo '<h5 style="color:red;">

@@ -111,8 +111,7 @@
                                                     <div class="product__discount__percent">-<?php echo round((($set['price'] - $set['sale']) / $set['price']) * 100, 0) ?>%</div>
                                                     <ul class="product__item__pic__hover">
                                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                                        <li><a href="/cart/addtocart/<?= $set["id"] ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                                     </ul>
                                                 </div>
 
@@ -145,7 +144,6 @@
                                 <div class="filter-sort">
                                     <span>Sort By</span>
                                     <select>
-                                        <option value="0">Default</option>
                                         <option value="0">Default</option>
                                     </select>
                                 </div>
@@ -186,12 +184,11 @@
 
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="/cart/addtocart/<?= $product["id"] ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="product-item-text">
-                                        <h6><a href="shopcat/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
+                                        <h6><a href="<?= _WEB_ROOT ?>/shopcat/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
                                         <?php
                                         if ($product["price"] > $product["sale"] && $product["sale"] == 0) {
                                             echo '<h5 style="color:red;">

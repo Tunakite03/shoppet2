@@ -13,9 +13,21 @@ class Admin extends Controller
     public function editproducts()
     {
         $this->data['sub_content']['product'] = "";
-
+        $products = $this->model("ProductModel");
+        $this->data['sub_content']['data_products'] = $products->getAllProducts();
 
         $this->link = "admin/products/editProducts";
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function editcustomers()
+    {
+        $this->data['sub_content']['product'] = "";
+        $customers = $this->model("UserModel");
+        $this->data['sub_content']['data_customers'] = $customers->getAllUsers();
+
+        $this->link = "admin/customers/editcustomers";
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/admin_layout', $this->data);

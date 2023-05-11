@@ -124,7 +124,7 @@
                                             <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>Xem</a>
                                         </small>
                                         <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ hàng</a>
+                                            <a class="text-body" href="<?= _WEB_ROOT ?>/cart/addtocart/<?= $set['id'] ?>"><i class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ hàng</a>
                                         </small>
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@
                                                 <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>Xem</a>
                                             </small>
                                             <small class="w-50 text-center py-2">
-                                                <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ
+                                                <a class="text-body" href="<?= _WEB_ROOT ?>/cart/addtocart/<?= $set['id'] ?>"><i class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ
                                                     hàng</a>
                                             </small>
                                         </div>
@@ -247,7 +247,7 @@
                                             <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>Xem</a>
                                         </small>
                                         <small class="w-50 text-center py-2">
-                                            <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ hàng</a>
+                                            <a class="text-body" href="<?= _WEB_ROOT ?>/cart/addtocart/<?= $set['id'] ?>"><i class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ hàng</a>
                                         </small>
                                     </div>
                                 </div>
@@ -294,7 +294,7 @@
                                                 <a class="text-body" href=""><i class="fa fa-eye text-secondary me-2"></i>Xem</a>
                                             </small>
                                             <small class="w-50 text-center py-2">
-                                                <a class="text-body" href=""><i class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ
+                                                <a class="text-body" href="<?= _WEB_ROOT ?>/cart/addtocart/<?= $set['id'] ?>"><i class="fa fa-shopping-bag text-secondary me-2"></i>Thêm vào giỏ
                                                     hàng</a>
                                             </small>
                                         </div>

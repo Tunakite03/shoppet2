@@ -27,6 +27,28 @@ class ProductModel
             echo $ex;
         }
     }
+    public function getAllProducts()
+    {
+        try {
+            $query = "SELECT pr.*, p.name as pet_name FROM products pr
+            JOIN pets p ON pr.id_pet = p.id";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getProductById($id)
+    {
+        try {
+            $query = "SELECT * FROM products
+        WHERE  id= $id";
+            $stmt =  $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getListProductNew_Cat()
     {
         try {
@@ -140,8 +162,8 @@ class ProductModel
     public function getProductCate($id_pet, $name_cate)
     {
         try {
-            $query = "SELECT
-            *
+            $query = "SELECT pr.image as image, 
+             pr.name as  name ,pr.price as price, pr.id as id, pr.sale as sale
         FROM
             products pr,
             categories ca,

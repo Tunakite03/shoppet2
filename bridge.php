@@ -1,4 +1,5 @@
 <?php
+
 define("__DIR_ROOT", __DIR__);
 //Xử lý http root
 if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {

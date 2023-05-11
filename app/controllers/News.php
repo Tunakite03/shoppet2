@@ -13,9 +13,9 @@ class News extends Controller
 
         // $this->data['sub_content']['productsCatNoSale'] = $products ->getProductCatAllNoSale();
         $this->data['sub_content']['News'] = $products->getNews();
-     
 
-       
+
+
 
 
         $this->data['content'] =  $this->linkIndex;; // đường dẫn tới file view

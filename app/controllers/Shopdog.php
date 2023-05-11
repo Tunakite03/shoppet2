@@ -44,9 +44,7 @@ class ShopDog extends Controller
             return $this->render('../errors/404');
         }
         $this->data['sub_content']['product'] = $products->getDetail($id_pet, $id);
-
         if (empty($this->data['sub_content']['product'])) {
-
             return $this->render('../errors/404');
         }
         $this->link = "shopdog/detail";

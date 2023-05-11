@@ -6,17 +6,16 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Hình ảnh</th>
                             <th>Tên</th>
-                            <th>Thú cưng</th>
-                            <th>Số lượng</th>
+                            <th>email</th>
+                            <th>phone</th>
                             <th>Giá bán</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $data =  $data_products->fetchAll();
+                        $data =  $data_customers->fetchAll();
                         foreach ($data as $key => $value) {
                         ?>
                             <tr>
@@ -29,8 +28,6 @@
                                 <td>
                                     <a name="" id="" class="btn btn-primary" href="#" role="button">Sửa</a>
                                     <a name="" id="" class="btn btn-warning" href="#" role="button">Xóa</a>
-
-
                                 </td>
                             </tr>
                         <?php } ?>

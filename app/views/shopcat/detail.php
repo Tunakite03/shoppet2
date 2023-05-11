@@ -21,7 +21,7 @@
                                         <strike>' . number_format($product['price']) . '</strike><sup><u>đ</u></sup></br></h5>';
                 }
                 ?>
-                <form>
+                <form action="/cart/addtocart/<?= $product["id"] ?>" method="post">
                     <div class="mb-3">
                         <label for="quantity" class="form-label">Số lượng:</label>
                         <input style="width: auto;" type="number" class="form-control" id="quantity" name="quantity" value="1">

@@ -1,6 +1,13 @@
 <?php
 class Controller
 {
+    public function __construct()
+    {
+        if (isset($_SESSION['loggedID'])) {
+            $cart =  $this->model("CartModel");
+            $_SESSION['countCart'] = $cart->getCountProductsInCart($_SESSION['loggedID']);
+        }
+    }
     public function model($model)
     {
         if (file_exists(__DIR_ROOT . "././app/models/" . $model . ".php")) {

@@ -53,7 +53,7 @@
                                     foreach ($products as $key => $product) {
                                     ?>
                                         <tr>
-                                            <td><img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/cat/milk1.png" alt="" width="100">
+                                            <td><img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product['id_pet'] == 1 ? "dog" : "cat" ?>/<?php echo $product['image'] ?>" alt="" width="100">
                                             </td>
                                             <td><?= $product['product_name'] ?></td>
                                             <td><?= number_format($product['price'], 0, ".", ".") ?> VND</td>
@@ -90,8 +90,8 @@
                             </tbody>
                         </table>
                         <div class="text-end mt-4">
-                            <button class="btn btn-login" style="border-radius: 5px;">Tiến hành thanh
-                                toán</button>
+                            <a href="/checkout" class="btn btn-login" style="border-radius: 5px;">Tiến hành thanh
+                                toán</a>
                         </div>
                     </div>
                 </div>
