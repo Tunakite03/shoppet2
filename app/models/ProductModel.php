@@ -139,26 +139,7 @@ class ProductModel
             echo $ex;
         }
     }
-    public function getSearchItemName($searchTerm, $id_pet)
-    {
-        try {
-            $query = "SELECT * FROM `products` WHERE `name` like '%$searchTerm%' and id_pet=$id_pet";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-    }
-    public function getSearchItemBrand($searchTerm, $id_pet)
-    {
-        try {
-            $query = "SELECT * FROM brands br, products pr WHERE br.id = pr.id_brand  and br.name like '%$searchTerm%'and id_pet=$id_pet";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-    }
+   
 
     public function getCategories()
     {
@@ -170,19 +151,47 @@ class ProductModel
             echo $ex;
         }
     }
+    public function getType()
+    {
+        try {
+            $query = "SELECT *
+            FROM category_type";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
 
 
     public function getProductCate($id_pet, $name_cate)
     {
         try {
-            $query = "SELECT pr.image as image, 
-             pr.name as  name ,pr.price as price, pr.id as id, pr.sale as sale
+            $query = "SELECT
+            pr.*
         FROM
             products pr,
             categories ca,
             category_type cat
         WHERE
             pr.id_type = cat.id AND cat.id_category = ca.id AND ca.name LIKE '%$name_cate%' AND pr.id_pet = $id_pet";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getProductType($id_pet, $name_cate,$name_type)
+    {
+        try {
+            $query = "SELECT
+        pr. *
+        FROM
+            products pr,
+            categories ca,
+            category_type cat
+        WHERE
+            pr.id_type = cat.id AND cat.id_category = ca.id AND ca.name LIKE '%$name_cate%' AND cat.name LIKE '%$name_type%' AND pr.id_pet = $id_pet";
             $stmt = $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {
