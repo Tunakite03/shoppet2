@@ -24,7 +24,7 @@
                         ?>
                             <tr>
                                 <td><?= $key ?></td>
-                                <td><img width="100px" src="<?= _WEB_ROOT ?>/public/assets/img/img_pet/<?= strtolower($value['pet_name']) . '/' . $value['image'] ?>" /></td>
+                                <td><img width="100px" src="<?= _WEB_ROOT ?>/public/assets/img/img_pet/<?= $value['image'] ?>" /></td>
                                 <td><?= $value['name'] ?></td>
                                 <td><?= $value['pet_name'] ?></td>
                                 <td><?= $value['quantity'] ?></td>

@@ -572,7 +572,9 @@ fieldset {
     margin: 0;
     border: 0
 }
-
+.is-invalid{
+    border: 2px solid red;
+}
 legend {
     float: left;
     width: 100%;

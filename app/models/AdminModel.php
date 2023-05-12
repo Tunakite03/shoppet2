@@ -41,6 +41,16 @@ class AdminModel
             echo $ex;
         }
     }
+    public function getSubcate()
+    {
+        try {
+            $query = "SELECT * FROM `category_type`;";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getBrands()
     {
         try {
@@ -54,7 +64,7 @@ class AdminModel
     public function getProductById($id)
     {
         try {
-            $query = "SELECT pr.*, p.name as pet_name, b.name as brand_name, cty.name as subcate_name, cat.name as cate_name, cat.id as id_cate FROM products pr
+            $query = "SELECT pr.*, p.name as pet_name, b.name as brand_name, cty.id as id_type ,cty.name as subcate_name, cat.name as cate_name, cat.id as id_cate FROM products pr
             JOIN pets p ON pr.id_pet = p.id
             JOIN brands b ON pr.id_brand = b.id
             JOIN category_type cty ON cty.id= pr.id_type
@@ -77,19 +87,31 @@ class AdminModel
             echo $ex;
         }
     }
+
+    public function editImageProduct($id, $image)
+    {
+        try {
+            $query = "UPDATE `products` 
+            SET
+            `id_type`=$image,
+            WHERE id=$id";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function editProduct(
         $id,
         $id_type,
         $id_pet,
         $name,
         $id_brand,
-        $image,
         $price,
         $sale,
         $des,
         $quantity,
-        $preserve,
-        $product_manual,
+
     ) {
         try {
             $query = "UPDATE `products` 
@@ -98,13 +120,10 @@ class AdminModel
             `id_pet`=$id_pet,
             `name`='$name',
             `id_brand`=$id_brand,
-            `image`=$image,
             `price`=$price,
             `sale`=$sale,
-            `des`='$des'
-            `quantity`=$quantity,
-            `preserve`='$preserve',
-            `product_manual`='$product_manual',
+            `des`='$des',
+            `quantity`=$quantity
             WHERE id=$id";
             $stmt = $this->db->exec($query);
             return $stmt;

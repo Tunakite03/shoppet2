@@ -38,13 +38,106 @@ class Admin extends Controller
         if (is_numeric($id)) {
             $admin = $this->model("AdminModel");
             $products = $this->model("ProductModel");
+            $this->data['sub_content']['successEdit'] = "";
 
+            // Edit image of product
+            // Check if the form was submitted
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editImageSubmit'])) {
+                // Get the uploaded file name
+                $imageName = $_FILES['image']['name'];
+
+                // Check if a file was uploaded
+                if ($imageName !== '') {
+                    // Get the temporary file name and path
+                    $tmpName = $_FILES['image']['tmp_name'];
+
+                    // Create a unique file name to avoid overwriting existing files
+                    $newName = uniqid() . '_' . $imageName;
+
+                    // Get the file extension
+                    $extension = pathinfo($newName, PATHINFO_EXTENSION);
+
+                    // Define the allowed file types
+                    $allowedTypes = array('jpg', 'jpeg', 'png', 'gif');
+
+                    // Check if the file type is allowed
+                    if (in_array(strtolower($extension), $allowedTypes)) {
+                        // Define the upload directory
+                        $uploadDir = 'public/assets/img/img_pet/';
+
+                        // Check if a file with the same name already exists
+                        if (file_exists($uploadDir . $newName)) {
+                            $this->data['sub_content']['errorsEdit'] = "A file with the same name already exists.";
+                        } else {
+                            // Check the file size is less than 500 KB
+                            if ($_FILES['image']['size'] > 500000) {
+                                $this->data['sub_content']['errorsEdit'] = "The file size must be less than 500 KB.";
+                            } else {
+                                // Create the upload directory if it doesn't exist
+                                if (!file_exists($uploadDir)) {
+                                    mkdir($uploadDir, 0777, true);
+                                }
+
+                                // Upload the file to the server
+                                $uploadPath = $uploadDir . $newName;
+                                if (move_uploaded_file($tmpName, $uploadPath)) {
+                                    // Update the image name in the database
+                                    $data_product['image'] = $newName;
+                                    $admin->editImageProduct($data_product);
+                                    // Redirect back to the edit page
+                                    header('Location: ' . _WEB_ROOT . '/edit-product.php?id=' . $data_product['id']);
+                                    exit();
+                                } else {
+                                    // Handle the upload error
+                                    $this->data['sub_content']['errorsEdit'] = "Xảy ra lỗi trong khi upload ảnh";
+                                }
+                            }
+                        }
+                    } else {
+                        // Handle the invalid file type
+                        $this->data['sub_content']['errorsEdit'] = "Vui lòng chọn file có đuôi: JPG, JPEG, PNG, and GIF files are allowed.";
+                    }
+                } else {
+                    // Handle the missing file error
+                    $this->data['sub_content']['errorsEdit'] = "Vui lòng chọn file";
+                }
+            }
+
+
+            // Edit info product
+
+            if (isset($_POST['editProductSubmit'])) {
+                $name = $_POST['name'];
+                $pet_id = $_POST['pet_id'];
+                $quantity = $_POST['quantity'];
+                $price = $_POST['price'];
+                $cate_id = $_POST['cate_id'];
+                $subcate_id = $_POST['sub_id'];
+                $brand_id = $_POST['brand_id'];
+                $sale = $_POST['sale'];
+                $des = $_POST['des'];
+                $result = $admin->editProduct(
+                    $id,
+                    $subcate_id,
+                    $pet_id,
+                    $name,
+                    $brand_id,
+                    $price,
+                    $sale,
+                    $des,
+                    $quantity
+                );
+                if ($result == 1) {
+                    $this->data['sub_content']['successEdit'] = true;
+                } else {
+                    $this->data['sub_content']['errorsEdit'] = "Chinh sua khong thanh cong";
+                }
+            }
             $this->data['sub_content']['data_product'] = $admin->getProductById($id);
-            $this->data['sub_content']['data_pets'] = $admin->getPets();
-            $this->data['sub_content']['data_brands'] = $admin->getBrands();
-            $this->data['sub_content']['data_categories'] = $products->getCategories();
-
-
+            $this->data['sub_content']['data_pets'] = $admin->getPets()->fetchAll();
+            $this->data['sub_content']['data_brands'] = $admin->getBrands()->fetchAll();
+            $this->data['sub_content']['data_categories'] = $products->getCategories()->fetchAll();
+            $this->data['sub_content']['data_subCategory'] = $admin->getSubcate()->fetchAll();
             $this->link = "admin/products/editProduct";
             $this->data['content'] = $this->link; // đường dẫn tới file view
             // Render Views
