@@ -53,7 +53,7 @@
                                     foreach ($products as $key => $product) {
                                     ?>
                                         <tr>
-                                            <td><img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product['id_pet'] == 1 ? "dog" : "cat" ?>/<?php echo $product['image'] ?>" alt="" width="100">
+                                            <td><img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product['image'] ?>" alt="" width="100">
                                             </td>
                                             <td><?= $product['product_name'] ?></td>
                                             <td><?= number_format($product['price'], 0, ".", ".") ?> VND</td>

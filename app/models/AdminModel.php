@@ -88,12 +88,42 @@ class AdminModel
         }
     }
 
+    public function addNewProduct(
+        $id_type,
+        $id_pet,
+        $name,
+        $id_brand,
+        $image,
+        $price,
+        $sale,
+        $des,
+        $quantity
+
+    ) {
+        try {
+            $query = "INSERT INTO `products`(`id`, `id_type`, `id_pet`, `name`, `id_brand`, `image`, `price`, `sale`, `des`, `quantity`,`number_sell`) 
+            VALUES (Null
+            ,$id_type
+            ,$id_pet
+            ,'$name'
+            ,$id_brand
+            ,'$image'
+            ,$price
+            ,$sale
+            ,'$des'
+            ,$quantity
+            ,0)";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function editImageProduct($id, $image)
     {
         try {
             $query = "UPDATE `products` 
-            SET
-            `id_type`=$image,
+            SET `image`='$image'
             WHERE id=$id";
             $stmt = $this->db->exec($query);
             return $stmt;

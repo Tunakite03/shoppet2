@@ -7,12 +7,8 @@
     <title>Modernize Free</title>
     <link rel="shortcut icon" type="image/png" href="<?php echo _WEB_ROOT ?>/public/assets/img/logos/faviconAdmin.png" />
     <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/admin/css/styles.min.css" />
-    <!--  <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/admin/css/data-table/bootstrap-table.css">
-    <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/admin/css/data-table/bootstrap-editable.css">
-    <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/admin/css/editor/select2.css">
-    <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/admin/css/editor/datetimepicker.css">
-    <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/admin/css/editor/bootstrap-editable.css">
-    <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/admin/css/editor/x-editor-style.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -57,28 +53,6 @@
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/libs/simplebar/dist/simplebar.js"></script>
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/dashboard.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-    <!-- <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/data-table/bootstrap-table.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/data-table/tableExport.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/data-table/data-table-active.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/data-table/bootstrap-table-editable.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/data-table/bootstrap-editable.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/data-table/bootstrap-table-resizable.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/data-table/colResizable-1.5.source.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/data-table/bootstrap-table-export.js"></script> -->
-    <!--  editable JS
-		============================================ -->
-    <!-- <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/editable/jquery.mockjax.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/editable/mock-active.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/editable/select2.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/editable/moment.min.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/editable/bootstrap-datetimepicker.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/editable/bootstrap-editable.js"></script>
-    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/editable/xediable-active.js"></script> -->
-
-
-
     <!-- Bootstrap core JavaScript-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
@@ -88,7 +62,6 @@
         $(document).ready(function() {
             $('#table_products').DataTable();
         });
-     
     </script>
     <script>
         // 

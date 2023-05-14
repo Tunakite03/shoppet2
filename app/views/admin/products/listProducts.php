@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row mt-5">
             <div class="d-flex justify-content-end">
-                <button class="btn btn-success my-3">Thêm sản phẩm mới</button>
+                <a href="/admin/addnewproduct" class="btn btn-success my-3">Thêm sản phẩm mới</a>
             </div>
             <div class=" col-md-12">
                 <table id="table_products" class="table table-bordered table-" style="width:100%">
@@ -31,7 +31,7 @@
                                 <td><?= number_format($value['price'], 0, ".", ".") ?> VND</td>
                                 <td>
                                     <a name="" id="" class="btn btn-primary my-2" href="/admin/editproduct/<?= $value['id'] ?>" role="button">Sửa</a>
-                                    <a name="" id="" class="btn btn-warning  my-2" href="/admin/deleteproduct/<?= $value['id'] ?>" role="button">Xóa</a>
+                                    <a name="" id="" class="btn btn-warning my-2 delete-product" href="/admin/deleteproduct/<?= $value['id'] ?>" role="button">Xóa</a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -41,5 +41,28 @@
             </div>
         </div>
     </div>
-
 </section>
+<script>
+    // Add an event listener to the delete button
+    document.querySelectorAll('.delete-product').forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            // Show the SweetAlert confirmation dialog
+            Swal.fire({
+                title: 'Bạn có chắc chắn muốn xóa sản phẩm này?',
+                text: "Hành động này không thể hoàn tác!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đồng ý',
+                cancelButtonText: 'Hủy bỏ'
+            }).then((result) => {
+                // If the user clicked "OK", redirect to the delete URL
+                if (result.isConfirmed) {
+                    window.location.href = button.href;
+                }
+            });
+        });
+    });
+</script>

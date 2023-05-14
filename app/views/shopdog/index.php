@@ -2,7 +2,7 @@
 
 <section class="hero-begin" style="padding-top:10rem;">
     <div class="container">
-        
+
 
     </div>
 </section>
@@ -59,7 +59,7 @@
 
                 <?php
                 if (isset($productsSaleDog)) {
-                    ?>
+                ?>
                     <!-- Sale off -->
 
                     <div class="product-discount">
@@ -70,13 +70,12 @@
                             <div class="product-discount-slider owl-carousel">
                                 <?php
 
-                                while ($set = $productsSaleDog->fetch()):
-                                    ?>
+                                while ($set = $productsSaleDog->fetch()) :
+                                ?>
                                     <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
                                         <div class="product__discount__item">
                                             <div class="product__discount__item__pic set-bg">
-                                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>"
-                                                    alt="" width="100%">
+                                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $set["image"] ?>" alt="" width="100%">
                                                 <div>
                                                     <div class="product__discount__percent">-
                                                         <?php echo round((($set['price'] - $set['sale']) / $set['price']) * 100, 0) ?>%
@@ -119,17 +118,17 @@
 
                 <?php
                 if ($productsDog->rowCount() > 0) {
-                    ?>
+                ?>
                     <div class="filter-item">
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
-                            <div class="filter-sort">
-                                <span>Xem Theo:</span>
-                                <select>
-                                    <option value="0">Tăng Dần</option>
-                                    <option value="0">Giảm Dần</option>
-                                </select>
-                            </div>
+                                <div class="filter-sort">
+                                    <span>Xem Theo:</span>
+                                    <select>
+                                        <option value="0">Tăng Dần</option>
+                                        <option value="0">Giảm Dần</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter-found">
@@ -137,8 +136,8 @@
 
                                     <h6><span>
                                             <?php
-                                                $totalProducts = $productsDog->rowCount();
-                                                echo $totalProducts;
+                                            $totalProducts = $productsDog->rowCount();
+                                            echo $totalProducts;
                                             ?>
                                         </span> Products found</h6>
                                 </div>
@@ -160,8 +159,7 @@
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product-item">
                                     <div class="product-item-pic set-bg">
-                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $product["image"] ?>"
-                                            alt="" width="100%">
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product["image"] ?>" alt="" width="100%">
 
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -170,7 +168,7 @@
                                         </ul>
                                     </div>
                                     <div class="product-item-text">
-                                    <h6><a href="<?= _WEB_ROOT ?>/shopdog/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
+                                        <h6><a href="<?= _WEB_ROOT ?>/shopdog/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
 
                                         <?php
                                         if ($product["price"] > $product["sale"] && $product["sale"] == 0) {
@@ -190,27 +188,26 @@
                     <!-- display the pagination links -->
                     <div class="product-pagination text-center">
                         Trang:
-                        <?php if ($currentPage > 1): ?>
+                        <?php if ($currentPage > 1) : ?>
                             <a href="/shopdog/?page=<?php echo $currentPage - 1; ?>"><i class="fa fa-long-arrow-left"></i></a>
                         <?php endif; ?>
-                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                            <a href="/shopdog/?page=<?php echo $i; ?><?php isset($_GET['keysearch']) ? '&&keysearch=' . $_GET['keysearch'] : '' ?>"
-                                <?php if ($i === $currentPage)
-                                    echo 'class="active"'; ?>><?php echo $i; ?></a>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                            <a href="/shopdog/?page=<?php echo $i; ?><?php isset($_GET['keysearch']) ? '&&keysearch=' . $_GET['keysearch'] : '' ?>" <?php if ($i === $currentPage)
+                                                                                                                                                        echo 'class="active"'; ?>><?php echo $i; ?></a>
                         <?php endfor; ?>
-                        <?php if ($currentPage < $totalPages): ?>
+                        <?php if ($currentPage < $totalPages) : ?>
                             <a href="/shopdog/?page=<?php echo $currentPe + 1; ?>"><i class="fa fa-long-arrow-right"></i></a>
                         <?php endif; ?>
                     </div>
-                    <?php
+                <?php
                 } else {
-                    ?>
+                ?>
                     <div class="row">
                         <div class="col-12">
                             <p>Không có sản phẩm</p>
                         </div>
                     </div>
-                    <?php
+                <?php
                 }
                 ?>
 
@@ -222,5 +219,5 @@
 </section>
 <!-- Product Section End -->
 <script>
-    
+
 </script>

@@ -4,7 +4,7 @@
             <div class="col-md-6">
                 <div class="product-image-slider">
                     <div class="zoom-overlay">
-                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/cat/<?php echo $product["image"] ?>" alt="Ảnh sản phẩm">
+                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product["image"] ?>" alt="Ảnh sản phẩm">
                     </div>
                 </div>
             </div>
