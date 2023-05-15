@@ -25,7 +25,7 @@
                                 <td><?= $value['subcategory_names'] ?></td>
 
                                 <td>
-                                    <a name="" id="" class="btn btn-primary my-2 mx-2" href="#" role="button">Sửa</a>
+                                    <a name="" id="" class="btn btn-primary my-2 mx-2" href="/admin/editcategory/<?= $value['id'] ?>" role="button">Sửa</a>
                                     <a name="" id="" class="btn btn-warning my-2 mx-2" href="#" role="button">Xóa</a>
                                 </td>
                             </tr>

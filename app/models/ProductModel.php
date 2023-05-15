@@ -21,7 +21,7 @@ class ProductModel
     public function getCategoriesInfo()
     {
         try {
-            $query = "SELECT c.name AS category_name, GROUP_CONCAT(s.name SEPARATOR ', ') AS subcategory_names
+            $query = "SELECT c.id as id, c.name AS category_name, GROUP_CONCAT(s.name SEPARATOR ', ') AS subcategory_names
             FROM categories c
             LEFT JOIN category_type s ON c.id = s.id_category
             GROUP BY c.id";

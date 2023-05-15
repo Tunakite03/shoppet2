@@ -19,6 +19,18 @@ class AdminModel
             echo $ex;
         }
     }
+    public function getCategoryByID($id)
+    {
+        try {
+            $query = "SELECT cat.name as name_cate, cat.id as cate_id, cty.name as name_subcate, cty.id as subcate_id FROM `categories` cat
+            JOIN `category_type` cty ON cat.id = cty.id_category
+             WHERE cat.id='$id'";
+            $stmt =  $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getAdmin($email)
     {
         try {
@@ -49,6 +61,17 @@ class AdminModel
             return $stmt;
         } catch (\Throwable $ex) {
             echo $ex;
+        }
+    }
+
+    public function updateCategory($id, $cate_name, $subcate)
+    {
+        try {
+            $query = "UPDATE `categories` SET `name`='$cate_name' WHERE id='$id'";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $th) {
+            //throw $th;
         }
     }
     public function getBrands()

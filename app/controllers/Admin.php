@@ -10,7 +10,6 @@ class Admin extends Controller
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
     }
-
     public function products()
     {
         $this->data['sub_content']['product'] = "";
@@ -377,7 +376,7 @@ class Admin extends Controller
         $this->data['sub_content']['product'] = "";
         $categories = $this->model("ProductModel");
         $this->data['sub_content']['data_categories'] = $categories->getCategoriesInfo();
-        $this->link = "admin/categories/editcategories";
+        $this->link = "admin/categories/listCategories";
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
@@ -400,7 +399,6 @@ class Admin extends Controller
     public function registerAdmin()
     {
         $this->data['sub_content']['product'] = "";
-
         $admin = $this->model("AdminModel");
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registerSubmit'])) {
@@ -426,5 +424,26 @@ class Admin extends Controller
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
+    }
+
+    public function editcategory($id = "")
+    {
+        if (is_numeric($id)) {
+            $admin = $this->model("AdminModel");
+            $products = $this->model("ProductModel");
+            $this->data['sub_content']['data'] = "";
+            $this->data['sub_content']['data_category'] = $admin->getCategoryByID($id);
+
+            if (isset($_POST['editCategorySubmit'])) {
+                print_r($_POST);
+                die;
+            }
+
+            $this->link = "admin/categories/editcategory";
+            $this->data['content'] = $this->link; // đường dẫn tới file view
+            $this->render('layouts/admin_layout', $this->data);
+        } else {
+            header("Location: /admin/categories");
+        }
     }
 }
