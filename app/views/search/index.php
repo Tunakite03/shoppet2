@@ -33,7 +33,7 @@ if (!empty($_GET['table']) && !empty($_GET['key'])) {
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product-item">
                                 <div class="product-item-pic set-bg">
-                                    <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/cat/<?php echo $product["image"] ?>"
+                                    <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product["image"] ?>"
                                         alt="" width="100%">
 
                                     <ul class="product__item__pic__hover">
@@ -43,7 +43,7 @@ if (!empty($_GET['table']) && !empty($_GET['key'])) {
                                     </ul>
                                 </div>
                                 <div class="product-item-text">
-                                    <h6><a href="/shopcat/detail/<?php echo $product["id"] ?>"><span>
+                                    <h6><a href="/shop<?php echo $product["id_pet"] == 1 ? "dog" : ($product["id_pet"] == 2 ? "cat" : "");?>/detail/<?php echo $product["id"] ?>"><span>
                                                 <?php echo $product["name"] ?>
                                             </span></a></h6>
                                     <?php

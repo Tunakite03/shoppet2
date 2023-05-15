@@ -5,7 +5,7 @@
             <div class="col-md-6">
                 <div class="product-image-slider">
                     <div class="zoom-overlay">
-                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $product["image"] ?>" alt="Ảnh sản phẩm">
+                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product["image"] ?>" alt="Ảnh sản phẩm">
                     </div>
                     <!-- <div class="slider-main">
                         <img src="https://via.placeholder.com/600x400" alt="Ảnh sản phẩm">
@@ -31,7 +31,7 @@
                                         <strike>'.number_format($product['price']).'</strike><sup><u>đ</u></sup></br></h5>';
                                     }
                                     ?>
-                <form>
+                <form action="/cart/addtocart/<?= $product["id"] ?>" method="post" >
                     <div class="mb-3">
                         <label for="quantity" class="form-label">Số lượng:</label>
                         <input style="width: auto;" type="number" class="form-control" id="quantity" name="quantity"

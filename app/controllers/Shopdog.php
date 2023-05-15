@@ -75,28 +75,6 @@ class ShopDog extends Controller
         // Render Views
         $this->render('layouts/client_layout', $this->data);
     }
-    public function getFilter()
-    {
-
-        if (isset($_POST['minPrice'], $_POST['maxPrice']) && !empty($_POST['minPrice']) && !empty($_POST['maxPrice'])) {
-            $min = $_POST['minPrice'];
-            $max = $_POST['maxPrice'];
-        }
-        $products = $this->model("ProductModel");
-
-
-
-        $this->data['sub_content']['type'] = $products->getType();
-        $this->data['sub_content']['categories'] = $products->getCategories();
-        $this->data['sub_content']['productsSaleDog'] = $products->getProductSaleDogAll();
-
-
-        $this->data['sub_content']['productsDog'] = $products->getFilter($min, $max);
-        $this->data['content'] = "shopdog/index"; //duong dan
-
-        // Render Views
-        $this->render('layouts/client_layout', $this->data);
-    }
 
 
 }

@@ -54,12 +54,20 @@
 
                     </div>
                     <div class="sidebar-item">
+                        <h4>Giá</h4>
                         <div class="price-range-wrap">
-                            <h3>Price</h3>
-                            <input type="hidden" id="min" value="10000" />
-                            <input type="hidden" id="max" value="150000" />
-                            <p id="price_show" style="color: #dc3545;">1,000<sup>đ</sup> - 1,500,000<sup>đ</sup></p>
-                            <div id="price_range"></div>
+                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="540">
+                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                            </div>
+                            <div class="range-slider">
+                                <div class="price-input mt-3">
+                                    <input disabled style="background-color: transparent;" type="text" id="minamount" min="0">
+                                    <input disabled style="background-color: transparent;" type="text" id="maxamount" max="100">
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -201,14 +209,14 @@
                     <div class="product-pagination text-center">
                         Trang:
                         <?php if ($currentPage > 1) : ?>
-                            <a href="/shopdog/?page=<?php echo $currentPage - 1; ?>"><i class="fa fa-long-arrow-left"></i></a>
+                            <a href="?page=<?php echo $currentPage - 1; ?>"><i class="fa fa-long-arrow-left"></i></a>
                         <?php endif; ?>
                         <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                            <a href="/shopdog/?page=<?php echo $i; ?><?php isset($_GET['keysearch']) ? '&&keysearch=' . $_GET['keysearch'] : '' ?>" <?php if ($i === $currentPage)
+                            <a href="?page=<?php echo $i; ?>" <?php if ($i === $currentPage)
                                                                                                                                                         echo 'class="active"'; ?>><?php echo $i; ?></a>
                         <?php endfor; ?>
                         <?php if ($currentPage < $totalPages) : ?>
-                            <a href="/shopdog/?page=<?php echo $currentPe + 1; ?>"><i class="fa fa-long-arrow-right"></i></a>
+                            <a href="?page=<?php echo $currentPage + 1; ?>"><i class="fa fa-long-arrow-right"></i></a>
                         <?php endif; ?>
                     </div>
                 <?php

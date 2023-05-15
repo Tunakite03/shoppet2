@@ -133,7 +133,7 @@
                         endwhile;
                         ?>
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="">Xem Thêm</a>
+                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="/shopdog">Xem Thêm</a>
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                             endwhile;
                             ?>
                             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="">Xem Thêm</a>
+                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="/shopcat">Xem Thêm</a>
                             </div>
                         </div>
                     </div>
@@ -256,7 +256,7 @@
                         endwhile;
                         ?>
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="">Xem Thêm</a>
+                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="/shopdog">Xem Thêm</a>
                         </div>
                     </div>
                 </div>
@@ -304,7 +304,7 @@
                             endwhile;
                             ?>
                             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="">Xem Thêm</a>
+                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="/shopcat">Xem Thêm</a>
                             </div>
                         </div>
                     </div>
