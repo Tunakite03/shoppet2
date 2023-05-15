@@ -305,15 +305,31 @@ class Admin extends Controller
     {
         if (is_numeric($id)) {
             $admin = $this->model("AdminModel");
-            $products = $this->model("ProductModel");
-            $this->data['sub_content']['data'] = "";
-            $this->data['sub_content']['data_category'] = $admin->getCategoryByID($id);
-
             if (isset($_POST['editCategorySubmit'])) {
-                print_r($_POST);
-                die;
-            }
+                // Sanitize the user input
+                // Sanitize the user input
+                $subcate = filter_input(INPUT_POST, 'subcate', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                $nameCate = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                try {
+                    // Update the name of the category
+                    $result = $admin->updateNameCategory($id, $nameCate);
 
+                    // Delete the subcategories
+                    $result = $admin->deleteSubcategory($id);
+
+                    // Insert the new subcategories
+                    foreach ($subcate as $key => $subcate_name) {
+                        $result = $admin->insertSubcategory($id, $subcate_name);
+                    }
+
+                    // Set success message if the update was successful
+                    $this->data['sub_content']['successEdit'] = true;
+                } catch (Exception $e) {
+                    // Set error message if there was an error
+                    $this->data['sub_content']['errorsEdit'] = true;
+                }
+            }
+            $this->data['sub_content']['data_category'] = $admin->getCategoryByID($id);
             $this->link = "admin/categories/editcategory";
             $this->data['content'] = $this->link; // đường dẫn tới file view
             $this->render('layouts/admin_layout', $this->data);

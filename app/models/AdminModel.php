@@ -64,16 +64,38 @@ class AdminModel
         }
     }
 
-    public function updateCategory($id, $cate_name, $subcate)
+    public function updateNameCategory($id, $cate_name)
     {
         try {
             $query = "UPDATE `categories` SET `name`='$cate_name' WHERE id='$id'";
-            $stmt = $this->db->getList($query);
+            $stmt = $this->db->exec($query);
             return $stmt;
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Throwable $ex) {
+            echo $ex;
         }
     }
+    public function deleteSubcategory($id_category)
+    {
+        try {
+            $query = "DELETE FROM `category_type` WHERE id_category = $id_category";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function insertSubcategory($id_category, $subcate_name)
+    {
+        try {
+            $query = "INSERT INTO category_type (id_category, name)
+            VALUES ($id_category, '$subcate_name')";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+
     public function getBrands()
     {
         try {
