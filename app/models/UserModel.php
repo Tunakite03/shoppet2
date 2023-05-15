@@ -84,7 +84,7 @@ class UserModel
     public function getAllUsers()
     {
         try {
-            $query = "SELECT * FROM customers";
+            $query = "SELECT * FROM customers Where 1";
             $stmt = $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {

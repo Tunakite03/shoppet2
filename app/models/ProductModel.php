@@ -17,6 +17,20 @@ class ProductModel
             echo $ex;
         }
     }
+
+    public function getCategoriesInfo()
+    {
+        try {
+            $query = "SELECT c.name AS category_name, GROUP_CONCAT(s.name SEPARATOR ', ') AS subcategory_names
+            FROM categories c
+            LEFT JOIN category_type s ON c.id = s.id_category
+            GROUP BY c.id";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getListProductNew_Dog()
     {
         try {
@@ -30,8 +44,9 @@ class ProductModel
     public function getAllProducts()
     {
         try {
-            $query = "SELECT pr.*, p.name as pet_name FROM products pr
-            JOIN pets p ON pr.id_pet = p.id";
+            $query = "SELECT pr.*, p.name as pet_name, b.name as brand_name FROM products pr
+            JOIN pets p ON pr.id_pet = p.id
+            JOIN brands b ON pr.id_brand = b.id";
             $stmt = $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {
@@ -126,7 +141,7 @@ class ProductModel
             echo $ex;
         }
     }
-   
+
 
     public function getCategories()
     {
@@ -168,7 +183,7 @@ class ProductModel
             echo $ex;
         }
     }
-    public function getProductType($id_pet, $name_cate,$name_type)
+    public function getProductType($id_pet, $name_cate, $name_type)
     {
         try {
             $query = "SELECT
@@ -189,7 +204,6 @@ class ProductModel
 
     public function getDetail($id_pet, $id_product)
     {
-
         try {
 
             $query = "SELECT * FROM `products` WHERE `id_pet`= $id_pet and `id`=$id_product";

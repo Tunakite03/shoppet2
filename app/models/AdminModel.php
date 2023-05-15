@@ -29,4 +29,136 @@ class AdminModel
             echo $ex;
         }
     }
+
+
+    public function getPets()
+    {
+        try {
+            $query = "SELECT * FROM `pets`;";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getSubcate()
+    {
+        try {
+            $query = "SELECT * FROM `category_type`;";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getBrands()
+    {
+        try {
+            $query = "SELECT * FROM `brands`;";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getProductById($id)
+    {
+        try {
+            $query = "SELECT pr.*, p.name as pet_name, b.name as brand_name, cty.id as id_type ,cty.name as subcate_name, cat.name as cate_name, cat.id as id_cate FROM products pr
+            JOIN pets p ON pr.id_pet = p.id
+            JOIN brands b ON pr.id_brand = b.id
+            JOIN category_type cty ON cty.id= pr.id_type
+            JOIN categories cat ON cty.id_category = cat.id 
+        WHERE  pr.id= $id";
+            $stmt =  $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function deleteProduct($id)
+    {
+        try {
+            $query = "DELETE FROM `products` WHERE id=$id";
+            $stmt = $this->db->exec($query);
+            echo ($stmt);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+
+    public function addNewProduct(
+        $id_type,
+        $id_pet,
+        $name,
+        $id_brand,
+        $image,
+        $price,
+        $sale,
+        $des,
+        $quantity
+
+    ) {
+        try {
+            $query = "INSERT INTO `products`(`id`, `id_type`, `id_pet`, `name`, `id_brand`, `image`, `price`, `sale`, `des`, `quantity`,`number_sell`) 
+            VALUES (Null
+            ,$id_type
+            ,$id_pet
+            ,'$name'
+            ,$id_brand
+            ,'$image'
+            ,$price
+            ,$sale
+            ,'$des'
+            ,$quantity
+            ,0)";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function editImageProduct($id, $image)
+    {
+        try {
+            $query = "UPDATE `products` 
+            SET `image`='$image'
+            WHERE id=$id";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function editProduct(
+        $id,
+        $id_type,
+        $id_pet,
+        $name,
+        $id_brand,
+        $price,
+        $sale,
+        $des,
+        $quantity,
+
+    ) {
+        try {
+            $query = "UPDATE `products` 
+            SET
+            `id_type`=$id_type,
+            `id_pet`=$id_pet,
+            `name`='$name',
+            `id_brand`=$id_brand,
+            `price`=$price,
+            `sale`=$sale,
+            `des`='$des',
+            `quantity`=$quantity
+            WHERE id=$id";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
 }

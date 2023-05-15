@@ -68,7 +68,7 @@
 
                 <?php
                 if (isset($productsSaleDog)) {
-                    ?>
+                ?>
                     <!-- Sale off -->
 
                     <div class="product-discount">
@@ -79,13 +79,12 @@
                             <div class="product-discount-slider owl-carousel">
                                 <?php
 
-                                while ($set = $productsSaleDog->fetch()):
-                                    ?>
+                                while ($set = $productsSaleDog->fetch()) :
+                                ?>
                                     <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
                                         <div class="product__discount__item">
                                             <div class="product__discount__item__pic set-bg">
-                                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>"
-                                                    alt="" width="100%">
+                                                <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $set["image"] ?>" alt="" width="100%">
                                                 <div>
                                                     <div class="product__discount__percent">-
                                                         <?php echo round((($set['price'] - $set['sale']) / $set['price']) * 100, 0) ?>%
@@ -129,7 +128,7 @@
                 <?php
         
                 if ($productsDog->rowCount() > 0) {
-                    ?>
+                ?>
                     <div class="filter-item">
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
@@ -164,27 +163,23 @@
                     </div>
                     <div class="row">
                         <?php
+                        $productsToShow = array_slice($productsDog->fetchAll(), $from, $productsPerPage);
+                        $totalPages = ceil($totalProducts / $productsPerPage);
+                        foreach ($productsToShow as $product) { ?>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product-item">
+                                    <div class="product-item-pic set-bg">
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $product["image"] ?>"
+                                            alt="" width="100%">
 
-
-
-                            $productsToShow = array_slice($productsDog->fetchAll(), $from, $productsPerPage);
-                            $totalPages = ceil($totalProducts / $productsPerPage);
-                            foreach ($productsToShow as $product) { ?>
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product-item">
-                                        <div class="product-item-pic set-bg">
-                                            <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $product["image"] ?>"
-                                                alt="" width="100%">
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="/cart/addtocart/<?= $product["id"] ?>"><i
-                                                            class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-item-text">
-                                            <h6><a href="<?= _WEB_ROOT ?>/shopdog/detail/<?php echo $product["id"] ?>"><span>
-                                                        <?php echo $product["name"] ?>
-                                                    </span></a></h6>
+                                        <ul class="product__item__pic__hover">
+                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-item-text">
+                                    <h6><a href="<?= _WEB_ROOT ?>/shopdog/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
 
                                             <?php
                                             if ($product["price"] > $product["sale"] && $product["sale"] == 0) {
@@ -205,27 +200,26 @@
                     <!-- display the pagination links -->
                     <div class="product-pagination text-center">
                         Trang:
-                        <?php if ($currentPage > 1): ?>
+                        <?php if ($currentPage > 1) : ?>
                             <a href="/shopdog/?page=<?php echo $currentPage - 1; ?>"><i class="fa fa-long-arrow-left"></i></a>
                         <?php endif; ?>
-                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                            <a href="/shopdog/?page=<?php echo $i; ?><?php isset($_GET['keysearch']) ? '&&keysearch=' . $_GET['keysearch'] : '' ?>"
-                                <?php if ($i === $currentPage)
-                                    echo 'class="active"'; ?>><?php echo $i; ?></a>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                            <a href="/shopdog/?page=<?php echo $i; ?><?php isset($_GET['keysearch']) ? '&&keysearch=' . $_GET['keysearch'] : '' ?>" <?php if ($i === $currentPage)
+                                                                                                                                                        echo 'class="active"'; ?>><?php echo $i; ?></a>
                         <?php endfor; ?>
-                        <?php if ($currentPage < $totalPages): ?>
+                        <?php if ($currentPage < $totalPages) : ?>
                             <a href="/shopdog/?page=<?php echo $currentPe + 1; ?>"><i class="fa fa-long-arrow-right"></i></a>
                         <?php endif; ?>
                     </div>
-                    <?php
+                <?php
                 } else {
-                    ?>
+                ?>
                     <div class="row">
                         <div class="col-12">
                             <p>Không có sản phẩm</p>
                         </div>
                     </div>
-                    <?php
+                <?php
                 }
                 ?>
 
@@ -236,52 +230,6 @@
     </div>
 </section>
 <!-- Product Section End -->
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        filterData();
-
-        function filterData() {
-            var minPrice = $('#min').val();
-            var maxPrice = $('#max').val();
-            $.ajax({
-                url: "<?= _WEB_ROOT ?>/Shopdog/getFilter",
-                type: "POST",
-                data: {
-                    minPrice,
-                    maxPrice
-                },
-                success: function (data) {
-                    $('.filterData').html(data)
-                }
-            })
-        }
-
-        //range slider
-        $('#price_range').slider({
-            range: true,
-            min: 10000,
-            max: 1500000,
-            values: [10000, 1500000],
-            step: 5000,
-            stop: function (event, ui) {
-                $('#price_show').html(formatNumber(ui.values[0], '.', ',') + '<sup>đ</sup>' + ' - ' + formatNumber(ui.values[1], '.', ',') + '<sup>đ</sup>');
-                $('#min').val(ui.values[0])
-                $('#max').val(ui.values[1])
-                filterData();
-            }
-        });
-        function formatNumber(nStr, decSeperate, groupSeperate) {
-            nStr += '';
-            x = nStr.split(decSeperate);
-            x1 = x[0];
-            x2 = x.length > 1 ? '.' + x[1] : '';
-            var rgx = /(\d+)(\d{3})/;
-            while (rgx.test(x1)) {
-                x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
-            }
-            return x1 + x2;
-        }
-
-    })
+<script>
+    
 </script>

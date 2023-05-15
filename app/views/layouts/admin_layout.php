@@ -77,7 +77,7 @@
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/data-table/colResizable-1.5.source.js"></script>
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/data-table/bootstrap-table-export.js"></script> -->
     <!--  editable JS
-        ============================================ -->
+		============================================ -->
     <!-- <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/editable/jquery.mockjax.js"></script>
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/editable/mock-active.js"></script>
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/editable/select2.js"></script>
