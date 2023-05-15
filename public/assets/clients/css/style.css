@@ -1036,3 +1036,13 @@ input[type=number]::-webkit-inner-spin-button {
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+.newsadmin{
+    word-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}

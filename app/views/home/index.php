@@ -57,8 +57,8 @@
                     </p>
                     <p><i class="fa fa-check text-secondary me-3"></i>Với những thương hiệu nổi tiếng trên toàn thế giới
                     </p>
-                    <a class="btn btn-secondary rounded-pill py-3 px-5 mt-3" href="?action=shopcat">Shop Cat Now</a>
-                    <a class="btn btn-secondary rounded-pill py-3 px-5 mt-3" href="?action=shopdog">Shop Dog Now</a>
+                    <a class="btn btn-secondary rounded-pill py-3 px-5 mt-3" href="/shopcat">Shop Cat Now</a>
+                    <a class="btn btn-secondary rounded-pill py-3 px-5 mt-3" href="/shopdog">Shop Dog Now</a>
 
                 </div>
             </div>
@@ -133,7 +133,7 @@
                         endwhile;
                         ?>
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat">Xem Thêm</a>
+                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="">Xem Thêm</a>
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                             endwhile;
                             ?>
                             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat">Xem Thêm</a>
+                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="">Xem Thêm</a>
                             </div>
                         </div>
                     </div>
@@ -256,7 +256,7 @@
                         endwhile;
                         ?>
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat">Xem Thêm</a>
+                            <a class="btn btn-secondary rounded-pill py-3 px-5" href="">Xem Thêm</a>
                         </div>
                     </div>
                 </div>
@@ -304,7 +304,7 @@
                             endwhile;
                             ?>
                             <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="?action=shopcat">Xem Thêm</a>
+                                <a class="btn btn-secondary rounded-pill py-3 px-5" href="">Xem Thêm</a>
                             </div>
                         </div>
                     </div>

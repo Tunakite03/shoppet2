@@ -49,10 +49,10 @@
       </div>
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">Đỉa chỉ nhận hàng</h4>
-        <form class="needs-validation" action="/checkout/confirm" method="post" onsubmit="return validateForm()">
+        <form class="needs-validation" action="/checkout/orderConfirm" method="post" onsubmit="return validateForm()">
           <div class=" mb-3">
             <label for="firstName">Họ và Tên</label>
-            <input type="text" class="form-control" id="firstName" name="fullname" placeholder="" value="<?= $infoUser['name'] ?>">
+            <input type="text" class="form-control" id="fullName" name="fullname" placeholder="" value="<?= $infoUser['name'] ?>">
             <div id="nameError" class="text-danger fw-bold">
             </div>
           </div>

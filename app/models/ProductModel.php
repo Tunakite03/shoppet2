@@ -187,16 +187,6 @@ class ProductModel
     }
 
 
-    public function getNews()
-    {
-        try {
-            $query = "SELECT * FROM `news`;";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-    }
     public function getDetail($id_pet, $id_product)
     {
 
@@ -209,4 +199,16 @@ class ProductModel
             echo $ex;
         }
     }
+    public function getFilter($min, $max)
+    {
+        
+        try {
+            $query = "SELECT * FROM `products` WHERE price BETWEEN '$min' AND '$max' ";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+            
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }   
 }

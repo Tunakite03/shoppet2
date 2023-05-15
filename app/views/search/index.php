@@ -4,10 +4,14 @@ if (!empty($_GET['table']) && !empty($_GET['key'])) {
     $key = $_GET['key'];
     $count = $result_search->rowCount();
     $_CURRENT_URL = $_SERVER['REQUEST_URI'];
-
     $ListToShow = array_slice($result_search->fetchAll(), $from, $productsPerPage);
     $totalPages = ceil($count / $productsPerPage);
+    $page_pos = strpos($_CURRENT_URL, "&page");
 
+    if ($page_pos !== false) {
+        // Cắt chuỗi từ đầu đến vị trí "&page="
+        $_CURRENT_URL = substr($_CURRENT_URL, 0, $page_pos);
+    }
 }
 ?>
 <section class="" style="padding-top:10rem;">
@@ -25,7 +29,7 @@ if (!empty($_GET['table']) && !empty($_GET['key'])) {
             <div class="row">
                 <?php
                 if ($table == 'products') {
-                    foreach ($ListToShow  as $product) { ?>
+                    foreach ($ListToShow as $product) { ?>
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product-item">
                                 <div class="product-item-pic set-bg">
@@ -59,7 +63,7 @@ if (!empty($_GET['table']) && !empty($_GET['key'])) {
                 } ?>
                 <?php
                 if ($table == 'news') {
-                    foreach ($ListToShow  as $news) {
+                    foreach ($ListToShow as $news) {
                         ?>
                         <div class="col-sm-4">
                             <div class="noi_dung">
@@ -69,7 +73,7 @@ if (!empty($_GET['table']) && !empty($_GET['key'])) {
                                 <h3><a href="">
                                         <?php echo $news["name"] ?>&nbsp;
                                     </a></h3>
-                                <p class="expert"> 
+                                <p class="expert">
                                     <?php echo $news["des_news"] ?>
                                 </p>
                                 <a href="" class="xem_the">Xem thêm</a>
@@ -77,24 +81,28 @@ if (!empty($_GET['table']) && !empty($_GET['key'])) {
                             </div>
                         </div>
                     <?php }
-                }?>
-                   <div class="product-pagination text-center">
-                        <?php if ($currentPage > 1): ?>
-                            <a href="<?=$_CURRENT_URL?>&page=<?php echo $currentPage - 1; ?>"><i class="fa fa-long-arrow-left"></i></a>
-                        <?php endif; ?>
-                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                            
-                            <a href="<?=$_CURRENT_URL?>&page=<?php echo $i; ?>" <?php if ($i === $currentPage)
-                                   echo 'class="active"'; ?>><?php echo $i; ?></a>
-                        <?php endfor; ?>
-                        <?php if ($currentPage < $totalPages): ?>
-                            <a href="<?=$_CURRENT_URL?>&page=<?php echo $currentPage + 1; ?>"><i class="fa fa-long-arrow-right"></i></a>
-                        <?php endif; ?>
-                    </div>
-                    
-        <?php } else { ?>
+                } ?>
+                <div class="product-pagination text-center">
+                    <?php if ($currentPage > 1): ?>
+                        <a href="<?= $_CURRENT_URL ?>&page=<?php echo $currentPage - 1; ?>"><i
+                                class="fa fa-long-arrow-left"></i></a>
+                    <?php endif; ?>
+                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+
+                        <a href="<?= $_CURRENT_URL ?>&page=<?php echo $i; ?>" <?php if ($i === $currentPage)
+                                 echo 'class="active"'; ?>><?php echo $i; ?></a>
+                    <?php endfor; ?>
+                    <?php if ($currentPage < $totalPages): ?>
+                        <a href="<?= $_CURRENT_URL ?>&page=<?php echo $currentPage + 1; ?>"><i
+                                class="fa fa-long-arrow-right"></i></a>
+                    <?php endif; ?>
+                </div>
+
+            <?php } else { ?>
                 <div class="row">
-                    <h3>Không có kết quả phù hợp với từ khóa "<?= $key?>"</h3>
+                    <h3>Không có kết quả phù hợp với từ khóa "
+                        <?= $key ?>"
+                    </h3>
                 </div>
             <?php }
         ?>

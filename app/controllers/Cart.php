@@ -50,7 +50,7 @@ class Cart extends Controller
     public function deleteItem($id)
     {
         $cart = $this->model('CartModel');
-        $error = [];
+        $errors = [];
         $this->data['sub_content']['product'] = "";
         $this->data['sub_content']['errorsCart'] = "";
         $this->data['sub_content']['success'] = "";

@@ -2,7 +2,7 @@
 
 <section class="hero-begin" style="padding-top:10rem;">
     <div class="container">
-        
+
 
     </div>
 </section>
@@ -53,6 +53,15 @@
                         ?>
 
                     </div>
+                    <div class="sidebar-item">
+                        <div class="price-range-wrap">
+                            <h3>Price</h3>
+                            <input type="hidden" id="min" value="10000" />
+                            <input type="hidden" id="max" value="150000" />
+                            <p id="price_show" style="color: #dc3545;">1,000<sup>đ</sup> - 1,500,000<sup>đ</sup></p>
+                            <div id="price_range"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
@@ -82,9 +91,9 @@
                                                         <?php echo round((($set['price'] - $set['sale']) / $set['price']) * 100, 0) ?>%
                                                     </div>
                                                     <ul class="product__item__pic__hover">
-                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                                        <li><a href="/cart/addtocart/<?= $set["id"] ?>"><i
+                                                                    class="fa fa-shopping-cart"></i></a></li>
                                                     </ul>
                                                 </div>
 
@@ -118,18 +127,19 @@
 
 
                 <?php
+        
                 if ($productsDog->rowCount() > 0) {
                     ?>
                     <div class="filter-item">
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
-                            <div class="filter-sort">
-                                <span>Xem Theo:</span>
-                                <select>
-                                    <option value="0">Tăng Dần</option>
-                                    <option value="0">Giảm Dần</option>
-                                </select>
-                            </div>
+                                <div class="filter-sort">
+                                    <span>Xem Theo:</span>
+                                    <select>
+                                        <option value="0">Tăng Dần</option>
+                                        <option value="0">Giảm Dần</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter-found">
@@ -137,8 +147,8 @@
 
                                     <h6><span>
                                             <?php
-                                                $totalProducts = $productsDog->rowCount();
-                                                echo $totalProducts;
+                                            $totalProducts = $productsDog->rowCount();
+                                            echo $totalProducts;
                                             ?>
                                         </span> Products found</h6>
                                 </div>
@@ -154,38 +164,43 @@
                     </div>
                     <div class="row">
                         <?php
-                        $productsToShow = array_slice($productsDog->fetchAll(), $from, $productsPerPage);
-                        $totalPages = ceil($totalProducts / $productsPerPage);
-                        foreach ($productsToShow as $product) { ?>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product-item">
-                                    <div class="product-item-pic set-bg">
-                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $product["image"] ?>"
-                                            alt="" width="100%">
 
-                                        <ul class="product__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-item-text">
-                                    <h6><a href="<?= _WEB_ROOT ?>/shopdog/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
 
-                                        <?php
-                                        if ($product["price"] > $product["sale"] && $product["sale"] == 0) {
-                                            echo '<h5 style="color:red;">
+
+                            $productsToShow = array_slice($productsDog->fetchAll(), $from, $productsPerPage);
+                            $totalPages = ceil($totalProducts / $productsPerPage);
+                            foreach ($productsToShow as $product) { ?>
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product-item">
+                                        <div class="product-item-pic set-bg">
+                                            <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $product["image"] ?>"
+                                                alt="" width="100%">
+                                            <ul class="product__item__pic__hover">
+                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                                <li><a href="/cart/addtocart/<?= $product["id"] ?>"><i
+                                                            class="fa fa-shopping-cart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="product-item-text">
+                                            <h6><a href="<?= _WEB_ROOT ?>/shopdog/detail/<?php echo $product["id"] ?>"><span>
+                                                        <?php echo $product["name"] ?>
+                                                    </span></a></h6>
+
+                                            <?php
+                                            if ($product["price"] > $product["sale"] && $product["sale"] == 0) {
+                                                echo '<h5 style="color:red;">
                                         ' . number_format($product['price']) . '<sup><u>đ</u></sup></br></h5>';
-                                        } else {
-                                            echo '<h5 >
+                                            } else {
+                                                echo '<h5 >
                                         <font color="red">' . number_format($product['sale']) . '<sup><u>đ</u></sup></font>
                                         <strike>' . number_format($product['price']) . '</strike><sup><u>đ</u></sup></br></h5>';
-                                        }
-                                        ?>
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php } ?>
+                            <?php }
+                        ?>
                     </div>
                     <!-- display the pagination links -->
                     <div class="product-pagination text-center">
@@ -221,6 +236,52 @@
     </div>
 </section>
 <!-- Product Section End -->
-<script>
-    
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        filterData();
+
+        function filterData() {
+            var minPrice = $('#min').val();
+            var maxPrice = $('#max').val();
+            $.ajax({
+                url: "<?= _WEB_ROOT ?>/Shopdog/getFilter",
+                type: "POST",
+                data: {
+                    minPrice,
+                    maxPrice
+                },
+                success: function (data) {
+                    $('.filterData').html(data)
+                }
+            })
+        }
+
+        //range slider
+        $('#price_range').slider({
+            range: true,
+            min: 10000,
+            max: 1500000,
+            values: [10000, 1500000],
+            step: 5000,
+            stop: function (event, ui) {
+                $('#price_show').html(formatNumber(ui.values[0], '.', ',') + '<sup>đ</sup>' + ' - ' + formatNumber(ui.values[1], '.', ',') + '<sup>đ</sup>');
+                $('#min').val(ui.values[0])
+                $('#max').val(ui.values[1])
+                filterData();
+            }
+        });
+        function formatNumber(nStr, decSeperate, groupSeperate) {
+            nStr += '';
+            x = nStr.split(decSeperate);
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
+            }
+            return x1 + x2;
+        }
+
+    })
 </script>

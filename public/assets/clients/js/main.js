@@ -102,25 +102,26 @@
 
 
 
-    /*-----------------------
-       Price Range Slider
-   ------------------------ */
-    var rangeSlider = $(".price-range"),
-        minamount = $("#minamount"),
-        maxamount = $("#maxamount");
+//     /*-----------------------
+//        Price Range Slider
+//    ------------------------ */
+//     var rangeSlider = $(".price-range"),
+//         minamount = $("#minamount"),
+//         maxamount = $("#maxamount");
 
-    rangeSlider.slider({
-        range: true,
-        min: 0,
-        max: 500,
-        values: [10, 490],
-        slide: function (event, ui) {
-            minamount.val('$' + ui.values[0]);
-            maxamount.val('$' + ui.values[1]);
-        }
-    });
-    minamount.val('$' + rangeSlider.slider("values", 0));
-    maxamount.val('$' + rangeSlider.slider("values", 1));
+//     rangeSlider.slider({
+//         range: true,
+//         min: 0,
+//         max: 500,
+//         values: [10, 490],
+//         slide: function (event, ui) {
+//             minamount.val('$' + ui.values[0]);
+//             maxamount.val('$' + ui.values[1]);
+//         }
+//     });
+//     minamount.val('$' + rangeSlider.slider("values", 0));
+//     maxamount.val('$' + rangeSlider.slider("values", 1));
+
 
 
 })(jQuery);
