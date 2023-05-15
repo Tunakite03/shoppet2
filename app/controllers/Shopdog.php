@@ -30,7 +30,7 @@ class ShopDog extends Controller
 
         $this->data['content'] = $this->link;
         ; // đường dẫn tới file view
-        
+
 
         // Render Views
         $this->render('layouts/client_layout', $this->data);
@@ -54,7 +54,7 @@ class ShopDog extends Controller
         // Render Views
         $this->render('layouts/client_layout', $this->data);
     }
-    
+
     public function category($name_cate = '', $name_type = '')
     {
         $products = $this->model("ProductModel");
@@ -75,5 +75,6 @@ class ShopDog extends Controller
         // Render Views
         $this->render('layouts/client_layout', $this->data);
     }
+
 
 }

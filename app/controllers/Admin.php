@@ -21,6 +21,7 @@ class Admin extends Controller
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
     }
+
     public function deleteproduct($id = '')
     {
         if (is_numeric($id)) {
@@ -83,7 +84,7 @@ class Admin extends Controller
                                 if (move_uploaded_file($tmpName, $uploadPath)) {
 
                                     // Update the image name in the database
-                                    $result =  $admin->editImageProduct($id, $newName);
+                                    $result = $admin->editImageProduct($id, $newName);
                                     // Redirect back to the edit page
                                     if ($result == 1) {
                                         $this->data['sub_content']['successEdit'] = true;
@@ -193,7 +194,7 @@ class Admin extends Controller
                 }
             } else {
                 // Handle the invalid file type
-                $errors =  "Vui lòng chọn file có đuôi: JPG, JPEG, PNG, and GIF files are allowed.";
+                $errors = "Vui lòng chọn file có đuôi: JPG, JPEG, PNG, and GIF files are allowed.";
             }
             if (empty($errors)) {
 
@@ -237,16 +238,139 @@ class Admin extends Controller
         $this->render('layouts/admin_layout', $this->data);
     }
 
-    public function customers()
+    public function news()
     {
-        $this->data['sub_content']['product'] = "";
-        $customers = $this->model("UserModel");
-        $this->data['sub_content']['data_customers'] = $customers->getAllUsers();
-        $this->link = "admin/customers/editcustomers";
+        $id = "";
+        $this->data['sub_content']['news'] = "";
+        $news = $this->model("NewsModel");
+
+        $this->data['sub_content']['data_news'] = $news->getAllNews();
+
+
+        $this->link = "admin/news/News";
+
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
     }
+    public function addnews()
+    {
+
+        $news = $this->model("NewsModel");
+        $this->data['sub_content']['data_'] = array();
+        $this->link = "admin/news/addNews";
+
+        if (isset($_POST['addnewssubmit'])) {
+            $name = $_POST['name'];
+            $des_news = $_POST['des_news'];
+            // $view=$_POST['view'];
+            $content = $_POST['content'];
+            $uptime = date('Y-m-d H:i:s');
+            $result = $news->AddNews($name, $des_news, $content, $uptime);
+            if ($result == 1) {
+                echo '<meta http-equiv="refresh" content="' . 0 . ';url=' . $_SERVER['REQUEST_URI'] . '" />';
+
+            } else {
+                echo "UpdateFail";
+            }
+        }
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function editnews($id = '')
+    {
+
+        $news = $this->model("NewsModel");
+        $this->data['sub_content']['data_news'] = $news->getNewsById($id);
+
+        $this->link = "admin/news/editNews";
+
+        if (isset($_POST['editNewSubmit'])) {
+            $name = $_POST['name'];
+            $des_news = $_POST['des_news'];
+            // $view=$_POST['view'];
+            $content = $_POST['content'];
+            $uptime = date('Y-m-d H:i:s');
+            $result = $news->UpdateNews($id, $name, $des_news, $content, $uptime);
+            if ($result == 1) {
+                echo '<meta http-equiv="refresh" content="' . 0 . ';url=' . $_SERVER['REQUEST_URI'] . '" />';
+
+            } else {
+                echo "UpdateFail";
+            }
+        }
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function deleteNews($id = '')
+    {
+
+        if (is_numeric($id)) {
+            $news = $this->model("NewsModel");
+            $result = $news->DeleteNews($id);
+            header("Location: /admin/news");
+
+        } else {
+            header("Location: /admin/news");
+        }
+    }
+
+    public function customers()
+    {
+        $this->data['sub_content']['product'] = "";
+        $customer = $this->model("UserModel");
+        $this->data['sub_content']['data_customer'] = $customer->getAllUsers();
+
+        $this->link = "admin/customers/Customers";
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function editcustomer($id = '')
+    {
+
+        $customer = $this->model("UserModel");
+        $this->data['sub_content']['data_customer'] = $customer->getUserById($id);
+
+        $this->link = "admin/customers/editCustomers";
+
+        if (isset($_POST['editusersubmit'])) {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $address = $_POST['address'];
+            $phone = $_POST['phone'];
+
+
+            $result = $customer->UpdateCustomer($id, $name, $email, $password, $address, $phone);
+            if ($result == 1) {
+                echo '<meta http-equiv="refresh" content="' . 0 . ';url=' . $_SERVER['REQUEST_URI'] . '" />';
+
+            } else {
+                echo "UpdateFail";
+            }
+        }
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function deletecustomer($id = '')
+    {
+
+        if (is_numeric($id)) {
+            $customer = $this->model("UserModel");
+            $result = $customer->DeleteCustomer($id);
+            header("Location: /admin/customers");
+
+        } else {
+            header("Location: /admin/customers");
+        }
+    }
+
+
+
     public function categories()
     {
         $this->data['sub_content']['product'] = "";
@@ -257,6 +381,7 @@ class Admin extends Controller
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
     }
+
     public function login()
     {
         $this->data['sub_content']['product'] = "";
