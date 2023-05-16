@@ -389,7 +389,7 @@ class Admin extends Controller
         $this->render('layouts/admin_layout', $this->data);
     }
 
-    public function registerAdmin()
+    public function addMember()
     {
         $this->data['sub_content']['product'] = "";
         $admin = $this->model("AdminModel");
@@ -413,7 +413,7 @@ class Admin extends Controller
             $this->data['sub_content']['errorsRegister'] = $error;
         }
 
-        $this->link = "admin/auth/register";
+        $this->link = "admin/auth/addmember";
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/admin_layout', $this->data);

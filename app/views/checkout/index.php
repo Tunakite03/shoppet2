@@ -49,7 +49,7 @@
       </div>
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">Đỉa chỉ nhận hàng</h4>
-        <form class="needs-validation" action="/checkout/orderConfirm" method="post" onsubmit="return validateForm()">
+        <form class="needs-validation" action="/checkout/confirm" method="post" onsubmit="return validateForm()">
           <div class=" mb-3">
             <label for="firstName">Họ và Tên</label>
             <input type="text" class="form-control" id="fullName" name="fullname" placeholder="" value="<?= $infoUser['name'] ?>">
@@ -64,7 +64,7 @@
           </div>
           <div class="mb-3">
             <label for="phone">Số Điện Thoại</label>
-            <input type="tel" class="form-control" id="phone" name="phone" placeholder="039..." required>
+            <input type="tel" class="form-control" id="phone" value="<?= !empty($infomationUser['phone']) ? $infomationUser['phone'] : ""  ?>" name="phone" placeholder="039..." required>
             <div id="phoneError" class="text-danger fw-bold">
             </div>
           </div>
@@ -91,7 +91,7 @@
           </div>
           <div class="mb-3">
             <label for="address">Địa chỉ</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Đường..." required>
+            <input type="text" class="form-control" id="address" name="address" value="<?= !empty($infomationUser['street']) ? $infomationUser['street'] : ""  ?>" placeholder="Đường..." required>
             <div id="addressError" class="text-danger fw-bold">
             </div>
           </div>

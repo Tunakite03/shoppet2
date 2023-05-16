@@ -30,7 +30,8 @@ class Account extends Controller
             $name = $_POST['name'];
             $email = $_POST['email'];
             $password = $_POST['password'];
-            if ($user->getUser($email) != false) {
+            $checkExist = $user->getUser($email);
+            if ($checkExist != false) {
                 $errors['user'] = "Tài khoản đã tồn tại";
             }
             $this->data['sub_content']['errorsRegister'] = $errors;

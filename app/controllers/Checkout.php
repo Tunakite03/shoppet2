@@ -29,7 +29,9 @@ class Checkout extends Controller
         if ($allTotal != false) {
             $this->data['sub_content']['alltotal'] = $allTotal;
         }
-
+        $ctm = $user->getInfoUserById($id_user);
+        echo '<script type="text/javascript">localStorage.setItem("address", JSON.stringify({ province: "' . $ctm['province'] . '", district: "' . $ctm['district'] . '", ward: "' . $ctm['ward'] . '"}))</script>';
+        $this->data['sub_content']['infomationUser'] = $ctm;
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/client_layout', $this->data);
@@ -59,12 +61,8 @@ class Checkout extends Controller
             $userInfo['ward'] = $_POST['ward-is'];
             $userInfo['street'] = $_POST['address'];
             $address = $_POST["province-is"] . '--' . $_POST['district-is'] . '--' . $_POST['ward-is'] . '--' . $_POST['address'];
-            if ($user->getInfoUser($id_user) != false) {
-                $updateUser = $user->updateInfoUser($userInfo);
-            } else {
-                $insertUser = $user->insertInfoUser($userInfo);
-            }
 
+            $user->updateInfoUser($userInfo);
             $date = date('Y-m-d H:i:s');
             // get cart
             $info_cart = $cart->getListCartItems($id_user);
@@ -88,7 +86,7 @@ class Checkout extends Controller
                 }
                 if ($result != 1) {
                     $errors['insertOrderDetail'] = "Khong the thanh toan!. Vui long thu lai sau";
-                    header("Location: /checkout");
+                    echo '<meta http-equiv="refresh" content="0;url= /checkout">';
                 }
             } else {
                 $errors['insertOrder'] = "Khong the thanh toan!. Vui long thu lai sau";
@@ -109,7 +107,7 @@ class Checkout extends Controller
             // Render Views
             $this->render('layouts/client_layout', $this->data);
         } else {
-            header("Location: /checkout");
+            echo '<meta http-equiv="refresh" content="0;url= /checkout">';
         }
     }
 }
