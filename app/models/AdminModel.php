@@ -74,10 +74,10 @@ class AdminModel
             echo $ex;
         }
     }
-    public function deleteSubcategory($id_category)
+    public function deleteSubcategory($id)
     {
         try {
-            $query = "DELETE FROM `category_type` WHERE id_category = $id_category";
+            $query = "DELETE FROM `category_type` WHERE id = $id";
             $stmt = $this->db->exec($query);
             return $stmt;
         } catch (\Throwable $ex) {
@@ -95,7 +95,17 @@ class AdminModel
             echo $ex;
         }
     }
+    public function checkNameSubcateExist($id_category, $subcate_name)
+    {
+        try {
+            $query = "SELECT * FROM category_type where id_category = $id_category and name = '$subcate_name' ";
 
+            $stmt = $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getBrands()
     {
         try {
@@ -158,6 +168,18 @@ class AdminModel
             ,'$des'
             ,$quantity
             ,0)";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+
+    public function updateTypeProductToNull($id_subcate)
+    {
+        try {
+            $query = "UPDATE `products` SET `id_type`= 6
+            WHERE id_type=$id_subcate";
             $stmt = $this->db->exec($query);
             return $stmt;
         } catch (\Throwable $ex) {
