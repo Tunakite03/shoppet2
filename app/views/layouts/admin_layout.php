@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="<?php echo _WEB_ROOT ?>/public/assets/admin/css/styles.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+    <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/dselect.js"></script>
+
 </head>
 <style>
     .newsadmin {
@@ -63,6 +65,7 @@
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/libs/simplebar/dist/simplebar.js"></script>
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/dashboard.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Bootstrap core JavaScript-->

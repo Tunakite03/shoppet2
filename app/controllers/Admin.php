@@ -391,28 +391,30 @@ class Admin extends Controller
 
     public function addMember()
     {
-        $this->data['sub_content']['product'] = "";
         $admin = $this->model("AdminModel");
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registerSubmit'])) {
-            $error = [];
+            $errors = [];
             $name = $_POST['name'];
             $email = $_POST['email'];
             $password = $_POST['password'];
-            $role = 1;
-
-            if ($admin->getAdmin($email) != false) {
-                $error['existAdmin'] = 'Email đã tồn tại';
+            $role = $_POST['role'];
+            $checkExistEmail = $admin->getAdmin($email);
+            if ($checkExistEmail != false) {
+                $errors['existAdmin'] = 'Email đã tồn tại';
             } else {
                 $result = $admin->insertAdmin($name, $email, $password, $role);
-                if ($result !== false) {
-                    header("location: /admin");
+                if ($result == 1) {
+                    $this->data['sub_content']['successRegister'] = true;
+                } else {
+                    $errors['failedResgister'] = "Thêm không thành công vui lòng thử lại sau";
                 }
-                $error['registerfaild'] = 'Không thể đăng kí vui lòng thử lại sau';
             }
-            $this->data['sub_content']['errorsRegister'] = $error;
+            if (!empty($errors)) {
+                $this->data['sub_content']['errorsRegister'] = $errors;
+            }
         }
-
+        $this->data['sub_content']['data_role'] = $admin->getListRole();
         $this->link = "admin/auth/addmember";
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
