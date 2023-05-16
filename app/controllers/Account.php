@@ -2,7 +2,7 @@
 class Account extends Controller
 {
     public $data = [];
-    public $link = "account/index";
+    public $link = "account/index", $linkforgotpassword = "account/forgotpassword";
 
     public function __construct()
     {
@@ -81,6 +81,51 @@ class Account extends Controller
             header("Location: /");
         }
         $this->data['content'] = $this->link; // đường dẫn tới file view
+        $this->render('layouts/client_layout', $this->data);
+    }
+    public function forgotpassword()
+    {
+        $this->data['sub_content']['error'] = "";
+        $email = "";
+        $user = $this->model("UserModel");
+
+        // Hàm để tạo mật khẩu ngẫu nhiên
+        function generatePassword() {
+            // Độ dài mật khẩu
+            $length = 8;
+            $charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+'; // Bộ ký tự cho mật khẩu
+        
+            // Tạo mật khẩu ngẫu nhiên
+            $password = '';
+            for ($i = 0; $i < $length; $i++) {
+                $password .= $charset[rand(0, strlen($charset) - 1)];
+            }
+        
+            // Đảm bảo mật khẩu chứa ít nhất một ký tự đặc biệt, một số và một chữ cái thường
+            while (!preg_match('/\d/', $password) || !preg_match('/[a-z]/', $password) || !preg_match('/[\W_]/', $password)) {
+                $password = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $password .= $charset[rand(0, strlen($charset) - 1)];
+                }
+            }
+        
+            return $password;
+        }
+
+        if (isset($_POST['submitforgotpass'])) {
+            $email = $_POST['email'];
+            $checkemail = $user->CheckEmail($email);
+            if ($checkemail->rowCount() > 0) {
+                $password = generatePassword();
+                echo $password;
+                $result= $user->UpdatePassWord($email, $password);
+                $this->data['sub_content']['success'] = "success";
+            } else {
+                $this->data['sub_content']['error'] = "error";
+            }
+        }
+
+        $this->data['content'] = $this->linkforgotpassword; // đường dẫn tới file view
         $this->render('layouts/client_layout', $this->data);
     }
     public function logout()

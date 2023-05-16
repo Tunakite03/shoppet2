@@ -42,7 +42,7 @@
                     </div>
                     <a href="/admin/news" class="btn btn-danger"
                         style="color: white; background-color: #d9534f; border-color: #d43f3a; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Cancel</a>
-                    <button type="submit" name="editNewSubmit" class="btn btn-primary">Update</button>
+                    <button type="submit" name="editNewsSubmit" class="btn btn-primary">Update</button>
 
                 </form>
 

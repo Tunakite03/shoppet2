@@ -8,24 +8,96 @@ class AdminModel
     {
         $this->db = new ConnectDB();
     }
-    public function insertAdmin($name, $email, $password, $role)
+    public function getAllAdmin()
     {
         try {
-            $query = "INSERT INTO `admin`(`id`,`name`, `email`, `password`, `role`) 
-            VALUES (null,'$name','$email','$password',$role)";
-            $stmt =  $this->db->exec($query);
+            $query = "SELECT admin.id, admin.name, admin.email,admin.password ,admin.id_role , role_admin.name AS name_role
+            FROM admin
+            INNER JOIN role_admin ON admin.id_role = role_admin.id;";
+            $stmt = $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {
             echo $ex;
         }
     }
+    public function getAdminByID($id)
+    {
+        try {
+            $query = "SELECT admin.id, admin.name, admin.email,admin.password ,admin.id_role , role_admin.name AS name_role
+            FROM admin
+            INNER JOIN role_admin ON admin.id_role = role_admin.id
+            WHERE admin.id=$id ;";
+            $stmt = $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function insertAdmin($name, $email, $password, $id_role)
+    {
+        try {
+            $query = "INSERT INTO `admin`(`id`,`name`, `email`, `password`, `id_role`) 
+            VALUES (null,'$name','$email','$password',$id_role)";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function UpdateAdmin($id, $name, $email, $password, $id_role)
+    {
+        try {
+            $query = "UPDATE `admin`
+            SET `name` = '$name', `email` = '$email',  `password` = '$password', `id_role` = '$id_role'
+            WHERE `id` = $id;";
+            $stmt = $this->db->exec($query);
+
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function editAdmin(
+        $id,
+        $name,
+        $email,
+        $password,
+        $id_role
+    ) {
+        try {
+            $query = "UPDATE `admin` 
+            SET
+            `id`=$id,
+            `name`='$name',
+            `email`=$email,
+            `password`=$password,
+            `id_role`='$id_role'
+            WHERE id=$id";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function DeleteAdmin($id)
+    {
+        try {
+            $query = " DELETE FROM `admin` WHERE `id`= $id ;";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+
+
     public function getCategoryByID($id)
     {
         try {
             $query = "SELECT cat.name as name_cate, cat.id as cate_id, cty.name as name_subcate, cty.id as subcate_id FROM `categories` cat
             JOIN `category_type` cty ON cat.id = cty.id_category
              WHERE cat.id='$id'";
-            $stmt =  $this->db->getList($query);
+            $stmt = $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {
             echo $ex;
@@ -35,7 +107,7 @@ class AdminModel
     {
         try {
             $query = "SELECT * FROM `admin` WHERE `email`='$email'";
-            $stmt =  $this->db->getInstance($query);
+            $stmt = $this->db->getInstance($query);
             return $stmt;
         } catch (\Throwable $ex) {
             echo $ex;
@@ -47,6 +119,16 @@ class AdminModel
     {
         try {
             $query = "SELECT * FROM `pets`;";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getRole()
+    {
+        try {
+            $query = "SELECT * FROM `role_admin`;";
             $stmt = $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {
@@ -93,7 +175,7 @@ class AdminModel
             JOIN category_type cty ON cty.id= pr.id_type
             JOIN categories cat ON cty.id_category = cat.id 
         WHERE  pr.id= $id";
-            $stmt =  $this->db->getInstance($query);
+            $stmt = $this->db->getInstance($query);
             return $stmt;
         } catch (\Throwable $ex) {
             echo $ex;

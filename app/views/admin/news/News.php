@@ -48,7 +48,7 @@
                                 </td>
                                 <td>
                                     <a name="" id="" class="btn btn-primary" href="/admin/editnews/<?= $value['id']?>" role="button">Sửa</a>
-                                    <a name="" id="" class="btn btn-warning my-2 delete-product"
+                                    <a name="" id="" class="btn btn-warning my-2 delete-news"
                                         href="/admin/deleteNews/<?= $value['id'] ?>" role="button">Xóa</a>
 
                                 </td>
@@ -64,12 +64,12 @@
 </section>
 <script>
     // Add an event listener to the delete button
-    document.querySelectorAll('.delete-product').forEach(function (button) {
+    document.querySelectorAll('.delete-news').forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
             // Show the SweetAlert confirmation dialog
             Swal.fire({
-                title: 'Bạn có chắc chắn muốn xóa sản phẩm này?',
+                title: 'Bạn có chắc chắn muốn xóa bài viết này?',
                 text: "Hành động này không thể hoàn tác!",
                 icon: 'warning',
                 showCancelButton: true,

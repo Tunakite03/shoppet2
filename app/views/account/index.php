@@ -1,13 +1,13 @@
 <section class="content-section">
     <?php
     if (!empty($successRegister)) {
-    ?>
+        ?>
         <div class="alert alert-success text-center" role="alert">
             <h4 class="alert-heading">Đăng kí thành công </h4>
             <p>Bạn đã đăng kí thành công. Hãy đăng nhập tại đây</p>
             <hr>
         </div>
-    <?php
+        <?php
     }
     ?>
     <div class="container py-5">
@@ -22,25 +22,30 @@
                         <div class="container">
                             <ul class="nav nav-tabs " id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link fw-bold btn active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Login</button>
+                                    <button class="nav-link fw-bold btn active" id="login-tab" data-bs-toggle="tab"
+                                        data-bs-target="#login" type="button" role="tab" aria-controls="login"
+                                        aria-selected="true">Login</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link fw-bold btn " id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Register</button>
+                                    <button class="nav-link fw-bold btn " id="register-tab" data-bs-toggle="tab"
+                                        data-bs-target="#register" type="button" role="tab" aria-controls="register"
+                                        aria-selected="false">Register</button>
                                 </li>
                             </ul>
                             <div class="tab-content pt-2" id="myTabContent">
-                                <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                                <div class="tab-pane fade show active" id="login" role="tabpanel"
+                                    aria-labelledby="login-tab">
                                     <div class="login-content">
                                         <div class="section-heading">
                                             <h4 class="text-center py-2">Great to have you back!</h4>
                                             <?php
                                             if (!empty($errorsLogin)) {
-                                            ?>
+                                                ?>
                                                 <div class="alert alert-warning" role="alert">
                                                     <h4 class="alert-heading">Lỗi: </h4>
                                                     <?php
                                                     foreach ($errorsLogin as $key => $error) {
-                                                    ?>
+                                                        ?>
                                                         <p>
                                                             <?= $error ?>
                                                         </p>
@@ -48,7 +53,7 @@
                                                     ?>
                                                     <hr>
                                                 </div>
-                                            <?php
+                                                <?php
                                             }
                                             ?>
 
@@ -58,19 +63,28 @@
                                             <div class="mb-3">
                                                 <label for="InputEmail1" class="form-label">Email or User
                                                     Name</label>
-                                                <input type="email" class="form-control" required name="email" id="InputEmail1" placeholder="Enter email or user name">
+                                                <input type="email" class="form-control" required name="email"
+                                                    id="InputEmail1" placeholder="Enter email or user name">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="InputPassword1" class="form-label">Password</label>
-                                                <input type="password" required class="form-control" name="password" id="InputPassword1" placeholder="Password">
+                                                <input type="password" required class="form-control" name="password"
+                                                    id="InputPassword1" placeholder="Password">
                                             </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="customControlAutosizing">
-                                                <label class="form-check-label" for="customControlAutosizing">Remember
-                                                    me</label>
+                                            <div class="mb-3 form-check d-flex justify-content-between">
+                                                <div class="form-check mr-auto">
+                                                    <input type="checkbox" class="form-check-input"
+                                                        id="customControlAutosizing">
+                                                    <label class="form-check-label"
+                                                        for="customControlAutosizing">Remember me</label>
+                                                </div>
+                                                <a href="<?= _WEB_ROOT?>/account/forgotpassword" class="ml-auto">Quên mật khẩu</a>
                                             </div>
-                                            <button type="submit" class="btn btn-login w-100 mt-3" name="loginSubmit">Login</button>
+
+                                            <button type="submit" class="btn btn-login w-100 mt-3"
+                                                name="loginSubmit">Login</button>
                                         </form>
+
                                     </div>
                                 </div>
 
@@ -80,12 +94,12 @@
                                             <h4 class="text-center py-2">Create your account!</h4>
                                             <?php
                                             if (!empty($errorsRegister)) {
-                                            ?>
+                                                ?>
                                                 <div class="alert alert-warning" role="alert">
                                                     <h4 class="alert-heading">Lỗi: </h4>
                                                     <?php
                                                     foreach ($errorsRegister as $key => $error) {
-                                                    ?>
+                                                        ?>
                                                         <p>
                                                             <?= $error ?>
                                                         </p>
@@ -93,7 +107,7 @@
                                                     ?>
                                                     <hr>
                                                 </div>
-                                            <?php
+                                                <?php
                                             }
                                             ?>
                                             <div class="line"></div>
@@ -101,29 +115,35 @@
                                         <form action="/account/register" method="post" onsubmit="return validateForm()">
                                             <div class="mb-3">
                                                 <label for="InputName" class="form-label">Full Name</label>
-                                                <input required type="text" class="form-control" name="name" id="InputName" placeholder="Enter your full name">
+                                                <input required type="text" class="form-control" name="name"
+                                                    id="InputName" placeholder="Enter your full name">
                                                 <span class="text-danger" id="nameError"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="InputEmail2" class="form-label">Email</label>
-                                                <input required type="email" class="form-control" name="email" id="InputEmail2" placeholder="Enter your email">
+                                                <input required type="email" class="form-control" name="email"
+                                                    id="InputEmail2" placeholder="Enter your email">
                                                 <span class="text-danger" id="emailError"></span>
 
                                             </div>
                                             <div class="mb-3">
                                                 <label for="InputPassword2" class="form-label">Password</label>
-                                                <input required type="password" class="form-control" name="password" id="InputPassword2" placeholder="Password">
+                                                <input required type="password" class="form-control" name="password"
+                                                    id="InputPassword2" placeholder="Password">
                                                 <span class="text-danger" id="passwordError"></span>
 
                                             </div>
                                             <div class="mb-3">
                                                 <label for="InputConfirmPassword" class="form-label">Confirm
                                                     Password</label>
-                                                <input required type="password" class="form-control" name="confirmPassword" id="InputConfirmPassword" placeholder="Confirm Password">
+                                                <input required type="password" class="form-control"
+                                                    name="confirmPassword" id="InputConfirmPassword"
+                                                    placeholder="Confirm Password">
                                                 <span class="text-danger" id="confirmPasswordError"></span>
 
                                             </div>
-                                            <button type="submit" class="btn btn-login w-100 mt-3" name="registerSubmit">Register</button>
+                                            <button type="submit" class="btn btn-login w-100 mt-3"
+                                                name="registerSubmit">Register</button>
                                         </form>
                                     </div>
                                 </div>

@@ -1,40 +1,41 @@
 <section class="section-content">
     <div class="container-fluid">
+        <div>
+            <a name="" id="" class="btn btn-primary" href="/admin/addadmin" role="button">Thêm quản trị viên</a>
+        </div>
         <div class="row mt-5">
             <div class="col-md-12">
                 <table id="table_products" class="table table-bordered table-" style="width:100%">
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Id khách hàng</th>
-                            <th>Tên khách hàng</th>
+                            <th>Tên</th>
                             <th>Email</th>
+                            <th>Vai trò</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $data = $data_customer->fetchAll();
+                        $data = $data_admin->fetchAll();
                         foreach ($data as $key => $value) {
                             ?>
                             <tr>
                                 <td>
                                     <?= $key ?>
                                 </td>
-                                <td>
-                                    <?= $value['id'] ?>
-                                </td>
                                 <td class="">
                                     <?= $value['name'] ?>
                                 </td>
-                                <td class="">
+                                <td>
                                     <?= $value['email'] ?>
                                 </td>
                                 <td>
-                                    <a name="" id="" class="btn btn-primary" href="/admin/editcustomer/<?= $value['id']?>" role="button">Sửa</a>
-                                    <a name="" id="" class="btn btn-warning my-2 delete-user"
-                                        href="/admin/deletecustomer/<?= $value['id'] ?>" role="button">Xóa</a>
-
+                                    <?= $value['name_role'] ?>
+                                </td>
+                                <td>
+                                    <a name="" id="" class="btn btn-primary" href='/admin/editadmin/<?php echo $value['id']; ?> ' >Sửa</a>
+                                    <a name="" id="" class="btn btn-warning my-2 delete-admin" href='/admin/deleteadmin/<?php echo $value['id']; ?> '>Xóa</a>
                                 </td>
                             </tr>
 
@@ -48,12 +49,12 @@
 </section>
 <script>
     // Add an event listener to the delete button
-    document.querySelectorAll('.delete-user').forEach(function (button) {
+    document.querySelectorAll('.delete-admin').forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
             // Show the SweetAlert confirmation dialog
             Swal.fire({
-                title: 'Bạn có chắc chắn muốn xóa khác hàng này?',
+                title: 'Bạn có chắc chắn muốn admin này?',
                 text: "Hành động này không thể hoàn tác!",
                 icon: 'warning',
                 showCancelButton: true,

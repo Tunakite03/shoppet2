@@ -10,6 +10,127 @@ class Admin extends Controller
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
     }
+    public function admin()
+    {
+        $this->data['sub_content']['admin'] = "";
+
+        $admin = $this->model("AdminModel");
+
+        $this->data['sub_content']['data_admin'] = $admin->getAllAdmin();
+
+        $this->link = "admin/admin/Admin";
+
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function editadmin($id = '')
+    {
+
+        $admin = $this->model("adminModel");
+        $this->data['sub_content']['data_admin'] = $admin->getAdminById($id);
+        $this->link = "admin/admin/editAdmin";
+
+        if (isset($_POST['editadminSubmit'])) {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $id_role = $_POST['id_role'];
+
+            $result = $admin->UpdateAdmin($id, $name, $email, $password, $id_role);
+            if ($result == 1) {
+                echo '<meta http-equiv="refresh" content="' . 0 . ';url=' . $_SERVER['REQUEST_URI'] . '" />';
+
+            } else {
+                echo "UpdateFail";
+            }
+        }
+        $this->data['sub_content']['data_role'] = $admin->getRole()->fetchAll();
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function addadmin()
+    {
+
+        $admin = $this->model("adminModel");
+        $this->data['sub_content']['data_admin'] = array();
+       
+        $this->link = "admin/admin/addAdmin";
+
+        if (isset($_POST['addadminsubmit'])) {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $id_role = $_POST['id_role'];
+                  
+            $result = $admin->insertAdmin($name,$email, $password, $id_role );
+            if ($result == 1) {
+                echo '<meta http-equiv="refresh" content="' . 0 . ';url=' . $_SERVER['REQUEST_URI'] . '" />';
+            } else {
+                echo "UpdateFail";
+            }
+        }
+        $this->data['sub_content']['data_role'] = $admin->getRole()->fetchAll();
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function deleteAdmin($id = '')
+    {
+
+        if (is_numeric($id)) {
+            $admin = $this->model("adminModel");
+            $result = $admin->DeleteAdmin($id);
+            header("Location: /admin/admin");
+
+        } else {
+            header("Location: /admin/admin");
+        }
+    }
+    public function login()
+    {
+        $this->data['sub_content']['product'] = "";
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['loginSubmit'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+        }
+        $this->link = "admin/auth/login";
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+
+    public function registerAdmin()
+    {
+        $this->data['sub_content']['product'] = "";
+        $admin = $this->model("AdminModel");
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registerSubmit'])) {
+            $error = [];
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $role = 1;
+
+            if ($admin->getAdmin($email) != false) {
+                $error['existAdmin'] = 'Email đã tồn tại';
+            } else {
+                $result = $admin->insertAdmin($name, $email, $password, $role);
+                if ($result !== false) {
+                    header("location: /admin");
+                }
+                $error['registerfaild'] = 'Không thể đăng kí vui lòng thử lại sau';
+            }
+            $this->data['sub_content']['errorsRegister'] = $error;
+        }
+
+        $this->link = "admin/auth/register";
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
     public function products()
     {
         $this->data['sub_content']['product'] = "";
@@ -257,7 +378,7 @@ class Admin extends Controller
     {
 
         $news = $this->model("NewsModel");
-        $this->data['sub_content']['data_'] = array();
+        $this->data['sub_content']['data_news'] = array();
         $this->link = "admin/news/addNews";
 
         if (isset($_POST['addnewssubmit'])) {
@@ -286,7 +407,7 @@ class Admin extends Controller
 
         $this->link = "admin/news/editNews";
 
-        if (isset($_POST['editNewSubmit'])) {
+        if (isset($_POST['editNewsSubmit'])) {
             $name = $_POST['name'];
             $des_news = $_POST['des_news'];
             // $view=$_POST['view'];
@@ -382,49 +503,7 @@ class Admin extends Controller
         $this->render('layouts/admin_layout', $this->data);
     }
 
-    public function login()
-    {
-        $this->data['sub_content']['product'] = "";
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['loginSubmit'])) {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-        }
-        $this->link = "admin/auth/login";
-        $this->data['content'] = $this->link; // đường dẫn tới file view
-        // Render Views
-        $this->render('layouts/admin_layout', $this->data);
-    }
-
-    public function registerAdmin()
-    {
-        $this->data['sub_content']['product'] = "";
-        $admin = $this->model("AdminModel");
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registerSubmit'])) {
-            $error = [];
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $role = 1;
-
-            if ($admin->getAdmin($email) != false) {
-                $error['existAdmin'] = 'Email đã tồn tại';
-            } else {
-                $result = $admin->insertAdmin($name, $email, $password, $role);
-                if ($result !== false) {
-                    header("location: /admin");
-                }
-                $error['registerfaild'] = 'Không thể đăng kí vui lòng thử lại sau';
-            }
-            $this->data['sub_content']['errorsRegister'] = $error;
-        }
-
-        $this->link = "admin/auth/register";
-        $this->data['content'] = $this->link; // đường dẫn tới file view
-        // Render Views
-        $this->render('layouts/admin_layout', $this->data);
-    }
 
     public function editcategory($id = "")
     {
@@ -446,4 +525,6 @@ class Admin extends Controller
             header("Location: /admin/categories");
         }
     }
+
+
 }

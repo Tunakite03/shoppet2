@@ -59,6 +59,25 @@ class UserModel
             echo $ex;
         }
     }
+    public function updateInfoUser($user_info)
+    {
+        try {
+            $query = "UPDATE `info_customers` 
+            SET `fullname`='" . $user_info['fullname'] . "',
+            `email`='" . $user_info['email'] . "',
+            `phone`='" . $user_info['phone'] . "',
+            `province`='" . $user_info['province'] . "',
+            `district` ='" . $user_info['district'] . "',
+            `ward`='" . $user_info['ward'] . "',
+            `street`='" . $user_info['street'] . "'
+              WHERE `id_customer`= '" . $user_info['id_customer'] . "' ";
+            $stmt =  $this->db->exec($query);
+
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getInfoUser($id_user)
     {
         try {
@@ -86,6 +105,28 @@ class UserModel
         try {
             $query = "SELECT * FROM customers Where 1";
             $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function CheckEmail($email)
+    {
+        try {
+            $query = "SELECT * FROM customers Where `email` = '$email'  ";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function UpdatePassWord($email,$password)
+    {
+        try {
+            $query = "UPDATE customers
+            SET `password` = '$password' 
+            WHERE `email` = '$email' ;";
+            $stmt = $this->db->exec($query);
             return $stmt;
         } catch (\Throwable $ex) {
             echo $ex;
