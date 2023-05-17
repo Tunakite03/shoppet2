@@ -9,13 +9,21 @@ class Profile extends Controller
         // }
     }
 
-    public function index($id="")
+    public function index($id = "")
     {
-     
+        $this->data['sub_content']['profile']="";
         $profile = $this->model("ProfileModel");
+        if (!isset($_SESSION['loggedID']) || $id != $_SESSION['loggedID']) {
 
-        $this->data['sub_content']['profile'] = $profile->getCustomerInfoID($id); //duw lieu tra ve tu database
+            return $this->render('../errors/404');
+        }
 
+        if (is_numeric($id)) {
+
+            $this->data['sub_content']['profile'] = $profile->getCustomerInfoID($id);
+        }
+
+        
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/client_layout', $this->data);

@@ -59,6 +59,19 @@ class UserModel
             echo $ex;
         }
     }
+    public function getInfoUserById($id)
+    {
+        try {
+            $query = "SELECT cu.*, info.phone as phone , info.province,  info.district,  info.ward,  info.street
+            FROM customers cu
+            LEFT JOIN info_customers info ON cu.id = info.id_customer
+            where cu.id= $id";
+            $stmt = $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function updateInfoUser($user_info)
     {
         try {
@@ -78,7 +91,6 @@ class UserModel
             echo $ex;
         }
     }
-
     public function UpdateCustomer($id, $name,  $phone, $province, $district, $ward, $street)
     {
         try {
@@ -107,28 +119,6 @@ class UserModel
             FROM customers cu
             LEFT JOIN info_customers info ON cu.id = info.id_customer";
             $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-    }
-    public function CheckEmail($email)
-    {
-        try {
-            $query = "SELECT * FROM customers Where `email` = '$email'  ";
-            $stmt = $this->db->getList($query);
-            return $stmt;
-        } catch (\Throwable $ex) {
-            echo $ex;
-        }
-    }
-    public function UpdatePassWord($email,$password)
-    {
-        try {
-            $query = "UPDATE customers
-            SET `password` = '$password' 
-            WHERE `email` = '$email' ;";
-            $stmt = $this->db->exec($query);
             return $stmt;
         } catch (\Throwable $ex) {
             echo $ex;

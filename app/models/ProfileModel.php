@@ -28,5 +28,6 @@ class ProfileModel
             echo $ex;
         }
     }
+  
 }
 ?>
