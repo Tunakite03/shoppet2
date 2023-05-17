@@ -4,12 +4,12 @@
             <div class="card mb-0">
                 <div class="card-body">
                     <?php
-                    if (isset($errorsRegister) && !empty($errorsRegister)) {
+                    if (isset($errorsEdit) && !empty($errorsEdit)) {
                     ?>
                         <div class="alert alert-warning" role="alert">
                             <h4 class="alert-heading">Lỗi: </h4>
                             <?php
-                            foreach ($errorsRegister as $key => $error) {
+                            foreach ($errorsEdit as $key => $error) {
                             ?>
                                 <p>
                                     <?= $error ?>
@@ -20,33 +20,33 @@
                         </div>
                     <?php
                     }
-                    if (isset($successRegister) && !empty($successRegister)) {
+                    if (isset($successEdit) && !empty($successEdit)) {
                     ?>
                         <div class="alert alert-success text-center" role="alert">
                             <h4 class="alert-heading">Hoàn thành</h4>
-                            <p>Bạn đã thêm quản trị viên mới thành công.</p>
+                            <p>Bạn đã chỉnh sửa quản trị viên thành công.</p>
                             <hr>
                         </div>
                     <?php
                     }
                     ?>
-                    <form action="/admin/addmember" method="post" id='form-register-admin' onsubmit="return validateForm()">
+                    <form action="/admin/addAdmin" method="post" id='form-register-admin' onsubmit="return validateForm()">
                         <div class="d-flex gap-4">
                             <div class="mb-3 flex-grow-1 ">
                                 <label for="inputtext1" class="form-label">Tên</label>
-                                <input required name="name" type="text" class="form-control w-100 " id="inputtext1" aria-describedby="textHelp">
+                                <input required name="name" type="text" class="form-control w-100 " id="inputtext1" aria-describedby="textHelp" value="<?= $data_admin['name'] ?>">
                                 <span class="text-danger" id="nameError"></span>
                             </div>
                             <div class="mb-3 flex-grow-1">
                                 <label for="inputEmail1" class="form-label">Email</label>
-                                <input required name="email" type="email" class="form-control w-100 " id="inputEmail1" aria-describedby="emailHelp">
+                                <input required name="email" type="email" class="form-control w-100 " id="inputEmail1" aria-describedby="emailHelp" value="<?= $data_admin['email'] ?>">
                                 <span class="text-danger" id="emailError"></span>
                             </div>
                         </div>
                         <div class="d-flex gap-4">
                             <div class="mb-5 flex-grow-1">
                                 <label for="inputPassword1" class="form-label">Mật khẩu</label>
-                                <input required name="password" type="password" class="form-control w-100" id="inputPassword1">
+                                <input required name="password" type="password" class="form-control w-100" id="inputPassword1" value="<?= $data_admin['password'] ?>">
                                 <span class="text-danger" id="passwordError"></span>
                             </div>
                             <div class="mb-5 flex-grow-1">
@@ -57,7 +57,7 @@
                                         $data = $data_role->fetchAll();
                                         foreach ($data as $key => $value) {
                                     ?>
-                                            <option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
+                                            <option value="<?= $value['id'] ?>" <?php if ($value['id'] == $data_admin['id_role']) echo "selected"; ?>><?= $value['role']  ?></option>
                                     <?php
                                         }
                                     }
@@ -118,4 +118,5 @@
             return true;
         }
     }
+    
 </script>

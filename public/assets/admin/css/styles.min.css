@@ -539,6 +539,11 @@ select:disabled {
     opacity: 1
 }
 
+#sales-date {
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
 [list]:not([type=date]):not([type=datetime-local]):not([type=month]):not([type=week]):not([type=time])::-webkit-calendar-picker-indicator {
     display: none !important
 }
@@ -572,9 +577,11 @@ fieldset {
     margin: 0;
     border: 0
 }
-.is-invalid{
+
+.is-invalid {
     border: 2px solid red;
 }
+
 legend {
     float: left;
     width: 100%;

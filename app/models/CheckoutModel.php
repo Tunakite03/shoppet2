@@ -1,6 +1,6 @@
 <?php
 
-class CheckoutModel  
+class CheckoutModel
 {
 
     private $db;
@@ -54,6 +54,89 @@ class CheckoutModel
             echo $ex;
         }
     }
+    public function getListOrder($con, $value)
+    {
+        try {
+            switch ($con) {
+                case 'day':
+                    $startDate = $value . ' 00:00:00';
+                    $endDate = $value . ' 23:59:59';
+                    $query = "SELECT
+            SUM(od.id) as number_sell_product,
+                od.*,
+                pr.name AS product_name,
+                pr.price AS product_price,
+                pr.sale AS product_sale,
+                pr.import_price,
+             
+            FROM
+                `order_items` od
+            JOIN products pr ON
+                pr.id = od.product_id
+            Where date BETWEEN '$startDate' AND '$endDate '
+            GROUP BY od.product_id";
+                    break;
+
+                case 'month':
+                    $year = intval(date('Y', strtotime($value)));
+                    $month = intval(date('m', strtotime($value)));
+                    $query = "SELECT
+                SUM(od.id) as number_sell_product,
+                    od.*,
+                    pr.name AS product_name,
+                    pr.price AS product_price,
+                    pr.sale AS product_sale,
+                    pr.import_price,
+                    pr.number_sell
+                FROM
+                    `order_items` od
+                JOIN products pr ON
+                    pr.id = od.product_id
+                Where  YEAR(date) = $year AND MONTH(date) = $month
+                GROUP BY od.product_id";
+                    break;
+                case 'year':
+                    $query = "SELECT
+                    SUM(od.id) as number_sell_product,
+                        od.*,
+                        pr.name AS product_name,
+                        pr.price AS product_price,
+                        pr.sale AS product_sale,
+                        pr.import_price,
+                     
+                    FROM
+                        `order_items` od
+                    JOIN products pr ON
+                        pr.id = od.product_id
+                    Where  YEAR(date) = $value
+                    GROUP BY od.product_id";
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+            // echo $query;
+            // die;
+            $stmt =  $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getSellProduct($con, $value)
+    {
+        try {
+            $query = "SELECT od.*, pr.name as product_name, pr.price as product_price , pr.sale as product_sale, pr.import_price, pr.number_sell FROM `order_items` od
+            Join products pr ON pr.id = od.product_id
+            Where $con(date) = $value";
+            $stmt =  $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+
     public function getInfoConfirmProduct($id_order)
     {
         try {

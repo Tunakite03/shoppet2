@@ -3,9 +3,26 @@ class Admin extends Controller
 {
     public $data = [], $link = "admin/dashboard";
 
+    public function __construct()
+    {
+        if (!isset($_SESSION['adminLogged']) || empty($_SESSION['adminLogged'])) {
+            header("Location: /adminlogin");
+        }
+        // ROLE_ADMIN
+        // if(){
+        // }
+
+    }
     public function index()
     {
-        $this->data['sub_content']['product'] = "";
+        $con = "year";
+        $value = date('Y');
+        if (isset($_GET['submitChart'])) {
+            $con = $_GET['select_con'];
+            $value = $_GET['data'];
+        }
+        $checkout = $this->model("CheckoutModel");
+        $this->data['sub_content']['data_chart'] = $checkout->getListOrder($con, $value);
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
@@ -448,7 +465,6 @@ class Admin extends Controller
     }
     public function editcustomer($id = '')
     {
-
         $customer = $this->model("UserModel");
         if (isset($_POST['editusersubmit'])) {
             $name = $_POST['name'];
@@ -496,7 +512,83 @@ class Admin extends Controller
         $this->render('layouts/admin_layout', $this->data);
     }
 
+<<<<<<< HEAD
     
+=======
+
+    public function listAdmin()
+    {
+        $id_admin = $_SESSION['adminLogged']['id'];
+        $admin = $this->model("AdminModel");
+        $this->data['sub_content']['data_admin'] = $admin->getListAdmin($id_admin);
+        $this->link = "admin/auth/listAdmin";
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function editadmin($id = '')
+    {
+        if (is_numeric($id) && $id != $_SESSION['adminLogged']['id']) {
+            $admin = $this->model("AdminModel");
+            $this->data['sub_content']['data_admin'] = $admin->getInfoAdmin($id);
+            $this->data['sub_content']['data_role'] = $admin->getListRole();
+
+            $this->link = "admin/auth/editAdmin";
+            $this->data['content'] = $this->link; // đường dẫn tới file view
+            // Render Views
+            $this->render('layouts/admin_layout', $this->data);
+        } else {
+            header("Location: /admin/listAdmin");
+        }
+    }
+    public function addAdmin()
+    {
+        $admin = $this->model("AdminModel");
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registerSubmit'])) {
+            $errors = [];
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $role = $_POST['role'];
+            $checkExistEmail = $admin->getAdmin($email);
+            if ($checkExistEmail != false) {
+                $errors['existAdmin'] = 'Email đã tồn tại';
+            } else {
+                $result = $admin->insertAdmin($name, $email, $password, $role);
+                if ($result == 1) {
+                    $this->data['sub_content']['successRegister'] = true;
+                } else {
+                    $errors['failedResgister'] = "Thêm không thành công vui lòng thử lại sau";
+                }
+            }
+            if (!empty($errors)) {
+                $this->data['sub_content']['errorsRegister'] = $errors;
+            }
+        }
+        $this->data['sub_content']['data_role'] = $admin->getListRole();
+        $this->link = "admin/auth/addAdmin";
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function deleteAdmin($id)
+    {
+        if (is_numeric($id)) {
+            $admin = $this->model("AdminModel");
+
+            $result = $admin->deleteAdmin($id);
+            if ($result == 1) {
+                $this->data['sub_content']["successDelete"] = true;
+            } else {
+                $this->data['sub_content']['errorsDelete'] = "Không thể xóa lúc này vui lòng thử lại sau";
+            }
+            header("Location: {$_SERVER['HTTP_REFERER']}");
+        } else {
+            header("Location: /admin/categories");
+        }
+    }
+>>>>>>> 71679c122d10b901453da043b4762240e671c883
 
     public function deleteSubCate($id = "")
     {
@@ -529,7 +621,6 @@ class Admin extends Controller
                     // Update the name of the category
                     $admin->updateNameCategory($id, $nameCate);
                     $this->data['sub_content']['successEdit'] .= "Thay đổi tên danh mục thành công" . "\n";
-
                     if (isset($_POST['subcatenew'])) {
                         $subcate = filter_input(INPUT_POST, 'subcatenew', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
                         // Insert the new subcategories
