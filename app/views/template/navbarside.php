@@ -46,13 +46,23 @@
                         <span class="hide-menu">Danh sách tin tức</span>
                     </a>
                 </li>
-                
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/admin/customers" aria-expanded="false">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                                <path d="M6 21v-2a4 4 0 0 1 4 -4h3.5"></path>
+                                <path d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z"></path>
+                            </svg>
+                        </span>
+                        <span class="hide-menu">Danh sách khách hàng</span>
+                    </a>
+                </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="/admin/categories" aria-expanded="false">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24"
-                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M9 6l11 0"></path>
                                 <path d="M9 12l11 0"></path>
@@ -124,7 +134,22 @@
                         <span class="hide-menu">Logout</span>
                     </a>
                 </li>
-                
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/admin/registerAdmin" aria-expanded="false">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                                <path d="M16 19h6"></path>
+                                <path d="M19 16v6"></path>
+                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
+                            </svg>
+                        </span>
+                        <span class="hide-menu">Register</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

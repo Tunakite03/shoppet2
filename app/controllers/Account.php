@@ -30,7 +30,8 @@ class Account extends Controller
             $name = $_POST['name'];
             $email = $_POST['email'];
             $password = $_POST['password'];
-            if ($user->getUser($email) != false) {
+            $checkExist = $user->getUser($email);
+            if ($checkExist != false) {
                 $errors['user'] = "Tài khoản đã tồn tại";
             }
             $this->data['sub_content']['errorsRegister'] = $errors;
@@ -90,17 +91,18 @@ class Account extends Controller
         $user = $this->model("UserModel");
 
         // Hàm để tạo mật khẩu ngẫu nhiên
-        function generatePassword() {
+        function generatePassword()
+        {
             // Độ dài mật khẩu
             $length = 8;
             $charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+'; // Bộ ký tự cho mật khẩu
-        
+
             // Tạo mật khẩu ngẫu nhiên
             $password = '';
             for ($i = 0; $i < $length; $i++) {
                 $password .= $charset[rand(0, strlen($charset) - 1)];
             }
-        
+
             // Đảm bảo mật khẩu chứa ít nhất một ký tự đặc biệt, một số và một chữ cái thường
             while (!preg_match('/\d/', $password) || !preg_match('/[a-z]/', $password) || !preg_match('/[\W_]/', $password)) {
                 $password = '';
@@ -108,8 +110,48 @@ class Account extends Controller
                     $password .= $charset[rand(0, strlen($charset) - 1)];
                 }
             }
-        
+
             return $password;
+        }
+        function sendmail($email,$password)
+        {
+           // gửi mail 
+           require "PHPMailer-master/src/PHPMailer.php";
+           require "PHPMailer-master/src/SMTP.php";
+           require 'PHPMailer-master/src/Exception.php';
+           $mail = new PHPMailer\PHPMailer\PHPMailer(true); //true:enables exceptions
+           try {
+               $mail->SMTPDebug = 0; //0,1,2: chế độ debug
+               $mail->isSMTP();
+               $mail->CharSet = "utf-8";
+               $mail->Host = 'smtp.gmail.com'; //SMTP servers
+               $mail->SMTPAuth = true; // Enable authentication
+               $mail->Username = 'nguyenphucan24112003@gmail.com'; // SMTP username
+               $mail->Password = 'czubscvdccrwpxuu'; // SMTP password
+               $mail->SMTPSecure = 'ssl'; // encryption TLS/SSL 
+               $mail->Port = 465; // port to connect to                
+               $mail->setFrom('nguyenphucan24112003@gmail.com', 'An');
+               $mail->addAddress($email);
+               $mail->isHTML(true); // Set email format to HTML
+               $mail->Subject = 'Thư Gửi Lại Mật Khẩu';
+               $noidungthu = "<p>bạn nhận được thư này để cung cấp lại mật khẩu cho bạn, vì bạn đã chọn quên mật khẩu từ website chúng tôi</p> 
+                   Mật khẩu mới của bạn là: <b>{$password}</b>.";
+               $mail->Body = $noidungthu;
+               $mail->smtpConnect(
+                   array(
+                       "ssl" => array(
+                           "verify_peer" => false,
+                           "verify_peer_name" => false,
+                           "allow_self_signed" => true
+                       )
+                   )
+               );
+               $mail->send();
+               echo 'Đã gửi mail xong';
+           } catch (Exception $e) {
+               echo 'Error: ', $mail->ErrorInfo;
+           };
+
         }
 
         if (isset($_POST['submitforgotpass'])) {
@@ -117,9 +159,12 @@ class Account extends Controller
             $checkemail = $user->CheckEmail($email);
             if ($checkemail->rowCount() > 0) {
                 $password = generatePassword();
-                echo $password;
-                $result= $user->UpdatePassWord($email, $password);
+                $update = $user->UpdatePassWord($email, $password);
+                // gửi mail
+                sendmail($email,$password);
+
                 $this->data['sub_content']['success'] = "success";
+
             } else {
                 $this->data['sub_content']['error'] = "error";
             }

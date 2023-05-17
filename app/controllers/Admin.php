@@ -390,7 +390,6 @@ class Admin extends Controller
             $result = $news->AddNews($name, $des_news, $content, $uptime);
             if ($result == 1) {
                 echo '<meta http-equiv="refresh" content="' . 0 . ';url=' . $_SERVER['REQUEST_URI'] . '" />';
-
             } else {
                 echo "UpdateFail";
             }
@@ -416,7 +415,6 @@ class Admin extends Controller
             $result = $news->UpdateNews($id, $name, $des_news, $content, $uptime);
             if ($result == 1) {
                 echo '<meta http-equiv="refresh" content="' . 0 . ';url=' . $_SERVER['REQUEST_URI'] . '" />';
-
             } else {
                 echo "UpdateFail";
             }
@@ -432,7 +430,6 @@ class Admin extends Controller
             $news = $this->model("NewsModel");
             $result = $news->DeleteNews($id);
             header("Location: /admin/news");
-
         } else {
             header("Location: /admin/news");
         }
@@ -453,26 +450,25 @@ class Admin extends Controller
     {
 
         $customer = $this->model("UserModel");
-        $this->data['sub_content']['data_customer'] = $customer->getUserById($id);
-
-        $this->link = "admin/customers/editCustomers";
-
         if (isset($_POST['editusersubmit'])) {
             $name = $_POST['name'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $address = $_POST['address'];
+            // Sanitize and validate the form data
+            $province = $_POST['province-is'];
+            $district = $_POST['district-is'];
+            $ward = $_POST['ward-is'];
+            $street = $_POST['street-is'];
             $phone = $_POST['phone'];
-
-
-            $result = $customer->UpdateCustomer($id, $name, $email, $password, $address, $phone);
+            $result = $customer->UpdateCustomer($id, $name,  $phone, $province, $district, $ward, $street);
             if ($result == 1) {
-                echo '<meta http-equiv="refresh" content="' . 0 . ';url=' . $_SERVER['REQUEST_URI'] . '" />';
-
+                $this->data['sub_content']['successEdit'] = true;
             } else {
-                echo "UpdateFail";
+                $this->data['sub_content']['errorsEdit'] = "Bạn chưa thao tác gì cả";
             }
         }
+        $ctm = $customer->getInfoUserById($id);
+        $this->data['sub_content']['data_customer'] = $ctm;
+        echo '<script type="text/javascript">localStorage.setItem("address", JSON.stringify({ province: "' . $ctm['province'] . '", district: "' . $ctm['district'] . '", ward: "' . $ctm['ward'] . '"}))</script>';
+        $this->link = "admin/customers/editCustomers";
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
@@ -484,13 +480,10 @@ class Admin extends Controller
             $customer = $this->model("UserModel");
             $result = $customer->DeleteCustomer($id);
             header("Location: /admin/customers");
-
         } else {
             header("Location: /admin/customers");
         }
     }
-
-
 
     public function categories()
     {
@@ -503,21 +496,59 @@ class Admin extends Controller
         $this->render('layouts/admin_layout', $this->data);
     }
 
+    
 
-
+    public function deleteSubCate($id = "")
+    {
+        if (is_numeric($id)) {
+            $admin = $this->model("AdminModel");
+            $admin->updateTypeProductToNull($id);
+            $result =  $admin->deleteSubcategory($id);
+            if ($result == 1) {
+                $this->data['sub_content']["successDelete"] = true;
+            } else {
+                $this->data['sub_content']['errorsDelete'] = "Không thể xóa lúc này vui lòng thử lại sau";
+            }
+            header("Location: {$_SERVER['HTTP_REFERER']}");
+            exit;
+        } else {
+            header("Location: /admin/categories");
+        }
+    }
     public function editcategory($id = "")
     {
         if (is_numeric($id)) {
             $admin = $this->model("AdminModel");
-            $products = $this->model("ProductModel");
-            $this->data['sub_content']['data'] = "";
-            $this->data['sub_content']['data_category'] = $admin->getCategoryByID($id);
+            $this->data['sub_content']['errorsEdit'] = "";
+            $this->data['sub_content']['successEdit'] = "";
 
             if (isset($_POST['editCategorySubmit'])) {
-                print_r($_POST);
-                die;
-            }
 
+                $nameCate = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                try {
+                    // Update the name of the category
+                    $admin->updateNameCategory($id, $nameCate);
+                    $this->data['sub_content']['successEdit'] .= "Thay đổi tên danh mục thành công" . "\n";
+
+                    if (isset($_POST['subcatenew'])) {
+                        $subcate = filter_input(INPUT_POST, 'subcatenew', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                        // Insert the new subcategories
+                        foreach ($subcate as $key => $subcate_name) {
+                            if ($admin->checkNameSubcateExist($id, $subcate_name) == false) {
+                                $result = $admin->insertSubcategory($id, $subcate_name);
+                                $this->data['sub_content']['successEdit'] .= "Thêm danh mục con " . $subcate_name . " thành công.";
+                            } else {
+                                $this->data['sub_content']['errorsEdit'] .= "Khong thể thêm danh mục con " . $subcate_name;
+                            }
+                        }
+                    }
+                    // Set success message if the update was successful
+                } catch (Exception $e) {
+                    // Set error message if there was an error
+                    $this->data['sub_content']['errorsEdit'] = true;
+                }
+            }
+            $this->data['sub_content']['data_category'] = $admin->getCategoryByID($id);
             $this->link = "admin/categories/editcategory";
             $this->data['content'] = $this->link; // đường dẫn tới file view
             $this->render('layouts/admin_layout', $this->data);

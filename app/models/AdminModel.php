@@ -146,14 +146,46 @@ class AdminModel
         }
     }
 
-    public function updateCategory($id, $cate_name, $subcate)
+    public function updateNameCategory($id, $cate_name)
     {
         try {
             $query = "UPDATE `categories` SET `name`='$cate_name' WHERE id='$id'";
-            $stmt = $this->db->getList($query);
+            $stmt = $this->db->exec($query);
             return $stmt;
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function deleteSubcategory($id)
+    {
+        try {
+            $query = "DELETE FROM `category_type` WHERE id = $id";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function insertSubcategory($id_category, $subcate_name)
+    {
+        try {
+            $query = "INSERT INTO category_type (id_category, name)
+            VALUES ($id_category, '$subcate_name')";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function checkNameSubcateExist($id_category, $subcate_name)
+    {
+        try {
+            $query = "SELECT * FROM category_type where id_category = $id_category and name = '$subcate_name' ";
+
+            $stmt = $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
         }
     }
     public function getBrands()
@@ -181,12 +213,21 @@ class AdminModel
             echo $ex;
         }
     }
+    public function getListRole()
+    {
+        try {
+            $query = "SELECT * FROM `role_admin`";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function deleteProduct($id)
     {
         try {
             $query = "DELETE FROM `products` WHERE id=$id";
             $stmt = $this->db->exec($query);
-            echo ($stmt);
             return $stmt;
         } catch (\Throwable $ex) {
             echo $ex;
@@ -218,6 +259,18 @@ class AdminModel
             ,'$des'
             ,$quantity
             ,0)";
+            $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+
+    public function updateTypeProductToNull($id_subcate)
+    {
+        try {
+            $query = "UPDATE `products` SET `id_type`= 6
+            WHERE id_type=$id_subcate";
             $stmt = $this->db->exec($query);
             return $stmt;
         } catch (\Throwable $ex) {

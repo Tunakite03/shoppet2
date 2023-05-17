@@ -10,6 +10,24 @@
         <?php
     }
     ?>
+    <?php
+    if (!empty($errorsRegister)) {
+    ?>
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Lỗi: </h4>
+            <?php
+            foreach ($errorsRegister as $key => $error) {
+            ?>
+                <p>
+                    <?= $error ?>
+                </p>
+            <?php }
+            ?>
+            <hr>
+        </div>
+    <?php
+    }
+    ?>
     <div class="container py-5">
         <!-- ##### Login Area Start ##### -->
         <div class="vizew-login-area section-padding-80">
@@ -94,12 +112,12 @@
                                             <h4 class="text-center py-2">Create your account!</h4>
                                             <?php
                                             if (!empty($errorsRegister)) {
-                                                ?>
+                                            ?>
                                                 <div class="alert alert-warning" role="alert">
                                                     <h4 class="alert-heading">Lỗi: </h4>
                                                     <?php
                                                     foreach ($errorsRegister as $key => $error) {
-                                                        ?>
+                                                    ?>
                                                         <p>
                                                             <?= $error ?>
                                                         </p>
@@ -107,7 +125,7 @@
                                                     ?>
                                                     <hr>
                                                 </div>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
                                             <div class="line"></div>

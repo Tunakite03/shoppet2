@@ -6,9 +6,12 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Id khách hàng</th>
+
                             <th>Tên khách hàng</th>
                             <th>Email</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+
                             <th>Thao tác</th>
                         </tr>
                     </thead>
@@ -16,13 +19,10 @@
                         <?php
                         $data = $data_customer->fetchAll();
                         foreach ($data as $key => $value) {
-                            ?>
+                        ?>
                             <tr>
                                 <td>
                                     <?= $key ?>
-                                </td>
-                                <td>
-                                    <?= $value['id'] ?>
                                 </td>
                                 <td class="">
                                     <?= $value['name'] ?>
@@ -31,9 +31,16 @@
                                     <?= $value['email'] ?>
                                 </td>
                                 <td>
-                                    <a name="" id="" class="btn btn-primary" href="/admin/editcustomer/<?= $value['id']?>" role="button">Sửa</a>
-                                    <a name="" id="" class="btn btn-warning my-2 delete-user"
-                                        href="/admin/deletecustomer/<?= $value['id'] ?>" role="button">Xóa</a>
+                                    <?= $value['address'] ?>
+                                </td>
+                                <td class="">
+                                    <?= $value['phone'] ?>
+                                </td>
+
+
+                                <td>
+                                    <a name="" id="" class="btn btn-primary" href="/admin/editcustomer/<?= $value['id'] ?>" role="button">Sửa</a>
+                                    <a name="" id="" class="btn btn-warning my-2 delete-product" href="/admin/deletecustomer/<?= $value['id'] ?>" role="button">Xóa</a>
 
                                 </td>
                             </tr>
@@ -48,7 +55,7 @@
 </section>
 <script>
     // Add an event listener to the delete button
-    document.querySelectorAll('.delete-user').forEach(function (button) {
+    document.querySelectorAll('.delete-product').forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
             // Show the SweetAlert confirmation dialog
