@@ -68,7 +68,7 @@ class CheckoutModel
                 pr.price AS product_price,
                 pr.sale AS product_sale,
                 pr.import_price,
-                pr.number_sell
+             
             FROM
                 `order_items` od
             JOIN products pr ON
@@ -103,7 +103,7 @@ class CheckoutModel
                         pr.price AS product_price,
                         pr.sale AS product_sale,
                         pr.import_price,
-                        pr.number_sell
+                     
                     FROM
                         `order_items` od
                     JOIN products pr ON
