@@ -8,12 +8,22 @@ class AdminModel
     {
         $this->db = new ConnectDB();
     }
+    public function checkLogin($email, $password)
+    {
+        try {
+            $query = "SELECT * FROM `admin`
+             WHERE email='$email' and password = '$password'";
+            $stmt =  $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function insertAdmin($name, $email, $password, $role)
     {
         try {
             $query = "INSERT INTO `admin`(`id`,`name`, `email`, `password`, `id_role`) 
             VALUES (null,'$name','$email','$password',$role)";
-
             $stmt =  $this->db->exec($query);
             return $stmt;
         } catch (\Throwable $ex) {
@@ -25,7 +35,7 @@ class AdminModel
         try {
             $query = "SELECT cat.name as name_cate, cat.id as cate_id, cty.name as name_subcate, cty.id as subcate_id FROM `categories` cat
             JOIN `category_type` cty ON cat.id = cty.id_category
-             WHERE cat.id='$id'";
+             WHERE cat.id=$id";
             $stmt =  $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {
@@ -42,8 +52,41 @@ class AdminModel
             echo $ex;
         }
     }
+    public function getInfoAdmin($id)
+    {
+        try {
+            $query = "SELECT ad.*, ro.role as role FROM `admin` ad
+              Join role_admin ro ON ro.id = ad.id_role
+              WHERE ad.id=$id";
+            $stmt =  $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getListAdmin($id)
+    {
+        try {
+            $query = "SELECT ad.*, ro.role as role  FROM `admin` ad
+            Join role_admin ro ON ro.id = ad.id_role
+            where ad.id <> $id";
+            $stmt =  $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
 
-
+    public function deleteAdmin($id)
+    {
+        try {
+            $query = "DELETE FROM `admin` where id= $id";
+            $stmt =  $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getPets()
     {
         try {

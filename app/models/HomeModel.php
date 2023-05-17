@@ -10,12 +10,5 @@ class HomeModel
     }
     public function getList()
     {
-        // try {
-        //     $query = "SELECT * FROM `book` ORDER BY 'book_id' Desc limit 8";
-        //     $stmt =  $this->db->getList($query);
-        //     return $stmt;
-        // } catch (\Throwable $ex) {
-        //     echo $ex;
-        // }
     }
 }
