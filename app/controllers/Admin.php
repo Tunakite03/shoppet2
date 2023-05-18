@@ -8,11 +8,13 @@ class Admin extends Controller
         if (!isset($_SESSION['adminLogged']) || empty($_SESSION['adminLogged'])) {
             header("Location: /adminlogin");
         }
-        // ROLE_ADMIN
-        // if(){
-        // }
-
     }
+    public function logout()
+    {
+        unset($_SESSION['adminLogged']);
+        header("Location: /adminlogin");
+    }
+
     public function index()
     {
         $con = "year";
@@ -31,7 +33,7 @@ class Admin extends Controller
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
     }
-    public function products()
+    public function listproducts()
     {
         $this->data['sub_content']['product'] = "";
         $products = $this->model("ProductModel");
@@ -259,7 +261,7 @@ class Admin extends Controller
         $this->render('layouts/admin_layout', $this->data);
     }
 
-    public function news()
+    public function listnews()
     {
         $id = "";
         $this->data['sub_content']['news'] = "";
@@ -335,7 +337,7 @@ class Admin extends Controller
         }
     }
 
-    public function customers()
+    public function listcustomers()
     {
         $this->data['sub_content']['product'] = "";
         $customer = $this->model("UserModel");
@@ -384,7 +386,7 @@ class Admin extends Controller
         }
     }
 
-    public function categories()
+    public function listcategories()
     {
         $this->data['sub_content']['product'] = "";
         $categories = $this->model("ProductModel");

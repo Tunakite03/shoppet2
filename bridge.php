@@ -20,5 +20,6 @@ define('_WEB_ROOT', $web_root);
 
 require_once "./app/App.php";
 require_once "./core/Controller.php"; //Load base Controller
+
 //Kiểm tra config và load Database
 require_once './core/ConnectDB.php';

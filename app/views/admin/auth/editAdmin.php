@@ -46,7 +46,7 @@
                         <div class="d-flex gap-4">
                             <div class="mb-5 flex-grow-1">
                                 <label for="inputPassword1" class="form-label">Mật khẩu</label>
-                                <input required name="password" type="password" class="form-control w-100" id="inputPassword1" value="<?= $data_admin['password'] ?>">
+                                <input required name="password" type="text" class="form-control w-100" id="inputPassword1" value="<?= $data_admin['password'] ?>">
                                 <span class="text-danger" id="passwordError"></span>
                             </div>
                             <div class="mb-5 flex-grow-1">
@@ -118,5 +118,4 @@
             return true;
         }
     }
-    
 </script>

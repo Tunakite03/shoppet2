@@ -42,6 +42,17 @@ class AdminModel
             echo $ex;
         }
     }
+    public function checkRole($id)
+    {
+        try {
+            $query = "SELECT id_role FROM `admin` WHERE `id`=$id";
+
+            $stmt =  $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getAdmin($email)
     {
         try {

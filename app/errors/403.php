@@ -70,9 +70,9 @@
     <section id="wrapper" class="error-page">
         <div class="error-box">
             <div class="error-body text-center">
-                <h1>404</h1>
-                <h3 class="text-uppercase">Trang không tìm thấy !</h3>
-                <p class="text-muted m-t-30 m-b-30">Có vẻ như bạn đang muốn quay lại</p>
+                <h1>403</h1>
+                <h3 class="text-uppercase">Bạn không có quyền truy cập vào trang này</h3>
+                <p class="text-muted m-t-30 m-b-30">Quay lại trang trước đó nhé</p>
                 <a href="#" onclick="window.history.back()" class="btn btn-pri btn-rounded waves-effect waves-light m-b-40">Quay lại trang trước</a>
             </div>
         </div>
