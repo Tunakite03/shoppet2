@@ -526,4 +526,31 @@ class Admin extends Controller
             header("Location: /admin/categories");
         }
     }
+    public function ListCustomersOrders()
+    {
+        $admin = $this->model("AdminModel");
+        // $this->data['sub_content']['product'] = "";
+        $this->data['sub_content']['data_orders'] =$admin->getListCustomersOrders();
+        $this->link = "admin/categories/listCategories";
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }
+    public function ListCustomersOrdersID($orderid)
+    {
+        $admin = $this->model("AdminModel");
+        // $this->data['sub_content']['product'] = "";
+        $this->data['sub_content']['order_id'] =$admin->getListCustomersOrdersID($orderid);
+        $this->data['sub_content']['checkoutConfirmProducts']= $admin->getInfoConfirmProduct($orderid);
+        $this->link = "admin/categories/detail";
+        $this->data['content'] = $this->link; // đường dẫn tới file view
+        // Render Views
+        $this->render('layouts/admin_layout', $this->data);
+    }   
+
+
+
+
+
+
 }
