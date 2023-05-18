@@ -18,6 +18,17 @@ class ProductModel
         }
     }
 
+    public function getProductsBestSale()
+    {
+        try {
+            $query = "SELECT * FROM `products` ORDER BY `products`.`number_sell` DESC LIMIT 8";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+
     public function getCategoriesInfo()
     {
         try {
@@ -215,14 +226,13 @@ class ProductModel
     }
     public function getFilter($min, $max)
     {
-        
+
         try {
             $query = "SELECT * FROM `products` WHERE price BETWEEN '$min' AND '$max' ";
             $stmt = $this->db->getList($query);
             return $stmt;
-            
         } catch (\Throwable $ex) {
             echo $ex;
         }
-    }   
+    }
 }

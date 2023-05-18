@@ -22,7 +22,11 @@ class Admin extends Controller
             $value = $_GET['data'];
         }
         $checkout = $this->model("CheckoutModel");
+        $product = $this->model("ProductModel");
+
         $this->data['sub_content']['data_chart'] = $checkout->getListOrder($con, $value);
+        $this->data['sub_content']['data_circle_chart'] = $checkout->getMoneyByYear();
+        $this->data['sub_content']['data_products_best_sale'] = $product->getProductsBestSale();
         $this->data['content'] = $this->link; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/admin_layout', $this->data);
