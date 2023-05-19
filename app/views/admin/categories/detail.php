@@ -51,7 +51,7 @@
             ?>
               <tr>
                 <td><?= $key + 1 ?></td>
-                <td><img width="100px" src="<?= _WEB_ROOT ?>/public/assets/img/img_pet/<?= strtolower($item['pet_name']) . '/' . $item['image'] ?>" /></td>
+                <td><img width="100px" src="<?= _WEB_ROOT ?>/public/assets/img/img_pet/<?=$item['image'] ?>" /></td>
                 <td>
                   <?= $item['product_name'] ?>
                 </td>

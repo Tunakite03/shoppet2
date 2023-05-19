@@ -25,11 +25,13 @@
                 ?>
                 <div class="col-sm-4">
                     <div class="noi_dung">
-                        <div class="img"><a href="https://petshopsaigon.vn/tin-tuc/thuc-an-cho-cho-ganador">
+                        <div class="img">
+                        <a href="<?php echo _WEB_ROOT ?>/news/detail/<?php echo $set["id"] ?>">
                         <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_news/<?php echo $set["img_news"] ?>" alt="" width="100%"></a></div>
-                        <h3><a href="https://petshopsaigon.vn/tin-tuc/thuc-an-cho-cho-ganador"><?php echo $set["name"] ?>&nbsp;</a></h3>
-                        <p class="expert"> /<?php echo $set["des_news"] ?></p>
-                        <a href="https://petshopsaigon.vn/tin-tuc/thuc-an-cho-cho-ganador" class="xem_the">Xem thêm</a>
+                        <h3><a href="<?php echo _WEB_ROOT ?>/news/detail/<?php echo $set["id"] ?>"><?php echo $set["name"] ?>&nbsp;</a></h3>
+                        <p class="expert"><?php echo $set["des_news"] ?></p>
+                        <a href="<?php echo _WEB_ROOT ?>/news/detail/<?php echo $set["id"] ?>" class="xem_the">Xem thêm</a>
+                        
                         <div class="clear"></div>
                     </div>
                 </div>

@@ -6,17 +6,13 @@
                 <h1 class="display-5 mb-3">Liên Hệ</h1>
                 <div class="breadcrumbs">
                     <!-- Breadcrumb NavXT 6.3.0 -->
-                    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to PET SHOP - PET STORE TP.HCM bán Thức Ăn Phụ Kiện cho Chó và Mèo Uy Tín - Chính Hãng." href="" class="home"><span property="name">PET SHOP Sài Gòn - PET STORE TP.HCM bán Thức Ăn
-                                Phụ Kiện cho Chó và Mèo Uy Tín - Chính Hãng</span></a>
-                        <meta property="position" content="1">
-                    </span> &gt; <span class="post post-page current-item">Thông tin liên hệ</span>
                 </div>
             </div>
             <div class="row g-5 justify-content-center">
                 <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="bg-secondary text-white d-flex flex-column justify-content-center h-100 p-5">
                         <h5 class="text-white">Số điện thoại</h5>
-                        <p class="mb-5"><i class="fa fa-phone-alt me-3"></i>+34 867781026</p>
+                        <p class="mb-5"><i class="fa fa-phone-alt me-3"></i>+84  987654321</p>
                         <h5 class="text-white">Email </h5>
                         <p class="mb-5"><i class="fa fa-envelope me-3"></i>petshop@gmail.com</p>
                         <h5 class="text-white">Văn Phòng Chính</h5>
@@ -24,10 +20,10 @@
                             Thành phố Hồ Chí Minh 760000, Việt Nam</p>
                         <h5 class="text-white">Theo Dõi</h5>
                         <div class="d-flex pt-2">
-                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-square btn-outline-light rounded-circle me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href="https://twitter.com/Nhathuy23345359"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href="https://www.facebook.com/profile.php?id=100035728604896"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-outline-light rounded-circle me-1" href="https://www.youtube.com/channel/UCrVHPRWgu4yBybfkheWNJqw"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-square btn-outline-light rounded-circle me-0" href="https://www.linkedin.com/in/huy-nguy%E1%BB%85n-%C4%91o%C3%A0n-nh%E1%BA%ADt-a76019218/"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>

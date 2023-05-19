@@ -5,7 +5,7 @@
     ?>
       <div class="alert alert-success text-center" role="alert">
         <h4 class="alert-heading">Đặt hàng thành công </h4>
-        <p>Bạn đã đặt hàn thành công</p>
+        <p>Bạn đã đặt hàng thành công</p>
         <hr>
       </div>
     <?php
@@ -86,7 +86,7 @@
             ?>
               <tr>
                 <td><?= $key + 1 ?></td>
-                <td><img width="100px" src="<?= _WEB_ROOT ?>/public/assets/img/img_pet/<?= strtolower($item['pet_name']) . '/' . $item['image'] ?>" /></td>
+                <td><img width="100px" src="<?= _WEB_ROOT ?>/public/assets/img/img_pet/<?=$item['image'] ?>" /></td>
                 <td>
                   <?= $item['product_name'] ?>
                 </td>

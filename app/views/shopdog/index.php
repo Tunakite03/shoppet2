@@ -81,7 +81,7 @@
 
                     <div class="product-discount">
                         <div class="section-title product-discount-title">
-                            <h2>Sale Off</h2>
+                        <h2><img src="https://seeklogo.com/images/H/hot-sale-mexico-logo-726E38BE8E-seeklogo.com.png" alt="Sale Off" width="150px" height="150px" srcset=""></h2>
                         </div>
                         <div class="row">
                             <div class="product-discount-slider owl-carousel">
@@ -97,11 +97,7 @@
                                                     <div class="product__discount__percent">-
                                                         <?php echo round((($set['price'] - $set['sale']) / $set['price']) * 100, 0) ?>%
                                                     </div>
-                                                    <ul class="product__item__pic__hover">
-                                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                        <li><a href="/cart/addtocart/<?= $set["id"] ?>"><i
-                                                                    class="fa fa-shopping-cart"></i></a></li>
-                                                    </ul>
+                                                    
                                                 </div>
 
                                             </div>
@@ -140,13 +136,13 @@
                     <div class="filter-item">
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
-                                <div class="filter-sort">
+                                <!-- <div class="filter-sort">
                                     <span>Xem Theo:</span>
                                     <select>
                                         <option value="0">Tăng Dần</option>
                                         <option value="0">Giảm Dần</option>
                                     </select>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter-found">
@@ -157,7 +153,7 @@
                                             $totalProducts = $productsDog->rowCount();
                                             echo $totalProducts;
                                             ?>
-                                        </span> Products found</h6>
+                                        </span> Sản phẩm được tìm thấy!!</h6>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-3">
@@ -177,14 +173,10 @@
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product-item">
                                     <div class="product-item-pic set-bg">
-                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $product["image"] ?>"
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product["image"] ?>"
                                             alt="" width="100%">
 
-                                        <ul class="product__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
+
                                     </div>
                                     <div class="product-item-text">
                                     <h6><a href="<?= _WEB_ROOT ?>/shopdog/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>

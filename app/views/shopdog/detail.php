@@ -38,7 +38,6 @@
                             value="1">
                     </div>
                     <div class="product-action">
-                        <button type="submit" class="btn btn-danger mx-2">Mua hàng</button>
                         <button type="submit" class="btn btn-warning">Thêm vào giỏ hàng</button>
                     </div>
                 </form>

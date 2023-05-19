@@ -18,8 +18,8 @@ class NewsModel
             echo $ex;
         }
     }
-    public function getAllNews()
-    {
+    public function getNews()
+    {  
         try {
             $query = "SELECT * FROM `news` ";
             $stmt = $this->db->getList($query);
@@ -28,6 +28,26 @@ class NewsModel
             echo $ex;
         }
     }
+    public function getNewsId($id)
+    {  
+        try {
+            $query = "SELECT * FROM `news` WHERE id=$id";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    // public function getAllNews()
+    // {
+    //     try {
+    //         $query = "SELECT * FROM `news` ";
+    //         $stmt = $this->db->getList($query);
+    //         return $stmt;
+    //     } catch (\Throwable $ex) {
+    //         echo $ex;
+    //     }
+    // }
     public function getNewsById($id)
     {
         try {
