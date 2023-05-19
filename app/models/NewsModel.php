@@ -38,6 +38,16 @@ class NewsModel
             echo $ex;
         }
     }
+    public function getAllNews()
+    {
+        try {
+            $query = "SELECT * FROM `news` ";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getNewsById($id)
     {
         try {
