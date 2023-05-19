@@ -13,8 +13,6 @@
         </div>
         <?php  endwhile;  ?>
       </div>
-      
-        
     </div>
   </div>
 </section>

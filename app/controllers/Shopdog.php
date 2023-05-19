@@ -2,8 +2,6 @@
 class ShopDog extends Controller
 {
     public $data = [], $link = "shopdog/index";
-
-
     public function __construct()
     {
         $this->data['sub_content']['productsPerPage'] = 9;
@@ -19,27 +17,71 @@ class ShopDog extends Controller
     public function index()
     {
         $products = $this->model("ProductModel");
-        // // require_once.....
-        // $products = new ProductModel();
-        // $this->data['sub_content']['title'] = "Danh sach san pham";
-        // $this->data['sub_content']['productsDogNoSale'] = $products ->getProductDogAllNoSale();
+
         $this->data['sub_content']['categories'] = $products->getCategories();
         $this->data['sub_content']['productsSaleDog'] = $products->getProductSaleDogAll();
         $this->data['sub_content']['productsDog'] = $products->getProductDogAll();
         $this->data['sub_content']['type'] = $products->getType();
-
-        $this->data['content'] = $this->link;
-        ; // đường dẫn tới file view
-
-
+        $this->data['content'] = $this->link;; // đường dẫn tới file view
         // Render Views
         $this->render('layouts/client_layout', $this->data);
     }
 
+    public function filter()
+    {
+        $products = $this->model("ProductModel");
+        // Add filter item section
+        if (isset($_POST['minPrice']) && isset($_POST['maxPrice'])) {
+            $minPrice = $_POST['minPrice'];
+            $maxPrice = $_POST['maxPrice'];
+            $selectedPrice = $_POST['select_price'];
+            $data = $products->getListProductsByPrice1(1, $minPrice, $maxPrice, $selectedPrice);
+            $totalProducts = $data->rowCount();
+            if ($totalProducts > 0) {
+                $output = 'row';
+                $output = '<div class="filter-item">';
+                $output .= '<div class="row justify-content-center">';
+                $output .= '<div class="col-12 text-center">';
+                $output .= '<div class="filter-found">';
+                $output .= '<h6>Có <span>' . $totalProducts . '</span> sản phẩm</h6>';
+                $output .= '</div>';
+                $output .= '</div>';
+                $output .= '<div class="col-lg-4 col-md-3">';
+                $output .= '</div>';
+                $output .= '</div>';
+                $output .= '</div>';
+                foreach ($data as $product) {
+                    $output .= '<div class="col-lg-4 col-md-6 col-sm-6 product-container">';
+                    $output .= '<div class="product-item">';
+                    $output .= '<div class="product-item-pic set-bg">';
+                    $output .= '<img src="' . _WEB_ROOT . '/public/assets/img/img_pet/' . $product['image'] . '" alt="" width="100%">';
+                    $output .= '<ul class="product__item__pic__hover">';
+                    $output .= '<li><a href="#"><i class="fa fa-heart"></i></a></li>';
+                    $output .= '<li><a href="#"><i class="fa fa-retweet"></i></a></li>';
+                    $output .= '<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>';
+                    $output .= '</ul>';
+                    $output .= '</div>';
+                    $output .= '<div class="product-item-text">';
+                    $output .= '<h6><a href="' . _WEB_ROOT . '/shopdog/detail/' . $product['id'] . '"><span>' . $product['name'] . '</span></a></h6>';
+                    if ($product['price'] > $product['sale'] && $product['sale'] == 0) {
+                        $output .= '<h5 style="color:red;">' . number_format($product['price']) . '<sup><u>đ</u></sup></br></h5>';
+                    } else {
+                        $output .= '<h5><font color="red">' . number_format($product['sale']) . '<sup><u>đ</u></sup></font><strike>' . number_format($product['price']) . '</strike><sup><u>đ</u></sup></br></h5>';
+                    }
+                    $output .= '</div>';
+                    $output .= '</div>';
+                    $output .= '</div>';
+                }
+            } else {
+                $output = "Không có sản phẩm";
+            }
+            echo  $output;
+        }
+        // Render Views
+    }
 
     public function detail($id = "")
     {
-
         $products = $this->model("ProductModel");
         $id_pet = 1;
         if (!is_numeric($id)) {
@@ -67,14 +109,8 @@ class ShopDog extends Controller
         } else {
             $result = $products->getProductType($id_pet, $name_cate, $name_type);
         }
-
         $this->data['sub_content']['productsDog'] = $result;
-
-
-        $this->data['content'] = "shopdog/index"; //duong dan
-        // Render Views
+        $this->data['content'] = "shopdog/index";
         $this->render('layouts/client_layout', $this->data);
     }
-
-
 }

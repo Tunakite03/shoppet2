@@ -12,6 +12,7 @@
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/js/dselect.js"></script>
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/udvxoabzgnph4592lfkgld10g2tnk8sq4re5btpht9c54o2g/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -60,6 +61,7 @@
             $this->render($content, $sub_content);
         }
         ?>
+
     </div>
     <!-- Body End -->
     <script src="<?php echo _WEB_ROOT ?>/public/assets/admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

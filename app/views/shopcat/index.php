@@ -54,18 +54,17 @@
                     <div class="sidebar-item">
                         <h4>Giá</h4>
                         <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="540">
+                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="0" data-max="1500000">
                                 <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                             </div>
                             <div class="range-slider">
-                                <div class="price-input mt-3">
-                                    <input disabled style="background-color: transparent;" type="text" id="minamount" min="0">
-                                    <input disabled style="background-color: transparent;" type="text" id="maxamount" max="100">
+                                <div class="price-input mt-3 d-flex justify-content-between">
+                                    <input type="number" id="minamount" min="0" value="0" class="px-2" style="width: fit-content !important; outline: none;" readonly>
+                                    <input type="number" id="maxamount" value="1500000" class="px-2" style="width: fit-content !important; outline: none;" readonly>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -125,35 +124,33 @@
                 <!-- products -->
                 <?php
                 if ($productsCat->rowCount() > 0) {
-                ?>
+                ?>                    <div class="container">
+                <div class="col-lg-4 col-md-5">
+                    <div class="filter-sort">
+                        <span>Xem Theo:</span>
+                        <select class="form-control" id="select-price">
+                            <option value="ASC">Tăng Dần</option>
+                            <option value="DESC">Giảm Dần</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" id="product-container">
                     <div class="filter-item">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-5">
-                                <!-- <div class="filter-sort">
-                                    <span>Sort By</span>
-                                    <select>
-                                        <option value="0">Default</option>
-                                        <option value="0">Default</option>
-                                    </select>
-                                </div> -->
-                            </div>
-                            <div class="col-lg-4 col-md-4">
+                        <div class="row justify-content-center">
+                            <div class="col-12 text-center">
                                 <div class="filter-found">
-
-                                    <h6><span>
+                                    <h6>
+                                        Có
+                                        <span>
                                             <?php
                                             $totalProducts = $productsCat->rowCount();
                                             echo $totalProducts;
                                             ?>
-                                        </span> Sản phẩm được tìm thấy!!</h6>
+                                        </span> sản phẩm
+                                    </h6>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-3">
-                                <div class="filter-option">
-                                    <span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>
-                                </div>
-                            </div>
+
 
                         </div>
                     </div>
@@ -169,6 +166,11 @@
                                 <div class="product-item">
                                     <div class="product-item-pic set-bg">
                                         <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product["image"] ?>" alt="" width="100%">
+
+                                        <ul class="product__item__pic__hover">
+                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                            <li><a href="/cart/addtocart/<?= $product["id"] ?>"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
                                     </div>
                                     <div class="product-item-text">
                                         <h6><a href="<?= _WEB_ROOT ?>/shopcat/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
@@ -177,46 +179,90 @@
                                         if ($product["price"] > $product["sale"] && $product["sale"] == 0) {
                                             echo '<h5 style="color:red;">
                                         ' . number_format($product['price']) . '<sup><u>đ</u></sup></br></h5>';
-                                        } else {
-                                            echo '<h5 >
+                                            } else {
+                                                echo '<h5 >
                                         <font color="red">' . number_format($product['sale']) . '<sup><u>đ</u></sup></font>
                                         <strike>' . number_format($product['price']) . '</strike><sup><u>đ</u></sup></br></h5>';
-                                        }
-                                        ?>
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
                                 </div>
+                            <?php } ?>
+                            <!-- display the pagination links -->
+                            <div class="product-pagination text-center">
+                                <?php if ($currentPage > 1) : ?>
+                                    <a href="?page=<?php echo $currentPage - 1; ?>"><i class="fa fa-long-arrow-left"></i></a>
+                                <?php endif; ?>
+                                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                                    <a href="?page=<?php echo $i; ?>" <?php if ($i === $currentPage)
+                                                                            echo 'class="active"'; ?>><?php echo $i; ?></a>
+                                <?php endfor; ?>
+                                <?php if ($currentPage < $totalPages) : ?>
+                                    <a href="?page=<?php echo $currentPage + 1; ?>"><i class="fa fa-long-arrow-right"></i></a>
+                                <?php endif; ?>
                             </div>
-                        <?php } ?>
-                    </div>
-                    <!-- display the pagination links -->
-                    <div class="product-pagination text-center">
-                        <?php if ($currentPage > 1) : ?>
-                            <a href="?page=<?php echo $currentPage - 1; ?>"><i class="fa fa-long-arrow-left"></i></a>
-                        <?php endif; ?>
-                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                            <a href="?page=<?php echo $i; ?>" <?php if ($i === $currentPage)
-                                                                    echo 'class="active"'; ?>><?php echo $i; ?></a>
-                        <?php endfor; ?>
-                        <?php if ($currentPage < $totalPages) : ?>
-                            <a href="?page=<?php echo $currentPage + 1; ?>"><i class="fa fa-long-arrow-right"></i></a>
-                        <?php endif; ?>
-                    </div>
-                <?php
-                } else {
-                ?>
-                    <div class="row">
-                        <div class="col-12">
-                            <p>Không có sản phẩm</p>
                         </div>
-                    </div>
-                <?php
+
+                    <?php
+                } else {
+                    ?>
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Không có sản phẩm</p>
+                            </div>
+                        </div>
+                    <?php
                 }
-                ?>
+                    ?>
+                    </div>
             </div>
         </div>
     </div>
-    </div>
 </section>
 <script>
+    $(document).ready(function() {
+        var minVal = parseInt($('#minamount').val());
+        var maxVal = parseInt($('#maxamount').val());
+        var select_price = $('#select-price').val();
 
+        function filterData() {
+            $.ajax({
+                url: "<?= _WEB_ROOT ?>/shopcat/filter",
+                type: "POST",
+                data: {
+                    minPrice: minVal,
+                    maxPrice: maxVal,
+                    select_price: select_price,
+                },
+                success: function(data) {
+                    $("#product-container").html(data);
+                }
+            });
+        }
+        $("#select-price").on("change", function() {
+            select_price = $(this).val();
+            minVal = parseInt($('#minamount').val());
+            maxVal = parseInt($('#maxamount').val());
+            filterData();
+        });
+
+        $('#minamount, #maxamount').change(function() {
+            minVal = parseInt($('#minamount').val());
+            maxVal = parseInt($('#maxamount').val());
+        });
+        $('.price-range').slider({
+            range: true,
+            min: parseInt($('.price-range').data('min')),
+            max: parseInt($('.price-range').data('max')),
+            values: [minVal, maxVal],
+            slide: function(event, ui) {
+                $('#minamount').val(ui.values[0]);
+                $('#maxamount').val(ui.values[1]);
+                minVal = ui.values[0];
+                maxVal = ui.values[1];
+                filterData();
+            },
+        });
+    });
 </script>

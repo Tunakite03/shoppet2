@@ -56,29 +56,26 @@
                     <div class="sidebar-item">
                         <h4>Giá</h4>
                         <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="540">
+                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="0" data-max="1500000">
                                 <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                             </div>
                             <div class="range-slider">
-                                <div class="price-input mt-3">
-                                    <input disabled style="background-color: transparent;" type="text" id="minamount" min="0">
-                                    <input disabled style="background-color: transparent;" type="text" id="maxamount" max="100">
+                                <div class="price-input mt-3 d-flex justify-content-between">
+                                    <input type="number" id="minamount" min="0" value="0" class="px-2" style="width: fit-content !important; outline: none;" readonly>
+                                    <input type="number" id="maxamount" value="1500000" class="px-2" style="width: fit-content !important; outline: none;" readonly>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
-
                 <?php
                 if (isset($productsSaleDog)) {
                 ?>
                     <!-- Sale off -->
-
                     <div class="product-discount">
                         <div class="section-title product-discount-title">
                         <h2><img src="https://seeklogo.com/images/H/hot-sale-mexico-logo-726E38BE8E-seeklogo.com.png" alt="Sale Off" width="150px" height="150px" srcset=""></h2>
@@ -86,7 +83,6 @@
                         <div class="row">
                             <div class="product-discount-slider owl-carousel">
                                 <?php
-
                                 while ($set = $productsSaleDog->fetch()) :
                                 ?>
                                     <div class="col-lg-4 m-auto w-100 p-2 justify-content-center">
@@ -97,7 +93,6 @@
                                                     <div class="product__discount__percent">-
                                                         <?php echo round((($set['price'] - $set['sale']) / $set['price']) * 100, 0) ?>%
                                                     </div>
-                                                    
                                                 </div>
 
                                             </div>
@@ -126,23 +121,19 @@
                     </div>
                 <?php } ?>
                 <hr>
-
-
-
                 <?php
-        
                 if ($productsDog->rowCount() > 0) {
                 ?>
                     <div class="filter-item">
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
-                                <!-- <div class="filter-sort">
+                                <div class="filter-sort">
                                     <span>Xem Theo:</span>
                                     <select>
                                         <option value="0">Tăng Dần</option>
                                         <option value="0">Giảm Dần</option>
                                     </select>
-                                </div> -->
+                                </div>
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter-found">
@@ -153,7 +144,7 @@
                                             $totalProducts = $productsDog->rowCount();
                                             echo $totalProducts;
                                             ?>
-                                        </span> Sản phẩm được tìm thấy!!</h6>
+                                        </span> Products found</h6>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-3">
@@ -173,10 +164,14 @@
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product-item">
                                     <div class="product-item-pic set-bg">
-                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product["image"] ?>"
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $product["image"] ?>"
                                             alt="" width="100%">
 
-
+                                        <ul class="product__item__pic__hover">
+                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
                                     </div>
                                     <div class="product-item-text">
                                     <h6><a href="<?= _WEB_ROOT ?>/shopdog/detail/<?php echo $product["id"] ?>"><span><?php echo $product["name"] ?></span></a></h6>
@@ -195,21 +190,21 @@
                                     </div>
                                 </div>
                             <?php }
-                        ?>
-                    </div>
-                    <!-- display the pagination links -->
-                    <div class="product-pagination text-center">
-                        Trang:
-                        <?php if ($currentPage > 1) : ?>
-                            <a href="?page=<?php echo $currentPage - 1; ?>"><i class="fa fa-long-arrow-left"></i></a>
-                        <?php endif; ?>
-                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                            <a href="?page=<?php echo $i; ?>" <?php if ($i === $currentPage)
-                                                                                                                                                        echo 'class="active"'; ?>><?php echo $i; ?></a>
-                        <?php endfor; ?>
-                        <?php if ($currentPage < $totalPages) : ?>
-                            <a href="?page=<?php echo $currentPage + 1; ?>"><i class="fa fa-long-arrow-right"></i></a>
-                        <?php endif; ?>
+                            ?>
+                            <!-- display the pagination links -->
+                            <div class="product-pagination text-center mt-4">
+                                Trang:
+                                <?php if ($currentPage > 1) : ?>
+                                    <a href="#" onclick="filterData(<?php echo $currentPage - 1; ?>)"><i class="fa fa-long-arrow-left"></i></a>
+                                <?php endif; ?>
+                                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                                    <a href="#" onclick="filterData(<?php echo $i; ?>)" <?php if ($i === $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+                                <?php endfor; ?>
+                                <?php if ($currentPage < $totalPages) : ?>
+                                    <a href="#" onclick="filterData(<?php echo $currentPage + 1; ?>)"><i class="fa fa-long-arrow-right"></i></a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
                 <?php
                 } else {
@@ -231,5 +226,48 @@
 </section>
 <!-- Product Section End -->
 <script>
-    
+    $(document).ready(function() {
+        var minVal = parseInt($('#minamount').val());
+        var maxVal = parseInt($('#maxamount').val());
+        var select_price = $('#select-price').val();
+
+        function filterData() {
+            $.ajax({
+                url: "<?= _WEB_ROOT ?>/shopdog/filter",
+                type: "POST",
+                data: {
+                    minPrice: minVal,
+                    maxPrice: maxVal,
+                    select_price: select_price,
+                },
+                success: function(data) {
+                    $("#product-container").html(data);
+                }
+            });
+        }
+        $("#select-price").on("change", function() {
+            select_price = $(this).val();
+            minVal = parseInt($('#minamount').val());
+            maxVal = parseInt($('#maxamount').val());
+            filterData();
+        });
+
+        $('#minamount, #maxamount').change(function() {
+            minVal = parseInt($('#minamount').val());
+            maxVal = parseInt($('#maxamount').val());
+        });
+        $('.price-range').slider({
+            range: true,
+            min: parseInt($('.price-range').data('min')),
+            max: parseInt($('.price-range').data('max')),
+            values: [minVal, maxVal],
+            slide: function(event, ui) {
+                $('#minamount').val(ui.values[0]);
+                $('#maxamount').val(ui.values[1]);
+                minVal = ui.values[0];
+                maxVal = ui.values[1];
+                filterData();
+            },
+        });
+    });
 </script>
