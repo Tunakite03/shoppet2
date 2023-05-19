@@ -17,7 +17,26 @@ class ProductModel
             echo $ex;
         }
     }
-
+    public function getListProductsByPrice1($pet, $min, $max, $selectedPrice)
+    {
+        try {
+            $query = "SELECT * FROM `products` WHERE id_pet = $pet and price BETWEEN $min AND $max ORDER BY Price $selectedPrice ";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getListProductsByPrice($pet, $min, $max, $from, $numberItems)
+    {
+        try {
+            $query = "SELECT * FROM `products` WHERE id_pet = $pet and price BETWEEN $min AND $max limit $from , $numberItems";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getProductsBestSale()
     {
         try {

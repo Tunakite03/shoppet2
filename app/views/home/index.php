@@ -98,7 +98,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item">
                                     <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="">
+                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $set["image"] ?>" alt="">
                                         <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                             New</div>
                                     </div>
@@ -147,7 +147,7 @@
                                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                     <div class="product-item">
                                         <div class="position-relative bg-light overflow-hidden">
-                                            <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/cat/<?php echo $set["image"] ?>" alt="">
+                                            <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $set["image"] ?>" alt="">
                                             <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                                 New</div>
                                         </div>
@@ -223,7 +223,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item">
                                     <div class="position-relative bg-light overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $set["image"] ?>" alt="">
+                                        <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $set["image"] ?>" alt="">
                                         <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                             New</div>
                                     </div>
@@ -270,7 +270,7 @@
                                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                                     <div class="product-item">
                                         <div class="position-relative bg-light overflow-hidden">
-                                            <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/cat/<?php echo $set["image"] ?>" alt="">
+                                            <img class="img-fluid w-100" src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $set["image"] ?>" alt="">
                                             <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
                                                 New</div>
                                         </div>

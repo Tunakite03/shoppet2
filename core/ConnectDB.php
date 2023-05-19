@@ -11,7 +11,7 @@ class ConnectDB
                 "host" => "localhost",
                 "user" => 'root',
                 "pass" => '',
-                "db" => "shoppet3"
+                "db" => "shoppet5"
             ];
 
             //Cấu hình dsn
