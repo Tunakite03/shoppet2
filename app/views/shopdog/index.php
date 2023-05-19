@@ -164,7 +164,7 @@
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product-item">
                                     <div class="product-item-pic set-bg">
-                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/dog/<?php echo $product["image"] ?>"
+                                        <img src="<?php echo _WEB_ROOT ?>/public/assets/img/img_pet/<?php echo $product["image"] ?>"
                                             alt="" width="100%">
 
                                         <ul class="product__item__pic__hover">
