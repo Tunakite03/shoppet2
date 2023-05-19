@@ -5,7 +5,7 @@ class News extends Controller
 
     public function index()
     {
-        $News = $this->model("NewsModel");
+        $news = $this->model("NewsModel");
         // // require_once.....
         // $products = new ProductModel();
 
