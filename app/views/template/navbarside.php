@@ -31,7 +31,7 @@
                     <span class="hide-menu">Danh mục</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/admin/products" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/listproducts" aria-expanded="false" id="products">
                         <span>
                             <i class="ti ti-article"></i>
                         </span>
@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/admin/news" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/listnews" aria-expanded="false" id="news">
                         <span>
                             <i class="ti ti-book"></i>
                         </span>
@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/admin/customers" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/listcustomers" aria-expanded="false" id="customers">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/admin/categories" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/listcategories" aria-expanded="false" id="category">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -75,13 +75,20 @@
                         <span class="hide-menu">Danh sách danh mục</span>
                     </a>
                 </li>
-
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/admin/edittheme" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/listorders" aria-expanded="false" id="orders">
                         <span>
-                            <i class="ti ti-brush"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M9 6l11 0"></path>
+                                <path d="M9 12l11 0"></path>
+                                <path d="M9 18l11 0"></path>
+                                <path d="M5 6l0 .01"></path>
+                                <path d="M5 12l0 .01"></path>
+                                <path d="M5 18l0 .01"></path>
+                            </svg>
                         </span>
-                        <span class="hide-menu">Thay đổi giao diện</span>
+                        <span class="hide-menu">Quản lí đơn hàng</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -115,19 +122,20 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/admin/editmore" aria-expanded="false">
+                    <a class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
                         <span>
-                            <i class="ti ti-dots"></i>
+                            <i class="ti ti-brush"></i>
                         </span>
-                        <span class="hide-menu">Khác</span>
+                        <span class="hide-menu">Thay đổi giao diện</span>
                     </a>
                 </li>
+
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">AUTH</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/admin/listadmin" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/listadmin" aria-expanded="false" id="admin">
                         <span>
 <<<<<<< HEAD
                             <i class="ti ti-login"></i>
@@ -164,3 +172,34 @@
     <!-- End Sidebar scroll-->
 </aside>
 <!--  Sidebar End -->
+<script>
+    var products = document.getElementById("products");
+    var customers = document.getElementById("customers");
+    var news = document.getElementById("news");
+    var orders = document.getElementById("orders");
+    var admin = document.getElementById("admin");
+    var category = document.getElementById("category");
+
+    let id_admin = "<?= isset($_SESSION['id_role']) ? $_SESSION['id_role'] : "" ?>";
+
+    if (id_admin != 1) {
+        admin.classList.add("d-none");
+    }
+    if (id_admin == 3) {
+        customers.classList.add("d-none");
+        orders.classList.add("d-none");
+    }
+    if (id_admin == 4) {
+        customers.classList.add("d-none");
+        orders.classList.add("d-none");
+        products.classList.add("d-none");
+        category.classList.add("d-none");
+    }
+    if (id_admin == 6) {
+        customers.classList.add("d-none");
+        orders.classList.add("d-none");
+        products.classList.add("d-none");
+        category.classList.add("d-none");
+        news.classList.add("d-none");
+    }
+</script>

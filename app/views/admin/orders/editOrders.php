@@ -1,67 +1,32 @@
-<section class="content-section px-5">
-  <div class="table-responsive">
-    <?php
-    if (!empty($successOrder)) {
-    ?>
-      <div class="alert alert-success text-center" role="alert">
-        <h4 class="alert-heading">Đặt hàng thành công </h4>
-        <p>Bạn đã đặt hàng thành công</p>
-        <hr>
-      </div>
-    <?php
-    }
-    ?>
-    <?php
-    if (!empty($orderErrors)) {
-    ?>
-      <div class="alert alert-warning" role="alert">
-        <h4 class="alert-heading">Lỗi: </h4>
-        <?php
-        foreach ($orderErrors as $key => $error) {
-        ?>
-          <p>
-            <?= $error ?>
-          </p>
-        <?php }
-        ?>
-        <hr>
-      </div>
-    <?php
-    } else {
-
-    ?>
-
-
-      <form action="" method="post">
 
         <table class="table table-bordered" border="0">
 
           <td colspan="4">
-            <h2 style="color:orangered    ; text-align: center;">HÓA ĐƠN</h2>
+            <h2 style="color:orangered; text-align: center;">HÓA ĐƠN</h2>
           </td>
           </tr>
           <tr>
             <td colspan="2">Số Hóa đơn:
-              <?= $checkoutConfirmUser['id_order'] ?>
+              <?= $order_id['id_order'] ?>
             </td>
             <td colspan="2"> Ngày lập:
-              <?= $checkoutConfirmUser['date'] ?>
+              <?=$order_id['date'] ?>
             </td>
           </tr>
           <tr>
-            <td colspan="2">Họ và tên: <?= $checkoutConfirmUser['customer_name'] ?> </td>
+            <td colspan="2">Họ và tên: <?=$order_id['customer_name'] ?> </td>
             <td colspan="2">
 
             </td>
           </tr>
           <tr>
-            <td colspan="2">Địa chỉ: <?= $checkoutConfirmUser['address'] ?></td>
+            <td colspan="2">Địa chỉ: <?=$order_id['address'] ?></td>
             <td colspan="2">
 
             </td>
           </tr>
           <tr>
-            <td colspan="2">Số điện thoại: <?= $checkoutConfirmUser['phone'] ?></td>
+            <td colspan="2">Số điện thoại: <?= $order_id['phone'] ?></td>
             <td colspan="2">
               <?php  ?>
             </td>
@@ -71,7 +36,7 @@
         <!-- Thông tin sản phầm -->
         <table class="table table-bordered">
           <thead>
-            <tr style="background-color: orangered;color:antiquewhite;text-align: center;">
+            <tr class="bg-secondary text-light">
               <th>Số TT</th>
               <th>Hình ảnh</th>
               <th>Sản Phẩm</th>
@@ -106,14 +71,10 @@
               </td>
               <td style="float: right;">
                 <b>
-                  <?= number_format($checkoutConfirmUser['total_money'], 0, ',', '.') . " VND" ?>
+                  <?=number_format($item['total_money'])." VND" ?>
                 </b>
               </td>
             </tr>
           </tbody>
         </table>
       </form>
-    <?php } ?>
-  </div>
-
-</section>

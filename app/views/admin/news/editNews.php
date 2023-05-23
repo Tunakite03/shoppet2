@@ -27,22 +27,24 @@
                     </div> -->
                     <div class="mb-3">
                         <label for="name" class="form-label">Tiêu đề</label>
-                        <input type="text" class="form-control" value="<?= $data_news['name'] ?>" required name="name"
-                            id="name" placeholder="Vui lòng nhập tên sản phẩm">
+                        <input type="text" class="form-control" value="<?= $data_news['name'] ?>" required name="name" id="name" placeholder="Vui lòng nhập tên sản phẩm">
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Mô tả ngắn</label>
-                        <input type="text" class="form-control" value="<?= $data_news['des_news'] ?>" required
-                            name="des_news" id="des_news" placeholder="">
+                        <input type="text" class="form-control" value="<?= $data_news['des_news'] ?>" required name="des_news" id="des_news" placeholder="">
                     </div>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nội dung</label>
-                        <input type="Textarea" class="form-control" value="<?= htmlspecialchars($data_news['content']) ?>" required
-                            name="content" id="content" placeholder="">
+                        <textarea id="mytextarea" style="min-height: 600px;" name="content">
+                    <?= htmlspecialchars($data_news['content']) ?>
+                     </textarea>
+                    </div>
+                    <div class="mb-3 d-flex gap-4 container">
+                        <a href="/admin/news" class="btn btn-info form-control mb-3">Cancel</a>
+                        <button type="submit" name="editNewSubmit" class="btn btn-success form-control mb-3">Update</button>
                     </div>
                     <a href="/admin/news" class="btn btn-danger"
                         style="color: white; background-color: #d9534f; border-color: #d43f3a; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Cancel</a>
-                    <button type="submit" name="editNewsSubmit" class="btn btn-primary">Update</button>
+                    <button type="submit" name="editNewSubmit" class="btn btn-primary">Update</button>
 
                 </form>
 
@@ -52,6 +54,37 @@
 
 </section>
 <script>
+    tinymce.init({
+        selector: '#mytextarea',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        mergetags_list: [{
+                value: 'First.Name',
+                title: 'First Name'
+            },
+            {
+                value: 'Email',
+                title: 'Email'
+            },
+        ],
+        file_picker_types: 'file',
+        file_picker_callback: function(callback, value, meta) {
+            if (meta.filetype == 'image') {
+                // Open the file picker dialog and handle the selected file
+                // For example, using jQuery File Upload:
+                $('#fileupload').fileupload({
+                    dataType: 'json',
+                    done: function(e, data) {
+                        // Get the URL of the uploaded image and call the callback function
+                        var url = data.result.url;
+                        callback(url);
+                    }
+                }).click();
+            }
+        }
+    });
     const fileInput = document.getElementById('image');
     const previewImg = document.getElementById('preview-image');
 

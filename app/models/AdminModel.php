@@ -106,6 +106,17 @@ class AdminModel
             echo $ex;
         }
     }
+    public function checkRole($id)
+    {
+        try {
+            $query = "SELECT id_role FROM `admin` WHERE `id`=$id";
+
+            $stmt =  $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
     public function getAdmin($email)
     {
         try {
@@ -340,6 +351,53 @@ class AdminModel
             `quantity`=$quantity
             WHERE id=$id";
             $stmt = $this->db->exec($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getListCustomersOrders()
+    {
+        try {
+            $query = "SELECT customers.name, orders.id, orders.total, orders.date, order_items.quantity, order_items.product_id, order_items.price
+            FROM customers
+            JOIN orders ON customers.id = orders.customer_id
+            JOIN order_items ON order_items.order_id = orders.id
+            GROUP BY orders.id ";
+            $stmt = $this->db->getList($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getListCustomersOrdersID($orderid)
+    {
+        try {
+            $query = "SELECT o.id as id_order, o.date as date, c.name as customer_name, ic.phone as phone, o.address as address, o.total as total_money
+            FROM orders o
+            JOIN order_items od ON o.id = od.order_id
+            JOIN customers c ON o.customer_id = c.id
+            JOIN info_customers ic ON c.id = ic.id_customer
+            WHERE o.id = $orderid
+            ORDER BY o.id DESC
+            LIMIT 1;
+            ";
+            $stmt = $this->db->getInstance($query);
+            return $stmt;
+        } catch (\Throwable $ex) {
+            echo $ex;
+        }
+    }
+    public function getInfoConfirmProduct($orderid)
+    {
+        try {
+            $query = "SELECT p.image as image, p.name as product_name,  od.quantity as quantity, od.price as price, o.total as total_money, pets.name as pet_name
+            FROM orders o 
+            JOIN order_items od ON o.id = od.order_id 
+            JOIN products p ON od.product_id = p.id
+            JOIN pets ON p.id_pet = pets.id
+            where o.id = $orderid ";
+            $stmt =  $this->db->getList($query);
             return $stmt;
         } catch (\Throwable $ex) {
             echo $ex;

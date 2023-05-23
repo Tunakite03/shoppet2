@@ -19,6 +19,7 @@ class AdminLogin extends Controller
             $result = $admin->checkLogin($email, $password);
             if ($result != false) {
                 $_SESSION['adminLogged'] = $result;
+                $_SESSION['id_role'] = $this->model("AdminModel")->checkRole($_SESSION['adminLogged']['id'])['id_role'];
                 echo '<meta http-equiv="refresh" content="' . 0 . ';url=/admin">';
             } else {
                 $this->data['sub_content']['errorsLogin'] = "Thông tin tài khoản hoặc mật khẩu khoogn hợp lệ.";

@@ -23,10 +23,10 @@
         <div class="" style="margin-top: 20px;">
             <form action="<?= _WEB_ROOT?>/search" method="GET">
                 <div class="input-group mb-3">
-                    <select name="table" id="table">
-                        <option value="products">Sản phẩm</option>
-                        <option value="news">Tin Tức</option>
-                    </select>
+                        <select name="table" id="table" class="form-control">
+                            <option value="products">Sản phẩm</option>
+                            <option value="news">Tin Tức</option>
+                        </select>
                     <input type="text" class="form-control" placeholder="Bạn cần tìm gì?" aria-label="tìm kiếm sản phẩm"
                         name="key">
                     <button class="btn btn-danger" type="submit">Tìm kiếm</button>
