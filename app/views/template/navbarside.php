@@ -49,9 +49,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="/admin/listcustomers" aria-expanded="false" id="customers">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-edit"
-                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
                                 <path d="M6 21v-2a4 4 0 0 1 4 -4h3.5"></path>
@@ -62,11 +60,25 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/ListCustomersOrders" aria-expanded="false">
+                    <a class="sidebar-link" href="/admin/listcategories" aria-expanded="false" id="category">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24"
-                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M9 6l11 0"></path>
+                                <path d="M9 12l11 0"></path>
+                                <path d="M9 18l11 0"></path>
+                                <path d="M5 6l0 .01"></path>
+                                <path d="M5 12l0 .01"></path>
+                                <path d="M5 18l0 .01"></path>
+                            </svg>
+                        </span>
+                        <span class="hide-menu">Danh sách danh mục</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/admin/listorders" aria-expanded="false" id="orders">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M9 6l11 0"></path>
                                 <path d="M9 12l11 0"></path>
@@ -80,11 +92,22 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-brush"></i>
+                        </span>
+                        <span class="hide-menu">Thay đổi giao diện</span>
+                    </a>
+                </li>
+
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">AUTH</span>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="/admin/listadmin" aria-expanded="false" id="admin">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-cog"
-                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-cog" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
                                 <path d="M6 21v-2a4 4 0 0 1 4 -4h2.5"></path>
